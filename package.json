@@ -1,0 +1,24 @@
+{
+  "name": "n-select",
+  "version": "1.0.0",
+  "description": "Rich, accessible, lightweight, dependencies-free select component",
+  "main": "n-select.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radogado/n-select.git"
+  },
+  "keywords": [
+    "form",
+    "select",
+    "a11y"
+  ],
+  "author": "Radoslav Sharapanov <spacest@gmail.com> (http://github.com/radogado)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radogado/n-select/issues"
+  },
+  "homepage": "https://github.com/radogado/n-select#readme"
+}

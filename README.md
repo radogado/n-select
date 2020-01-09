@@ -1,2 +1,2 @@
 # n-select
- Rich, accessible select
+Rich, accessible, lightweight, dependencies-free select component
