@@ -76,7 +76,9 @@
     wrapper.style.removeProperty("--width");
     select.style.removeProperty("--scroll-help-top");
     select.classList.remove("n-select--scroll-help-top");
-    !!nuiDisableBodyScroll && nuiDisableBodyScroll(false, select);
+    if (typeof nuiDisableBodyScroll === "function") {
+      nuiDisableBodyScroll(false, select);
+    }
 
     let parent = wrapper;
     while (parent !== document.body) {
@@ -214,7 +216,9 @@
 
     window.addEventListener("resize", closeSelectOnResize);
     document.body.addEventListener("click", clickOutsideSelect);
-    !!nuiDisableBodyScroll && nuiDisableBodyScroll(true, select);
+    if (typeof nuiDisableBodyScroll === "function") {
+      nuiDisableBodyScroll(true, select);
+    }
 
     let parent = wrapper.parentNode;
     while (parent !== document.body) {
