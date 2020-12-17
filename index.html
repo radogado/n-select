@@ -28,18 +28,23 @@
       <li>Preselected non-first option</li>
     </ul>
 
-    <div class="n-select">
-      <select>
-        <option>Option 1</option>
-        <option value="3" selected>Small select option 3</option>
-        <option>Last chance</option>
-      </select>
-    </div>
-
+    <label
+      >Default<br />
+      <br />
+      <span class="n-select">
+        <select>
+          <option>Option 1</option>
+          <option value="3" selected>Small select option 3</option>
+          <option>Last chance</option>
+        </select>
+      </span>
+    </label>
     <br /><br />
 
-    <div class="n-select">
-      <select>
+    <label for="demo1">With pre-filled native and rich options</label>
+    <br /><br />
+    <span class="n-select">
+      <select id="demo1">
         <option>Option 1</option>
         <option>Option 2</option>
         <option>Option 3</option>
@@ -69,7 +74,7 @@
         <option>Starting with other than O</option>
       </select>
 
-      <div class="n-select__options n-select--shadow">
+      <span class="n-select__options n-select--shadow">
         <button>
           <img
             src="images/niui.svg"
@@ -114,7 +119,7 @@
         <button>Austria</button>
         <button>Australia</button>
         <button>Starting with other than O</button>
-      </div>
-    </div>
+      </span>
+    </span>
   </body>
 </html>
