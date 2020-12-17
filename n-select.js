@@ -587,6 +587,26 @@
       ); // Select the first option by default
       el.nuiSearchTerm = "";
 
+      let label =
+        el.closest("label") ||
+        document.querySelector(`label[for="${el.nuiNativeSelect.id}"]`);
+
+      if (label) {
+        label.onclick = (e) => {
+          let el = e.target;
+          if (!el.closest(".n-select")) {
+            e.preventDefault();
+            el = el.closest("label");
+            let select =
+              el.querySelector(".n-select") ||
+              document
+                .getElementById(el.getAttribute("for"))
+                .closest(".n-select");
+            select.focus();
+          }
+        };
+      }
+
       wrapper.dataset.ready = true;
       window.requestAnimationFrame(() => {
         wrapper.style.setProperty(
