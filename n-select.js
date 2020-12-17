@@ -121,11 +121,17 @@
     );
     select.style.setProperty(
       "--body-offset-x",
-      select.getBoundingClientRect().x - document.body.getBoundingClientRect().x
+      select.getBoundingClientRect().x -
+        (document.body.style.position === "relative"
+          ? document.body.getBoundingClientRect().x
+          : 0)
     );
     select.style.setProperty(
       "--body-offset-y",
-      select.getBoundingClientRect().y - document.body.getBoundingClientRect().y
+      select.getBoundingClientRect().y -
+        (document.body.style.position === "relative"
+          ? document.body.getBoundingClientRect().y
+          : 0)
     );
 
     select.querySelector("[aria-selected]").removeAttribute("tabindex");
