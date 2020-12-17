@@ -582,12 +582,14 @@
       el.nuiSearchTerm = "";
 
       wrapper.dataset.ready = true;
-      wrapper.style.setProperty(
-        "--active-option-height",
-        `${
-          el.querySelector("[aria-selected]").getBoundingClientRect().height
-        }px`
-      );
+      window.requestAnimationFrame(() => {
+        wrapper.style.setProperty(
+          "--active-option-height",
+          `${
+            el.querySelector("[aria-selected]").getBoundingClientRect().height
+          }px`
+        );
+      });
     });
   };
 
