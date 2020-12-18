@@ -160,6 +160,8 @@ body.n-select--open {
   position: relative;
   color: var(--control-color, #333);
   background-color: var(--control-bg, #fff);
+  display: flex;
+  align-items: center;
 }
 .n-select__options button * {
   pointer-events: none;
