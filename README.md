@@ -19,6 +19,8 @@ Rich, accessible, lightweight, dependencies-free select component
 ```
 
 [GitHub](https://github.com/radogado/n-select/)
+
 [Demo](https://radogado.github.io/n-select/)
+
 [npm i n-select](https://www.npmjs.com/package/n-select/)
 
