@@ -587,6 +587,10 @@
       ); // Select the first option by default
       el.nuiSearchTerm = "";
 
+      if (wrapper.classList.contains("n-select--rounded")) {
+        el.classList.add("n-select--rounded");
+      }
+
       let label =
         el.closest("label") ||
         document.querySelector(`label[for="${el.nuiNativeSelect.id}"]`);

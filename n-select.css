@@ -308,5 +308,19 @@ select[data-n_select],
     width: calc(var(--max-width) + var(--padding));
   }
 }
+.n-select--rounded.n-select {
+  border-radius: var(--radius, 0.333em);
+}
+.n-select--rounded.n-select__options button:first-of-type {
+  border-top-left-radius: var(--radius, 0.333em);
+  border-top-right-radius: var(--radius, 0.333em);
+}
+.n-select--rounded.n-select__options button:last-of-type {
+  border-bottom-left-radius: var(--radius, 0.333em);
+  border-bottom-right-radius: var(--radius, 0.333em);
+}
+.n-select--rounded.n-select__options[aria-expanded]:before {
+  background: none;
+}
 
 /*# sourceMappingURL=n-select.css.map */

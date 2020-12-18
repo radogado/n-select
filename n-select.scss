@@ -183,8 +183,8 @@ body.n-select--open {
     position: relative;
     color: var(--control-color, #333);
     background-color: var(--control-bg, #fff);
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 
     * {
       pointer-events: none; // Disable dragging of images inside the option
@@ -374,5 +374,26 @@ select[data-n_select],
 @media (min-width: 600px) {
   .n-select .n-select__options[aria-expanded] {
     width: calc(var(--max-width) + var(--padding));
+  }
+}
+
+.n-select--rounded {
+  &.n-select {
+    border-radius: var(--radius, 0.333em);
+  }
+  &.n-select__options {
+    button:first-of-type {
+      border-top-left-radius: var(--radius, 0.333em);
+      border-top-right-radius: var(--radius, 0.333em);
+    }
+
+    button:last-of-type {
+      border-bottom-left-radius: var(--radius, 0.333em);
+      border-bottom-right-radius: var(--radius, 0.333em);
+    }
+  }
+
+  &.n-select__options[aria-expanded]:before {
+    background: none;
   }
 }
