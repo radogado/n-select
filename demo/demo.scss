@@ -4,4 +4,11 @@ body {
     sans-serif;
   background: darkcyan;
   color: antiquewhite;
+  max-width: 1280px;
+  margin: auto;
+}
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
