@@ -453,7 +453,7 @@
       el.classList.add("n-select__options");
 
       el.nuiNativeSelect =
-        el.nuiSelectWrapper.querySelector("select") ||
+        el.nuiSelectWrapper.querySelector("select, input") ||
         nextMatchingSibling(el.nuiSelectWrapper, "select") ||
         document.querySelector(
           `[data-n_select="${el.nuiSelectWrapper.dataset.n_select}"]`
