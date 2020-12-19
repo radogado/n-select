@@ -188,7 +188,7 @@ body.n-select--open {
   border-radius: 0.333em;
 }
 .n-select__options[aria-expanded] {
-  position: absolute;
+  position: fixed;
   margin-top: calc( -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0) );
   max-height: var(--max-height);
   overflow: auto;

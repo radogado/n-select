@@ -220,7 +220,7 @@ body.n-select--open {
   }
 
   &[aria-expanded] {
-    position: absolute;
+    position: fixed;
     margin-top: calc(
       -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0)
     ); // Align to the current option's vertical offset

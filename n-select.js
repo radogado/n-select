@@ -47,7 +47,7 @@
     options.style.removeProperty("--top-offset");
     options.style.removeProperty("--max-height");
 
-    let select_native = select.nuiNativeSelect; // The attached native select
+    let select_native = select.nuiNativeInput; // The attached native select
 
     let index = [...el.parentNode.querySelectorAll("button")].indexOf(el);
 
@@ -452,33 +452,31 @@
       el.nuiSelectWrapper = wrapper;
       el.classList.add("n-select__options");
 
-      el.nuiNativeSelect =
+      el.nuiNativeInput =
         el.nuiSelectWrapper.querySelector("select, input") ||
         nextMatchingSibling(el.nuiSelectWrapper, "select") ||
         document.querySelector(
           `[data-n_select="${el.nuiSelectWrapper.dataset.n_select}"]`
         ); // As a sibling, child or data-n_select match (where data-n_select is the rich select's data-n_select attribute)
 
-      if (!el.nuiNativeSelect) {
+      let input = document.createElement("input");
+      if (!el.nuiNativeInput) {
         // Missing native select, so generate it
 
-        let input = document.createElement("input");
         input.name = el.dataset.name;
         wrapper.append(input);
-        el.nuiNativeSelect = input;
+        el.nuiNativeInput = input;
       }
 
-      // Set native select's value
-
-      /*
-			el.nextElementSibling.onchange = e => {
-				
-				// Also change the visible select
-				let el = e.target;
-				selectOption(el.previousElementSibling.querySelectorAll('button')[el.selectedIndex]);
-				
-			};
-		*/
+      if (el.nuiNativeInput.tagName !== "INPUT") {
+        input.name = el.nuiNativeInput.name;
+        if (!!el.nuiNativeInput.id) {
+          input.id = el.nuiNativeInput.id;
+        }
+        wrapper.removeChild(el.nuiNativeInput);
+        wrapper.append(input);
+        el.nuiNativeInput = input;
+      }
 
       /*
 			Object.defineProperty(el.nextElementSibling, 'value', {
@@ -593,7 +591,7 @@
 
       let label =
         el.closest("label") ||
-        document.querySelector(`label[for="${el.nuiNativeSelect.id}"]`);
+        document.querySelector(`label[for="${el.nuiNativeInput.id}"]`);
 
       if (label) {
         label.onclick = (e) => {
