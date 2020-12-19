@@ -68,6 +68,7 @@
     document.body.classList.remove("n-select--open");
     select.nuiSelectWrapper.prepend(select);
     window.removeEventListener("resize", closeSelectOnResize);
+    window.removeEventListener("scroll", closeSelectOnResize);
     select.querySelector("[aria-selected]").tabIndex = -1;
     window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
     document.body.removeEventListener("click", clickOutsideSelect);
@@ -221,6 +222,7 @@
     });
 
     window.addEventListener("resize", closeSelectOnResize);
+    window.addEventListener("scroll", closeSelectOnResize);
     document.body.addEventListener("click", clickOutsideSelect);
     if (typeof nuiDisableBodyScroll === "function") {
       nuiDisableBodyScroll(true, select);
