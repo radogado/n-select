@@ -54,7 +54,7 @@
     if (select_native) {
       //									let options = select.querySelectorAll('button');
       // 								select_native.options[[...options].indexOf(el)].selected = true; // Enable the native option index-matching this button
-      select_native.value = select.children[index].value;
+      select_native.value = select.querySelectorAll("button")[index].value;
     }
 
     if (!!select.nuiOnChange) {
