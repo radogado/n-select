@@ -3,15 +3,42 @@ body {
   background: darkcyan;
   color: antiquewhite;
   max-width: 1280px;
-  margin: auto;
-  padding: 1em;
-  min-height: 150vh;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  line-height: 1.333;
+  margin: 0 auto;
+  max-width: 1280px;
+  border: 1em solid transparent;
 }
 
 .demo {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 1em;
+}
+@media (min-width: 600px) {
+  .demo {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.demo [type=submit] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  box-shadow: none;
+  background: coral;
+  color: white;
+  padding: 0.5em 1em;
+  font: inherit;
+  cursor: pointer;
+}
+
+pre {
+  overflow: auto;
+}
+
+h1 {
+  margin-top: 0;
 }
 
 /*# sourceMappingURL=demo.css.map */
