@@ -102,12 +102,10 @@ body.n-select--open {
       height: auto;
       margin: 0;
       background: none;
-      visibility: hidden;
-      animation-name: n-select-native;
-      
-      &:only-child {
-        
-visibility: visible;
+
+      &:not(:only-child) {
+        visibility: hidden;
+        animation-name: n-select-native;
       }
     }
 

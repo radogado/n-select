@@ -89,11 +89,10 @@ body.n-select--open {
   height: auto;
   margin: 0;
   background: none;
+}
+.n-select:not([data-ready]) select:not(:only-child) {
   visibility: hidden;
   animation-name: n-select-native;
-}
-.n-select:not([data-ready]) select:only-child {
-  visibility: visible;
 }
 .n-select:not([data-ready]) .n-select__options {
   display: inline-grid;

@@ -30,7 +30,6 @@
       <li>Full width</li>
       <li>Preselected non-first option</li>
       <li>Nav</li>
-      <li>Default option isn't the first one</li>
     </ul>
 
     <form
@@ -41,6 +40,7 @@
           <label
             >Default<br />
             <br />
+            Before
             <span class="n-select n-select--rounded">
               <select name="demo0">
                 <option>Option 1</option>
@@ -48,9 +48,28 @@
                 <option>Last chance</option>
               </select>
             </span>
+            After
           </label>
         </div>
         <div>
+          <label
+            >Full width<br />
+            <br />
+            <span class="n-select n-select--wide">
+              <select name="demo-full">
+                <option>Option 1</option>
+                <option value="3" selected>Small select option 3</option>
+                <option>Last chance</option>
+              </select>
+            </span>
+          </label>
+        </div>
+        <div
+          style="
+            background: linear-gradient(to bottom right, blue, pink);
+            padding: 1em;
+          "
+        >
           <label
             >Transparent<br />
             <br /><br /><br /><br />
@@ -71,6 +90,27 @@
               </select>
             </span>
             <br /><br /><br /><br />
+          </label>
+        </div>
+        <div>
+          <label
+            >Themed<br /><br />
+            <span
+              class="n-select"
+              style="
+                --control-bg: darkorchid;
+                --control-active-bg: darkorchid;
+                --control-highlight: darkblue;
+                --control-color: lightgreen;
+                --control-active-color: lightgreen;
+              "
+            >
+              <select name="demo-themed">
+                <option>Option 1</option>
+                <option value="3" selected>Small select option 3</option>
+                <option>Last chance</option>
+              </select>
+            </span>
           </label>
         </div>
         <div>
