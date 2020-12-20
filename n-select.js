@@ -49,13 +49,9 @@
 
     let select_native = select.nuiNativeInput; // The attached native select
 
-    let index = [...el.parentNode.querySelectorAll("button")].indexOf(el);
-
-    if (select_native) {
-      //									let options = select.querySelectorAll('button');
-      // 								select_native.options[[...options].indexOf(el)].selected = true; // Enable the native option index-matching this button
-      select_native.value = select.querySelectorAll("button")[index].value;
-    }
+    select_native.innerHTML = `<option value="${el.value}"></option>`;
+    const event = new Event("change");
+    select_native.dispatchEvent(event);
 
     if (!!select.nuiOnChange) {
       select.nuiOnChange(index, select_native.value);
@@ -441,7 +437,6 @@
 
       el = el.querySelector(".n-select__options"); // Work with the inner wrapper
       if (!el) {
-        // Or generate it from the native select and attach as n-select's first child. If only native is needed, then use only select.n-select?
         let options = "";
         wrapper.querySelectorAll("option").forEach((el) => {
           options += `<button value="${el.value}">${el.textContent}</button>`;
@@ -461,24 +456,15 @@
           `[data-n_select="${el.nuiSelectWrapper.dataset.n_select}"]`
         ); // As a sibling, child or data-n_select match (where data-n_select is the rich select's data-n_select attribute)
 
-      let input = document.createElement("input");
       if (!el.nuiNativeInput) {
         // Missing native select, so generate it
-
+        let input = document.createElement("select");
         input.name = el.dataset.name;
         wrapper.append(input);
         el.nuiNativeInput = input;
       }
 
-      if (el.nuiNativeInput.tagName !== "INPUT") {
-        input.name = el.nuiNativeInput.name;
-        if (!!el.nuiNativeInput.id) {
-          input.id = el.nuiNativeInput.id;
-        }
-        wrapper.removeChild(el.nuiNativeInput);
-        wrapper.append(input);
-        el.nuiNativeInput = input;
-      }
+      el.nuiNativeInput.innerHTML = "";
 
       /*
 			Object.defineProperty(el.nextElementSibling, 'value', {

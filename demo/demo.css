@@ -41,4 +41,9 @@ h1 {
   margin-top: 0;
 }
 
+a[href] {
+  text-decoration: none;
+  color: coral;
+}
+
 /*# sourceMappingURL=demo.css.map */
