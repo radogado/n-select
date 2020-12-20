@@ -104,6 +104,11 @@ body.n-select--open {
       background: none;
       visibility: hidden;
       animation-name: n-select-native;
+      
+      &:only-child {
+        
+visibility: visible;
+      }
     }
 
     .n-select__options {

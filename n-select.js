@@ -463,6 +463,9 @@
         wrapper.append(input);
         el.nuiNativeInput = input;
       }
+      
+      let initial_value = el.nuiNativeInput.value;
+      let initial_option = el.querySelector(`button[value="${initial_value}"`);
 
       el.nuiNativeInput.innerHTML = "";
 
@@ -567,9 +570,9 @@
         "--inline-width",
         `${el.getBoundingClientRect().width}px`
       );
-
+      
       selectOption(
-        el.querySelector("[aria-selected]") || el.querySelector("button")
+        el.querySelector("[aria-selected]") || initial_option || el.querySelector("button")
       ); // Select the first option by default
       el.nuiSearchTerm = "";
 
