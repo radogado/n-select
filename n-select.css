@@ -326,4 +326,9 @@ select[data-n_select],
   background: none;
 }
 
+.n-select:focus:not(:focus-visible),
+.n-select__options button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 /*# sourceMappingURL=n-select.css.map */

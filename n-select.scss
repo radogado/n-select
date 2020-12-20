@@ -401,3 +401,11 @@ select[data-n_select],
     background: none;
   }
 }
+
+// Hide focus ring when unnecessary, show it only on keyboard interaction
+.n-select,
+.n-select__options button {
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
