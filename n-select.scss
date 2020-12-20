@@ -123,6 +123,10 @@ body.n-select--open {
   > input {
     display: none;
   }
+
+  &.n-select--wide {
+    width: 100%;
+  }
 }
 
 .n-select__options,
