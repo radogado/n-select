@@ -33,9 +33,10 @@
     </ul>
 
     <form
-      class="demo"
+      
       onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));this.insertAdjacentHTML('afterend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
     >
+    <div class="demo">
       <div>
         <label
           >Default<br />
@@ -49,6 +50,20 @@
           </span>
         </label>
       </div>
+<div>
+  <label
+    >Transparent<br />
+    <br /><br /><br /><br />
+    <span class="n-select" style="--control-bg: transparent;    --control-active-bg: transparent;    --control-highlight: transparent; --control-color: mintcream; --control-active-color: mintcream;">
+      <select name="demo0">
+        <option>Option 1</option>
+        <option value="3" selected>Small select option 3</option>
+        <option>Last chance</option>
+      </select>
+    </span>
+<br /><br /><br /><br />
+  </label>
+</div>
       <div>
         <label for="countries">With images </label>
         <br /><br />
@@ -906,10 +921,11 @@
         </div>
       </div>
       <div>
-        <br />
-        <input type="submit" />
-        <br />
       </div>
+    </div>
+<br />
+<input type="submit" />
+<br />
     </form>
 
     <p><a href="https://github.com/radogado/n-select/">GitHub</a></p>

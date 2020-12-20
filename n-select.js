@@ -605,6 +605,15 @@
             el.querySelector("[aria-selected]").getBoundingClientRect().height
           }px`
         );
+        [
+          "--control-color",
+          "--control-bg",
+          "--control-active-color",
+          "--control-active-bg",
+          "--control-highlight",
+        ].forEach((i) => {
+          el.style.setProperty(i, wrapper.style.getPropertyValue(i));
+        });
       });
     });
   };

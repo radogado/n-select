@@ -21,17 +21,6 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-.demo [type=submit] {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  box-shadow: none;
-  background: coral;
-  color: white;
-  padding: 0.5em 1em;
-  font: inherit;
-  cursor: pointer;
-}
 
 pre {
   overflow: auto;
@@ -44,6 +33,29 @@ h1 {
 a[href] {
   text-decoration: none;
   color: coral;
+}
+
+form [type=submit] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  box-shadow: none;
+  background: coral;
+  color: white;
+  padding: 0.5em 1em;
+  font: inherit;
+  cursor: pointer;
+}
+
+.gradient {
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+.transparent-select .n-select,
+.transparent-select .n-select--options {
+  --control-bg: transparent;
+  --control-active-bg: transparent;
+  --control-highlight: transparent;
 }
 
 /*# sourceMappingURL=demo.css.map */
