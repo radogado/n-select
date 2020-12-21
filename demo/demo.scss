@@ -2,7 +2,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  background: darkcyan;
+  background: #007575;
   color: antiquewhite;
   max-width: 1280px;
   padding: 0;
@@ -28,15 +28,14 @@ h1 {
   margin-top: 0;
 }
 a[href] {
-  text-decoration: none;
-  color: coral;
+  color: inherit;
 }
 form [type="submit"] {
   appearance: none;
   -webkit-appearance: none;
   border: none;
   box-shadow: none;
-  background: coral;
+  background: #ad421b;
   color: white;
   padding: 0.5em 1em;
   font: inherit;
@@ -58,5 +57,69 @@ form [type="submit"] {
     --control-bg: transparent;
     --control-active-bg: transparent;
     --control-highlight: transparent;
+  }
+}
+
+h1:after {
+  content: attr(data-version);
+  padding-inline-start: 1ch;
+  font-size: 0.5em;
+  font-weight: normal;
+  vertical-align: super;
+}
+
+[href="n-select.min.css"],
+[href="n-select.min.js"] {
+  text-decoration: none;
+
+  &:after {
+    content: attr(data-size);
+    padding-inline-start: 1ch;
+    min-width: 6ch;
+    display: inline-block;
+    font-size: 0.75em;
+    vertical-align: top;
+  }
+  &[data-size="0.0 KB"]:after {
+    opacity: 0;
+  }
+
+  b {
+    text-decoration: underline;
+    min-width: 4ch;
+    display: inline-block;
+  }
+}
+
+code[class*="language-"] {
+  font-family: monospace !important;
+  line-height: 1.9 !important;
+  display: block;
+}
+
+.code {
+  position: relative;
+  margin-bottom: 1.5em;
+  display: inline-block;
+  max-width: 100%;
+
+  pre {
+    padding: 1em;
+    margin: 0.5em 0;
+  }
+
+  button.n-btn {
+    position: absolute;
+    bottom: 0.67em;
+    right: 0;
+    font-size: 0.75em;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: lightcoral;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
   }
 }

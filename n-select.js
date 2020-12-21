@@ -442,7 +442,7 @@
           options += `<button value="${el.value}">${el.textContent}</button>`;
         });
 
-        el = document.createElement("div");
+        el = document.createElement("span");
         el.insertAdjacentHTML("beforeend", options);
         wrapper.prepend(el);
       }
@@ -463,7 +463,7 @@
         wrapper.append(input);
         el.nuiNativeInput = input;
       }
-      
+
       let initial_value = el.nuiNativeInput.value;
       let initial_option = el.querySelector(`button[value="${initial_value}"`);
 
@@ -570,9 +570,11 @@
         "--inline-width",
         `${el.getBoundingClientRect().width}px`
       );
-      
+
       selectOption(
-        el.querySelector("[aria-selected]") || initial_option || el.querySelector("button")
+        el.querySelector("[aria-selected]") ||
+          initial_option ||
+          el.querySelector("button")
       ); // Select the first option by default
       el.nuiSearchTerm = "";
 

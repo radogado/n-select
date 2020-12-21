@@ -253,7 +253,7 @@ body.n-select--open {
     }
 
     &.n-select--crop-top {
-      top: calc(1px * var(--body-offset-y));
+      top: calc(1px * var(--body-offset-y) - 1px);
       margin-top: calc(
         -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0)
       ); // Align to the current option's vertical offset
@@ -411,4 +411,10 @@ select[data-n_select],
   &:focus:not(:focus-visible) {
     outline: 0;
   }
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root .n-select__options[aria-expanded].n-select--crop-top {
+  top: calc(1px * var(--body-offset-y) - 0.5px);
 }

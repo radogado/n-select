@@ -212,7 +212,7 @@ body.n-select--open {
   margin-bottom: 1em;
 }
 .n-select__options[aria-expanded].n-select--crop-top {
-  top: calc(1px * var(--body-offset-y));
+  top: calc(1px * var(--body-offset-y) - 1px);
   margin-top: calc( -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0) );
 }
 .n-select__options[aria-expanded]:not(.n-select--crop-top) {
@@ -331,6 +331,12 @@ select[data-n_select],
 .n-select:focus:not(:focus-visible),
 .n-select__options button:focus:not(:focus-visible) {
   outline: 0;
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root .n-select__options[aria-expanded].n-select--crop-top {
+  top: calc(1px * var(--body-offset-y) - 0.5px);
 }
 
 /*# sourceMappingURL=n-select.css.map */
