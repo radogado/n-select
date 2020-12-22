@@ -108,6 +108,9 @@ body.n-select--open {
 .n-select:not([data-ready]) .n-select__options > :not(:first-child):not([aria-selected]) {
   opacity: 0;
 }
+.n-select:not([data-ready]) .n-select__options:not([aria-expanded]) button[aria-selected] {
+  background: var(--control-bg, #fff);
+}
 .n-select > input {
   display: none;
 }
@@ -216,7 +219,7 @@ body.n-select--open {
   margin-bottom: 1em;
 }
 .n-select__options[aria-expanded].n-select--crop-top {
-  top: calc(1px * var(--body-offset-y) - 1px);
+  top: calc(1px * var(--body-offset-y) - 0.5px);
   margin-top: calc( -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0) );
 }
 .n-select__options[aria-expanded]:not(.n-select--crop-top) {

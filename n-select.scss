@@ -124,6 +124,12 @@ body.n-select--open {
       > :not(:first-child):not([aria-selected]) {
         opacity: 0;
       }
+
+      &:not([aria-expanded]) button {
+        &[aria-selected] {
+          background: var(--control-bg, #fff);
+        }
+      }
     }
   }
 
@@ -257,7 +263,7 @@ body.n-select--open {
     }
 
     &.n-select--crop-top {
-      top: calc(1px * var(--body-offset-y) - 1px);
+      top: calc(1px * var(--body-offset-y) - 0.5px);
       margin-top: calc(
         -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0)
       ); // Align to the current option's vertical offset
