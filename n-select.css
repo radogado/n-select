@@ -60,9 +60,13 @@ body.n-select--open {
   --chevron: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z'/%3E%3C/svg%3E");
   -webkit-mask: var(--chevron) no-repeat 0 0/contain;
   mask: var(--chevron) no-repeat 0 0/contain;
+  -webkit-mask-size: 150%;
+  -webkit-mask-position: 50%;
+  mask-size: 150%;
+  mask-position: 50%;
   width: 0.75em;
   height: 0.75em;
-  right: 0.4em;
+  right: 0.5em;
   top: calc(50% - 0.375em);
   z-index: -1;
 }
