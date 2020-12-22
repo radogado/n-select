@@ -81,7 +81,7 @@ h1:after {
   display: inline-block;
 }
 
-code[class*=language-] {
+.code code {
   font-family: monospace !important;
   line-height: 1.9 !important;
   display: block;
@@ -95,11 +95,12 @@ code[class*=language-] {
 }
 .code pre {
   padding: 1em;
-  margin: 0.5em 0;
+  margin: 0;
+  font-family: monospace;
 }
 .code button.n-btn {
   position: absolute;
-  bottom: 0.67em;
+  bottom: 0;
   right: 0;
   font-size: 0.75em;
   margin: 0;
