@@ -22,10 +22,6 @@ body {
   }
 }
 
-pre {
-  overflow: auto;
-}
-
 h1 {
   margin-top: 0;
 }
@@ -97,7 +93,7 @@ code[class*=language-] {
 
 .code {
   position: relative;
-  margin-bottom: 1.5em;
+  margin: 1.5em 0;
   display: inline-block;
   max-width: 100%;
 }
@@ -113,11 +109,36 @@ code[class*=language-] {
   margin: 0;
   -webkit-appearance: none;
   appearance: none;
-  background: lightcoral;
+  background: #ad421b;
   border: none;
   cursor: pointer;
   color: #fff;
   font-weight: bold;
+}
+
+label {
+  margin-top: 3em;
+  display: block;
+}
+
+#form-data {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.source {
+  display: flex;
+  flex-wrap: wrap;
+}
+.source > * {
+  margin-inline-end: 5ch;
+  margin-top: 0;
+  margin-bottom: 2em;
+  white-space: nowrap;
+}
+.source pre {
+  all: initial;
+  font: inherit;
 }
 
 /*# sourceMappingURL=demo.css.map */

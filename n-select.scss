@@ -366,7 +366,7 @@ select[data-n_select],
 .n-select__options[aria-expanded] {
   -webkit-mask: linear-gradient(0, #000, #000) no-repeat 0
     calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) /
-    calc(var(--max-width) + 0.5em) var(--mask-size-y);
+    calc(var(--max-width) + 1em) var(--mask-size-y);
 
   &[data-n-select-animation] {
     transition: -webkit-mask-size 0.15s ease-in-out,

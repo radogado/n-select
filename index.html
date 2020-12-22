@@ -20,109 +20,98 @@
     <main>
       <h1>Native Rich Select</h1>
       <h2>Rich, accessible, lightweight select component</h2>
-      <ul>
-        <li>Default</li>
+      <!-- <ul>
+        <li>Default (inline)</li>
         <li>With/out prefilled native/rich select</li>
         <li>With shadow</li>
         <li>Transparent</li>
-        <li>Inline</li>
         <li>Rounded edges</li>
         <li>Themed</li>
         <li>Full width</li>
         <li>Preselected non-first option</li>
         <li>Nav</li>
-      </ul>
+      </ul> -->
 
       <form
-        onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));this.insertAdjacentHTML('afterend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
+        onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));document.getElementById('form-data').insertAdjacentHTML('beforeend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
       >
         <div class="demo">
           <div>
             <label
               >Default<br />
               <br />
-              Before
-              <span class="n-select n-select--rounded">
-                <select name="demo0">
+              <span class="n-select">
+                <select name="demo-default">
+                  <option>Option 1</option>
+                  <option value="3">Small select option 3</option>
+                  <option>Last chance</option>
+                </select>
+              </span>
+            </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <label
+              >Pre-selected option<br />
+              <br />
+              <span class="n-select">
+                <select name="demo-pre">
                   <option>Option 1</option>
                   <option value="3" selected>Small select option 3</option>
+                  <option>Last chance</option>
+                </select>
+              </span>
+            </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <label
+              >With rounded edges<br />
+              <br />
+              Before
+              <span class="n-select n-select--rounded">
+                <select name="demo-rounded">
+                  <option>Option 1</option>
+                  <option value="3">Small select option 3</option>
                   <option>Last chance</option>
                 </select>
               </span>
               After
             </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
           </div>
           <div>
-            <label
-              >Full width<br />
-              <br />
-              <span class="n-select n-select--wide">
-                <select name="demo-full">
-                  <option>Option 1</option>
-                  <option value="3" selected>Small select option 3</option>
-                  <option>Last chance</option>
-                </select>
-              </span>
-            </label>
-          </div>
-          <div>
-            <label
-              style="
-                background: linear-gradient(
-                  to bottom right,
-                  rgb(35 76 25 / 20%),
-                  rgb(67 117 157 / 67%)
-                );
-                padding: 1em;
-                display: block;
-              "
-              >Transparent<br />
-              <br /><br /><br /><br />
-              <span
-                class="n-select"
-                style="
-                  --control-bg: transparent;
-                  --control-active-bg: transparent;
-                  --control-highlight: transparent;
-                  --control-color: mintcream;
-                  --control-active-color: mintcream;
-                "
-              >
-                <select name="demo-transparent">
-                  <option>Option 1</option>
-                  <option value="3" selected>Small select option 3</option>
-                  <option>Last chance</option>
-                </select>
-              </span>
-              <br /><br /><br /><br />
-            </label>
-          </div>
-          <div>
-            <label
-              >Themed<br /><br />
-              <span
-                class="n-select"
-                style="
-                  --control-bg: darkorchid;
-                  --control-active-bg: darkorchid;
-                  --control-highlight: darkblue;
-                  --control-color: lightgreen;
-                  --control-active-color: lightgreen;
-                "
-              >
-                <select name="demo-themed">
-                  <option>Option 1</option>
-                  <option value="3" selected>Small select option 3</option>
-                  <option>Last chance</option>
-                </select>
-              </span>
-            </label>
-          </div>
-          <div>
-            <label for="countries">With images </label>
-            <br /><br />
+            <label for="countries">With rich options</label>
+            <br />
 
-            <div class="n-select n-select--wide-">
+            <div class="n-select">
               <select id="countries" name="countries"></select>
               <div class="n-select__options">
                 <button value="3">
@@ -919,13 +908,123 @@
                 </button>
               </div>
             </div>
+            <br /><br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <label
+              >Themed<br /><br />
+              <span
+                class="n-select"
+                style="
+                  --control-bg: darkorchid;
+                  --control-active-bg: darkorchid;
+                  --control-highlight: darkblue;
+                  --control-color: lightgreen;
+                  --control-active-color: lightgreen;
+                "
+              >
+                <select name="demo-themed">
+                  <option>Option 1</option>
+                  <option value="3" selected>Small select option 3</option>
+                  <option>Last chance</option>
+                </select>
+              </span>
+            </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <label
+              >Transparent<br /><br />
+
+              <span
+                style="
+                  background: linear-gradient(
+                    to bottom right,
+                    rgb(35 76 25 / 20%),
+                    rgb(67 117 157 / 67%)
+                  );
+                  padding: 1em;
+                  display: block;
+                "
+              >
+                <br /><br /><br />
+                <span
+                  class="n-select"
+                  style="
+                    --control-bg: transparent;
+                    --control-active-bg: transparent;
+                    --control-highlight: transparent;
+                    --control-color: mintcream;
+                    --control-active-color: mintcream;
+                  "
+                >
+                  <select name="demo-transparent">
+                    <option>Option 1</option>
+                    <option value="3" selected>Small select option 3</option>
+                    <option>Last chance</option>
+                  </select>
+                </span>
+                <br /><br /><br /><br />
+              </span>
+            </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <label
+              >Full width<br />
+              <br />
+              <span class="n-select n-select--wide">
+                <select name="demo-full">
+                  <option>Option 1</option>
+                  <option value="3" selected>Small select option 3</option>
+                  <option>Last chance</option>
+                </select>
+              </span>
+            </label>
+            <br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
           </div>
 
           <div>
-            <label for="demo1">With pre-filled native and rich options</label>
+            <label for="demo-shadow">With shadow</label>
             <br /><br />
             <span class="n-select">
-              <select id="demo1" name="demo1">
+              <select id="demo-shadow" name="demo-shadow">
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
@@ -1004,10 +1103,20 @@
                 <button>Starting with other than O</button>
               </span>
             </span>
+            <br /><br />
+            <div class="code">
+              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
+&lt;div class=&quot;n-select__options&quot;&gt;
+&lt;button&gt;Go to page...&lt;/button&gt;
+&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
           </div>
           <div>
             <label
-              >Navigation
+              >Navigation:
 
               <span class="n-select">
                 <span class="n-select__options">
@@ -1035,6 +1144,8 @@
         <br />
       </form>
 
+      <div id="form-data"></div>
+
       <h2>Source code</h2>
 
       <div class="source">
@@ -1043,10 +1154,12 @@
           ><br /><br />
           <a href="n-select.min.js"><b>JS</b></a>
         </span>
+        <p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
+        <!-- <p><a href="https://radogado.github.io/n-select/">Demo</a></p> -->
+        <p>
+          <a href="https://www.npmjs.com/package/n-select">npm i n-select</a>
+        </p>
       </div>
-      <p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
-      <p><a href="https://radogado.github.io/n-select/">Demo</a></p>
-      <p><a href="https://www.npmjs.com/package/n-select">npm i n-select</a></p>
     </main>
 
     <script>
