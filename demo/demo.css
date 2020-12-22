@@ -111,6 +111,7 @@ h1:after {
   cursor: pointer;
   color: #fff;
   font-weight: bold;
+  line-height: 2;
 }
 
 label {
