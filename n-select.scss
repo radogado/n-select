@@ -228,12 +228,12 @@ body.n-select--open {
     }
 
     &::-webkit-scrollbar-track {
-      background: #eee;
+      background: transparent;
       border-radius: 0.333em;
     }
 
     scrollbar-width: 0.333em;
-    scrollbar-color: #999 #eee;
+    scrollbar-color: #999 transparent;
   }
 
   &[aria-expanded] {
@@ -244,8 +244,8 @@ body.n-select--open {
     max-height: var(--max-height);
     overflow: auto;
     background: transparent;
-    padding: 0 1em;
-    margin-inline-start: -1em;
+    padding: 0 var(--padding, 1em);
+    margin-inline-start: calc(-1 * var(--padding, 1em));
     left: calc(1px * var(--body-offset-x));
     top: calc(1px * var(--body-offset-y));
     box-sizing: content-box;
@@ -255,15 +255,15 @@ body.n-select--open {
     ); // For when the closed select is wider than the options
 
     > :first-child {
-      margin-top: 1em;
+      margin-top: var(--padding, 1em);
     }
 
     > :last-child {
-      margin-bottom: 1em;
+      margin-bottom: var(--padding, 1em);
     }
 
     &.n-select--crop-top {
-      top: calc(1px * var(--body-offset-y) - 0.5px);
+      top: calc(1px * var(--body-offset-y));
       margin-top: calc(
         -1px * (var(--active-option-offset, 0) - var(--top-offset, 0)) - 1px * var(--scroll-help-top, 0)
       ); // Align to the current option's vertical offset
@@ -306,10 +306,10 @@ body.n-select--open {
       content: "";
       position: absolute;
       background-color: var(--control-bg, #fff);
-      top: 1em;
-      left: 1em;
-      right: 1em;
-      height: calc(var(--select-scroll-height) - 2 * 1em);
+      top: var(--padding, 1em);
+      left: var(--padding, 1em);
+      right: var(--padding, 1em);
+      height: calc(var(--select-scroll-height) - 2 * var(--padding, 1em));
     }
 
     &.n-select--scroll-help-top:before {
@@ -372,7 +372,7 @@ select[data-n_select],
 .n-select__options[aria-expanded] {
   -webkit-mask: linear-gradient(0, #000, #000) no-repeat 0
     calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) /
-    calc(var(--max-width) + 1em) var(--mask-size-y);
+    calc(var(--max-width) + var(--padding, 1em)) var(--mask-size-y);
 
   &[data-n-select-animation] {
     transition: -webkit-mask-size 0.15s ease-in-out,
@@ -423,8 +423,8 @@ select[data-n_select],
   }
 }
 
-_::-webkit-full-page-media,
-_:future,
-:root .n-select__options[aria-expanded].n-select--crop-top {
-  top: calc(1px * var(--body-offset-y) - 0.5px);
-}
+// _::-webkit-full-page-media,
+// _:future,
+// :root .n-select__options[aria-expanded].n-select--crop-top {
+//   top: calc(1px * var(--body-offset-y));
+// }
