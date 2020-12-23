@@ -67,7 +67,7 @@
     window.removeEventListener("scroll", closeSelectOnResize);
     select.querySelector("[aria-selected]").tabIndex = -1;
     window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
-    document.body.removeEventListener("click", clickOutsideSelect);
+    window.removeEventListener("click", clickOutsideSelect);
     select.removeEventListener("pointerup", pointerUpSelect);
     let wrapper = select.parentNode;
     wrapper.style.removeProperty("--width");
@@ -219,7 +219,7 @@
 
     window.addEventListener("resize", closeSelectOnResize);
     window.addEventListener("scroll", closeSelectOnResize);
-    document.body.addEventListener("click", clickOutsideSelect);
+    window.addEventListener("click", clickOutsideSelect);
     if (typeof nuiDisableBodyScroll === "function") {
       nuiDisableBodyScroll(true, select);
     }
