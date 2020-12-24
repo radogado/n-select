@@ -42,8 +42,8 @@
             <label
               >Default<br />
               <br />
-              <span class="n-select">
-                <select name="demo-default">
+              <span class="n-select n-select--shadow">
+                <select name="demo">
                   <option>Option 1</option>
                   <option value="3">Small select option 3</option>
                   <option>Last chance</option>
@@ -52,13 +52,12 @@
             </label>
             <br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+  	&lt;option&gt;Option 1&lt;/option&gt;
+  	...
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div>
@@ -75,13 +74,12 @@
             </label>
             <br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+  	&lt;option&gt;Option 1&lt;/option&gt;
+  	&lt;option selected&gt;Option 2&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div>
@@ -100,13 +98,12 @@
             </label>
             <br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--rounded&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+  	&lt;option&gt;Option 1&lt;/option&gt;
+  	...
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div>
@@ -115,7 +112,7 @@
 
             <div class="n-select">
               <select id="countries" name="countries"></select>
-              <div class="n-select__options">
+              <span class="n-select__options">
                 <button value="3">
                   <img
                     src="demo/images/flags/af.svg"
@@ -908,17 +905,19 @@
                 <button value="237">
                   <img src="demo/images/flags/zw.svg" alt="Country" />Zimbabwe
                 </button>
-              </div>
+              </span>
             </div>
             <br /><br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;&lt;/select&gt;
+  &lt;span class=&quot;n-select__options&quot;&gt;
+  	&lt;button value=&quot;value&quot;&gt;
+      &lt;img src=&quot;image.svg&quot; alt=&quot;Image&quot; /&gt;Value description
+    &lt;/button&gt;
+  	...
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div>
@@ -1012,13 +1011,12 @@
             </label>
             <br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--wide&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+  	&lt;option&gt;Option 1&lt;/option&gt;
+  	...
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
 
@@ -1107,13 +1105,12 @@
             </span>
             <br /><br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-&lt;div class=&quot;n-select__options&quot;&gt;
-&lt;button&gt;Go to page...&lt;/button&gt;
-&lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--shadow&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+  	&lt;option&gt;Option 1&lt;/option&gt;
+  	...
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div>
@@ -1130,13 +1127,13 @@
             </label>
             <br />
             <div class="code">
-              <pre><code class="language-markup">&lt;div class=&quot;n-select&quot;&gt;
-  &lt;div class=&quot;n-select__options&quot;&gt;
+              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+  &lt;span class=&quot;n-select__options&quot;&gt;
     &lt;button&gt;Go to page...&lt;/button&gt;
     &lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
     &lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
             </div>
           </div>
           <div></div>

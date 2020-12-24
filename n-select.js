@@ -582,6 +582,10 @@
         el.classList.add("n-select--rounded");
       }
 
+      if (wrapper.classList.contains("n-select--shadow")) {
+        el.classList.add("n-select--shadow");
+      }
+
       let label =
         el.closest("label") ||
         document.querySelector(`label[for="${el.nuiNativeInput.id}"]`);
