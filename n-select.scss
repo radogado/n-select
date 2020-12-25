@@ -317,7 +317,8 @@ body.n-select--open {
     }
 
     &.n-select--shadow:before {
-      box-shadow: 0 0 2px 2px #333;
+      // box-shadow: 0 0 2px 2px #333;
+      box-shadow: 0 0 4px 3px #3333338c;
     }
   }
 
@@ -401,7 +402,8 @@ select[data-n_select],
 }
 
 .n-select--rounded {
-  &.n-select {
+  &.n-select,
+  &.n-select__options:before {
     border-radius: var(--radius, 0.333em);
   }
   &.n-select__options {

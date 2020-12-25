@@ -260,7 +260,7 @@ body.n-select--open {
   height: calc(100% + 1px * var(--top-offset, 0));
 }
 .n-select__options[aria-expanded].n-select--shadow:before {
-  box-shadow: 0 0 2px 2px #333;
+  box-shadow: 0 0 4px 3px #3333338c;
 }
 .n-select__options:not([aria-expanded]) {
   cursor: pointer;
@@ -324,7 +324,7 @@ select[data-n_select],
     width: calc(var(--max-width) + var(--padding));
   }
 }
-.n-select--rounded.n-select {
+.n-select--rounded.n-select, .n-select--rounded.n-select__options:before {
   border-radius: var(--radius, 0.333em);
 }
 .n-select--rounded.n-select__options button:first-of-type {
