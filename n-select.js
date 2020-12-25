@@ -15,6 +15,7 @@
   };
 
   let closeSelectOnResize = (e) => {
+    console.log(e);
     closeSelect(document.querySelector(".n-select__options[aria-expanded]"));
   };
 

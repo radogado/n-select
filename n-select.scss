@@ -387,6 +387,7 @@ select[data-n_select],
     -webkit-mask: none;
     mask: none;
   }
+  overscroll-behavior: contain;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -436,3 +437,9 @@ select[data-n_select],
 // :root .n-select__options[aria-expanded].n-select--crop-top {
 //   top: calc(1px * var(--body-offset-y));
 // }
+
+_::-webkit-full-page-media,
+_:future,
+:root body.n-select--open {
+  overflow: hidden;
+}

@@ -303,6 +303,7 @@ select[data-n_select],
 
 .n-select__options[aria-expanded] {
   -webkit-mask: linear-gradient(0, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px)/calc(var(--max-width) + var(--padding, 1em)) var(--mask-size-y);
+  overscroll-behavior: contain;
 }
 .n-select__options[aria-expanded][data-n-select-animation] {
   transition: -webkit-mask-size 0.15s ease-in-out, -webkit-mask-position-y 0.15s ease-in-out;
@@ -342,6 +343,12 @@ select[data-n_select],
 .n-select:focus:not(:focus-visible),
 .n-select__options button:focus:not(:focus-visible) {
   outline: 0;
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root body.n-select--open {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=n-select.css.map */
