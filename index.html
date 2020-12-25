@@ -111,7 +111,9 @@
             <br />
 
             <div class="n-select">
-              <select id="countries" name="countries"></select>
+              <select id="countries" name="countries">
+                <option>Sweden</option>
+              </select>
               <span class="n-select__options">
                 <button value="3">
                   <img
@@ -785,7 +787,7 @@
                     alt="Country"
                   />Svalbard
                 </button>
-                <button value="186" aria-selected>
+                <button value="186" aria-selected="true">
                   <img src="demo/images/flags/se.svg" alt="Country" />Sweden
                 </button>
                 <button value="41">
@@ -861,7 +863,7 @@
                   <img src="demo/images/flags/ae.svg" alt="Country" />United
                   Arab Emirates
                 </button>
-                <button value="74" selected="selected">
+                <button value="74">
                   <img src="demo/images/flags/gb.svg" alt="Country" />United
                   Kingdom
                 </button>
@@ -910,7 +912,10 @@
             <br /><br />
             <div class="code">
               <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
-  &lt;select name=&quot;demo&quot;&gt;&lt;/select&gt;
+  &lt;select name=&quot;demo&quot;&gt;
+      &lt;option value=&quot;value&quot;&gt;Description&lt;/option&gt;
+      ...
+  &lt;/select&gt;
   &lt;span class=&quot;n-select__options&quot;&gt;
   	&lt;button value=&quot;value&quot;&gt;
       &lt;img src=&quot;image.svg&quot; alt=&quot;Image&quot; /&gt;Description
