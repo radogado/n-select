@@ -60,6 +60,7 @@
 
   let closeSelect = (select) => {
     delete select.dataset.nSelectAnimation;
+    delete select.dataset.transitionend;
     select.removeAttribute("aria-expanded");
     document.body.classList.remove("n-select--open");
     select.nuiSelectWrapper.prepend(select);
@@ -67,7 +68,7 @@
     window.removeEventListener("scroll", closeSelectOnResize);
     select.querySelector("[aria-selected]").tabIndex = -1;
     window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
-    window.removeEventListener("click", clickOutsideSelect);
+    window.removeEventListener("pointerup", clickOutsideSelect);
     select.removeEventListener("pointerup", pointerUpSelect);
     let wrapper = select.parentNode;
     wrapper.style.removeProperty("--width");
@@ -219,7 +220,7 @@
 
     window.addEventListener("resize", closeSelectOnResize);
     window.addEventListener("scroll", closeSelectOnResize);
-    window.addEventListener("click", clickOutsideSelect);
+    window.addEventListener("pointerup", clickOutsideSelect);
     if (typeof nuiDisableBodyScroll === "function") {
       nuiDisableBodyScroll(true, select);
     }
@@ -536,6 +537,7 @@
         el.style.removeProperty("--mask-size-y");
         delete el.dataset.nSelectAnimation;
         el.addEventListener("pointerup", pointerUpSelect);
+        el.dataset.transitionend = true;
       };
 
       el.addEventListener("keydown", selectKeyboard);

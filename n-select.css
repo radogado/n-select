@@ -309,6 +309,10 @@ select[data-n_select],
   -webkit-mask-size: 100% 100%;
   -webkit-mask-position-y: 0;
 }
+.n-select__options[aria-expanded][data-transitionend] {
+  -webkit-mask: none;
+  mask: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .n-select__options[aria-expanded][data-n-select-animation] {
