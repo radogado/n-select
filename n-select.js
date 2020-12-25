@@ -15,7 +15,6 @@
   };
 
   let closeSelectOnResize = (e) => {
-    console.log(e);
     closeSelect(document.querySelector(".n-select__options[aria-expanded]"));
   };
 
@@ -255,8 +254,6 @@
     let select = e.target.closest(".n-select__options");
     let el = e.target;
 
-    // 		console.log(e.type, e.target);
-
     if (select.hasAttribute("aria-expanded")) {
       // Open
 
@@ -272,8 +269,6 @@
     let select =
       e.target.closest(".n-select__options") ||
       e.target.querySelector(".n-select__options");
-
-    // 		console.log(e.type, e.target);
 
     if (!select.hasAttribute("aria-expanded")) {
       // Closed
@@ -291,8 +286,6 @@
   let pointerUpSelect = (e) => {
     let el = e.target.closest("button");
     let select = e.target.closest(".n-select__options");
-
-    // 		console.log(e.type, e.target, e.target.value);
 
     if (!!e.target.href) {
       e.target.click();
@@ -326,8 +319,6 @@
   };
 
   let selectKeyboard = (e) => {
-    /* 				console.log(e.target, e.key, e.keyCode); */
-
     if (e.target.tagName === "SELECT") {
       return;
     }
@@ -471,47 +462,6 @@
 
       el.nuiNativeInput.innerHTML = "";
 
-      /*
-			Object.defineProperty(el.nextElementSibling, 'value', {
-				
-				set: value => {
-					
-					console.log(this);
-					
-					if (this.tagName !== 'SELECT') {
-						
-						return;
-						
-					}
-					
-					this.value = value; // Why is "this" the window object?
-		
-					[...this.children].forEach(el => {
-						
-						if (el.textContent === value) {
-							
-							this.selectedIndex = el.index;
-		
-						}
-						
-					});
-		
-					console.log('Setting', value, this.selectedIndex);
-		
-					selectOption(this.previousElementSibling.querySelectorAll('button')[this.selectedIndex]);
-					this.children[this.selectedIndex].selected = true;
-		
-				},
-				get: () => {
-					
-					console.log('Getting', this.value);
-					return this.value; 
-		
-				}
-			
-			});
-		*/
-
       wrapper.addEventListener("pointerdown", pointerDownSelect);
 
       el.addEventListener("click", clickSelect); // Selects a clicked (pointer upped) option
@@ -521,7 +471,6 @@
 
         // If relatedTarget isn't a sibling, close and focus on select wrapper
 
-        /* console.log('relatedTarget', e.relatedTarget);				 */
         if (
           select.hasAttribute("aria-expanded") &&
           !!e.relatedTarget &&
@@ -548,7 +497,6 @@
 
       el.lastElementChild.onkeydown = (e) => {
         // Close select on tab outside. To do: get last button only
-        // 			console.log(e);
         if (
           e.key === "Tab" &&
           !e.shiftKey &&
@@ -581,13 +529,11 @@
       ); // Select the first option by default
       el.nuiSearchTerm = "";
 
-      if (wrapper.classList.contains("n-select--rounded")) {
-        el.classList.add("n-select--rounded");
-      }
-
-      if (wrapper.classList.contains("n-select--shadow")) {
-        el.classList.add("n-select--shadow");
-      }
+      ["n-select--rounded", "n-select--shadow"].forEach((cls) => {
+        if (wrapper.classList.contains(cls)) {
+          el.classList.add(cls);
+        }
+      });
 
       let label =
         el.closest("label") ||
