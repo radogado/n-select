@@ -19,9 +19,9 @@
 			<h1>Native Rich Select</h1>
 			<h2>Rich, accessible, lightweight select component</h2>
 			<h3>
-				Customisable style; rich content; native fallback; seamless loading; 2D overflow protection; optional rounded edges; inline or full width; colour themes; shadow
-				option; click-drag-release to select; attached to body to escape clipping; animated opening; click outside to
-				close; touch screen, mouse, trackpad, keyboard control; type to select; RTL support; lightweight; no dependencies
+				Customisable style; rich content; native fallback; seamless loading; 2D overflow protection; naive form value update, native onchange event; optional rounded edges; inline
+				or full width; colour themes; shadow option; drop-down navigation support; click-drag-release to select; attached to body to escape clipping; animated opening; click
+				outside to close; touch screen, mouse, trackpad, keyboard control; type to select; RTL support; lightweight; no dependencies
 			</h3>
 			<p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
 
@@ -51,34 +51,6 @@
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	...
-  &lt;/select&gt;
-&lt;/span&gt;</code></pre>
-						</div>
-					</div>
-					<div>
-						<div>
-							<label
-								>Pre-selected<br />
-								<br />
-								<span class="n-select">
-									<select name="pre-selected">
-										<option value="Hokkaido">北海道</option>
-										<option value="Honshu" selected>本州</option>
-										<option value="Shikoku">瀨戶內海</option>
-										<option value="Kyushu">九州</option>
-										<option value="Izu">伊豆群島</option>
-										<option value="Bonin">小笠原群岛</option>
-										<option value="Ryukyu">琉球群岛</option>
-									</select>
-								</span>
-							</label>
-							<br />
-						</div>
-						<div class="code">
-							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
-  &lt;select name=&quot;demo&quot;&gt;
-  	&lt;option&gt;Option 1&lt;/option&gt;
-  	&lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
 						</div>
@@ -236,8 +208,36 @@
 						<div class="code">
 							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--rounded&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    ...
+  &lt;/select&gt;
+&lt;/span&gt;</code></pre>
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>Pre-selected<br />
+								<br />
+								<span class="n-select">
+									<select name="pre-selected">
+										<option value="Hokkaido">北海道</option>
+										<option value="Honshu" selected>本州</option>
+										<option value="Shikoku">瀨戶內海</option>
+										<option value="Kyushu">九州</option>
+										<option value="Izu">伊豆群島</option>
+										<option value="Bonin">小笠原群岛</option>
+										<option value="Ryukyu">琉球群岛</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+  &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
-  	...
+  	&lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
 						</div>
@@ -711,6 +711,10 @@
 					<a href="https://www.npmjs.com/package/n-select">npm i n-select</a>
 				</p>
 			</div>
+
+			<p>Developed by <a href="//rado.bg">Radoslav Sharapanov</a> since 2020, originally a part of the <a href="//niui.dev/">niui</a> library.</p>
+
+			<p><a href="https://www.paypal.me/radogado">Buy me a beer</a></p>
 		</main>
 
 		<script>

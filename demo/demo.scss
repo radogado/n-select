@@ -19,6 +19,12 @@ body {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
+
+@media (min-width: 600px) {
+	h3 {
+		columns: 3;
+	}
+}
 a[href] {
 	color: inherit;
 }

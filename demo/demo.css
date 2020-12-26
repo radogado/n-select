@@ -22,6 +22,11 @@ body {
   }
 }
 
+@media (min-width: 600px) {
+  h3 {
+    columns: 3;
+  }
+}
 a[href] {
   color: inherit;
 }
