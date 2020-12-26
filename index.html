@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Native Rich Select</title>
-    <link rel=icon href=./favicon.ico>
+	<head>
+		<meta charset="utf-8" />
+		<title>Native Rich Select</title>
+		<link rel=icon href=./favicon.ico>
 
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0,maximum-scale=5,user-scalable=yes"
-    />
-    <link href="n-select.css" rel="styleSheet" />
-    <!-- <link href="demo/prism.min.css" rel="styleSheet" /> -->
-    <link href="demo/prism-tomorrow.min.css" rel="styleSheet" />
-    <link href="demo/demo.css" rel="styleSheet" />
-    <script src="n-select.js" type="module"></script>
-    <script src="demo/prism.js" defer></script>
-  </head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5,user-scalable=yes" />
+		<link href="n-select.css" rel="styleSheet" />
+		<!-- <link href="demo/prism.min.css" rel="styleSheet" /> -->
+		<link href="demo/prism-tomorrow.min.css" rel="styleSheet" />
+		<link href="demo/demo.css" rel="styleSheet" />
+		<script src="n-select.js" type="module"></script>
+		<script src="demo/prism.js" defer></script>
+	</head>
 
-  <body>
-    <main>
-      <h1>Native Rich Select</h1>
-      <h2>Rich, accessible, unbreakable, lightweight select component</h2>
-      <p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
-      <!-- <ul>
+	<body>
+		<main>
+			<h1>Native Rich Select</h1>
+			<h2>Rich, accessible, unbreakable, lightweight select component</h2>
+			<p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
+			<!-- <ul>
         <li>Default (inline)</li>
         <li>With/out prefilled native/rich select</li>
         <li>With shadow</li>
@@ -34,988 +31,336 @@
         <li>Nav</li>
       </ul> -->
 
-      <form
-        onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));document.getElementById('form-data').insertAdjacentHTML('beforeend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
-      >
-        <div class="demo">
-          <div>
-            <div>
-              <label
-                >Default<br />
-                <br />
-                <span class="n-select">
-                  <select name="demo">
-                    <option>Option 1</option>
-                    <option value="3">Small select option 3</option>
-                    <option>Last chance</option>
-                  </select>
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+			<form
+				onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));document.getElementById('form-data').insertAdjacentHTML('beforeend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
+			>
+				<div class="demo">
+					<div>
+						<div>
+							<label
+								>Default<br />
+								<br />
+								<span class="n-select">
+									<select name="demo">
+										<option>Option 1</option>
+										<option value="3">Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	...
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label
-                >Pre-selected option<br />
-                <br />
-                <span class="n-select">
-                  <select name="demo-pre">
-                    <option>Option 1</option>
-                    <option value="3" selected>Small select option 3</option>
-                    <option>Last chance</option>
-                  </select>
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>Pre-selected option<br />
+								<br />
+								<span class="n-select">
+									<select name="demo-pre">
+										<option>Option 1</option>
+										<option value="3" selected>Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	&lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label
-                >With rounded edges<br />
-                <br />
-                <!-- Before -->
-                <span class="n-select n-select--rounded">
-                  <select name="demo-rounded">
-                    <option>Option 1</option>
-                    <option value="3">Small select option 3</option>
-                    <option>Last chance</option>
-                  </select>
-                </span>
-                <!-- After -->
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--rounded&quot;&gt;
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>With rounded edges<br />
+								<br />
+								<!-- Before -->
+								<span class="n-select n-select--rounded">
+									<select name="demo-rounded">
+										<option>Option 1</option>
+										<option value="3">Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+								<!-- After -->
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--rounded&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	...
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div style="min-height: 16em">
-              <label for="countries">With rich options</label>
-              <br />
+						</div>
+					</div>
+					<div>
+						<div style="min-height: 16em">
+							<label for="countries">With rich options</label>
+							<br />
 
-              <div class="n-select">
-                <select id="countries" name="countries">
-                  <option>Sweden</option>
-                </select>
-                <span class="n-select__options">
-                  <button value="3">
-                    <img
-                      src="demo/images/flags/af.svg"
-                      alt="Country"
-                    />Afghanistan
-                  </button>
-                  <button value="240">
-                    <img src="demo/images/flags/ax.svg" alt="Country" />Åland
-                  </button>
-                  <button value="6">
-                    <img src="demo/images/flags/al.svg" alt="Country" />Albania
-                  </button>
-                  <button value="59">
-                    <img src="demo/images/flags/dz.svg" alt="Country" />Algeria
-                  </button>
-                  <button value="12">
-                    <img src="demo/images/flags/as.svg" alt="Country" />American
-                    Samoa
-                  </button>
-                  <button value="1">
-                    <img src="demo/images/flags/ad.svg" alt="Country" />Andorra
-                  </button>
-                  <button value="9">
-                    <img src="demo/images/flags/ao.svg" alt="Country" />Angola
-                  </button>
-                  <button value="5">
-                    <img src="demo/images/flags/ai.svg" alt="Country" />Anguilla
-                  </button>
-                  <button value="4">
-                    <img src="demo/images/flags/ag.svg" alt="Country" />Antigua
-                    and Barbuda
-                  </button>
-                  <button value="11">
-                    <img
-                      src="demo/images/flags/ar.svg"
-                      alt="Country"
-                    />Argentina
-                  </button>
-                  <button value="7">
-                    <img src="demo/images/flags/am.svg" alt="Country" />Armenia
-                  </button>
-                  <button value="15">
-                    <img src="demo/images/flags/aw.svg" alt="Country" />Aruba
-                  </button>
-                  <button value="14">
-                    <img
-                      src="demo/images/flags/au.svg"
-                      alt="Country"
-                    />Australia
-                  </button>
-                  <button value="13">
-                    <img src="demo/images/flags/at.svg" alt="Country" />Austria
-                  </button>
-                  <button value="16">
-                    <img
-                      src="demo/images/flags/az.svg"
-                      alt="Country"
-                    />Azerbaijan
-                  </button>
-                  <button value="23">
-                    <img src="demo/images/flags/bh.svg" alt="Country" />Bahrain
-                  </button>
-                  <button value="19">
-                    <img
-                      src="demo/images/flags/bd.svg"
-                      alt="Country"
-                    />Bangladesh
-                  </button>
-                  <button value="18">
-                    <img src="demo/images/flags/bb.svg" alt="Country" />Barbados
-                  </button>
-                  <button value="34">
-                    <img src="demo/images/flags/by.svg" alt="Country" />Belarus
-                  </button>
-                  <button value="20">
-                    <img src="demo/images/flags/be.svg" alt="Country" />Belgium
-                  </button>
-                  <button value="35">
-                    <img src="demo/images/flags/bz.svg" alt="Country" />Belize
-                  </button>
-                  <button value="25">
-                    <img src="demo/images/flags/bj.svg" alt="Country" />Benin
-                  </button>
-                  <button value="26">
-                    <img src="demo/images/flags/bm.svg" alt="Country" />Bermuda
-                  </button>
-                  <button value="31">
-                    <img src="demo/images/flags/bt.svg" alt="Country" />Bhutan
-                  </button>
-                  <button value="28">
-                    <img src="demo/images/flags/bo.svg" alt="Country" />Bolivia
-                  </button>
-                  <button value="249">
-                    <img
-                      src="demo/images/flags/bq-se.svg"
-                      alt="Country"
-                    />Bonaire, Sint Eustatius and Saba
-                  </button>
-                  <button value="17">
-                    <img src="demo/images/flags/ba.svg" alt="Country" />Bosnia
-                    and Herzegovina
-                  </button>
-                  <button value="33">
-                    <img src="demo/images/flags/bw.svg" alt="Country" />Botswana
-                  </button>
-                  <button value="29">
-                    <img src="demo/images/flags/br.svg" alt="Country" />Brazil
-                  </button>
-                  <button value="100">
-                    <img
-                      src="demo/images/flags/ca-bc.svg"
-                      alt="Country"
-                    />British Indian Ocean Territory
-                  </button>
-                  <button value="226">
-                    <img src="demo/images/flags/vg.svg" alt="Country" />British
-                    Virgin Islands
-                  </button>
-                  <button value="27">
-                    <img src="demo/images/flags/bn.svg" alt="Country" />Brunei
-                  </button>
-                  <button value="22">
-                    <img src="demo/images/flags/bg.svg" alt="Country" />Bulgaria
-                  </button>
-                  <button value="21">
-                    <img src="demo/images/flags/bf.svg" alt="Country" />Burkina
-                    Faso
-                  </button>
-                  <button value="24">
-                    <img src="demo/images/flags/bi.svg" alt="Country" />Burundi
-                  </button>
-                  <button value="110">
-                    <img src="demo/images/flags/kh.svg" alt="Country" />Cambodia
-                  </button>
-                  <button value="45">
-                    <img src="demo/images/flags/cm.svg" alt="Country" />Cameroon
-                  </button>
-                  <button value="36">
-                    <img src="demo/images/flags/ca.svg" alt="Country" />Canada
-                  </button>
-                  <button value="50">
-                    <img src="demo/images/flags/cv.svg" alt="Country" />Cape
-                    Verde
-                  </button>
-                  <button value="117">
-                    <img src="demo/images/flags/ky.svg" alt="Country" />Cayman
-                    Islands
-                  </button>
-                  <button value="39">
-                    <img src="demo/images/flags/cf.svg" alt="Country" />Central
-                    African Republic
-                  </button>
-                  <button value="202">
-                    <img src="demo/images/flags/td.svg" alt="Country" />Chad
-                  </button>
-                  <button value="44">
-                    <img src="demo/images/flags/cl.svg" alt="Country" />Chile
-                  </button>
-                  <button value="46">
-                    <img src="demo/images/flags/cn.svg" alt="Country" />China
-                  </button>
-                  <button value="51">
-                    <img
-                      src="demo/images/flags/cx.svg"
-                      alt="Country"
-                    />Christmas Island
-                  </button>
-                  <button value="37">
-                    <img src="demo/images/flags/cc.svg" alt="Country" />Cocos
-                    (Keeling) Islands
-                  </button>
-                  <button value="47">
-                    <img src="demo/images/flags/co.svg" alt="Country" />Colombia
-                  </button>
-                  <button value="112">
-                    <img src="demo/images/flags/km.svg" alt="Country" />Comoros
-                  </button>
-                  <button value="38">
-                    <img src="demo/images/flags/cg.svg" alt="Country" />Congo
-                  </button>
-                  <button value="40">
-                    <img
-                      src="demo/images/flags/cd.svg"
-                      alt="Country"
-                    />Congo-Brazzaville
-                  </button>
-                  <button value="43">
-                    <img src="demo/images/flags/ck.svg" alt="Country" />Cook
-                    Islands
-                  </button>
-                  <button value="48">
-                    <img src="demo/images/flags/cr.svg" alt="Country" />Costa
-                    Rica
-                  </button>
-                  <button value="42">
-                    <img src="demo/images/flags/ci.svg" alt="Country" />Côte
-                    d’Ivoire
-                  </button>
-                  <button value="93">
-                    <img src="demo/images/flags/hr.svg" alt="Country" />Croatia
-                  </button>
-                  <button value="49">
-                    <img src="demo/images/flags/cu.svg" alt="Country" />Cuba
-                  </button>
-                  <button value="250">
-                    <img src="demo/images/flags/cw.svg" alt="Country" />Curaçao
-                  </button>
-                  <button value="52">
-                    <img src="demo/images/flags/cy.svg" alt="Country" />Cyprus
-                  </button>
-                  <button value="53">
-                    <img src="demo/images/flags/cz.svg" alt="Country" />Czech
-                    Republic
-                  </button>
-                  <button value="56">
-                    <img src="demo/images/flags/dk.svg" alt="Country" />Denmark
-                  </button>
-                  <button value="55">
-                    <img src="demo/images/flags/dj.svg" alt="Country" />Djibouti
-                  </button>
-                  <button value="57">
-                    <img src="demo/images/flags/dm.svg" alt="Country" />Dominica
-                  </button>
-                  <button value="58">
-                    <img
-                      src="demo/images/flags/do.svg"
-                      alt="Country"
-                    />Dominican Republic
-                  </button>
-                  <button value="60">
-                    <img src="demo/images/flags/ec.svg" alt="Country" />Ecuador
-                  </button>
-                  <button value="62">
-                    <img src="demo/images/flags/eg.svg" alt="Country" />Egypt
-                  </button>
-                  <button value="198">
-                    <img src="demo/images/flags/sv.svg" alt="Country" />El
-                    Salvador
-                  </button>
-                  <button value="84">
-                    <img
-                      src="demo/images/flags/gq.svg"
-                      alt="Country"
-                    />Equatorial Guinea
-                  </button>
-                  <button value="64">
-                    <img src="demo/images/flags/er.svg" alt="Country" />Eritrea
-                  </button>
-                  <button value="61">
-                    <img src="demo/images/flags/ee.svg" alt="Country" />Estonia
-                  </button>
-                  <button value="200">
-                    <img src="demo/images/flags/sz.svg" alt="Country" />Eswatini
-                  </button>
-                  <button value="66">
-                    <img src="demo/images/flags/et.svg" alt="Country" />Ethiopia
-                  </button>
-                  <button value="69">
-                    <img src="demo/images/flags/fk.svg" alt="Country" />Falkland
-                    Islands
-                  </button>
-                  <button value="71">
-                    <img src="demo/images/flags/fo.svg" alt="Country" />Faroes
-                  </button>
-                  <button value="68">
-                    <img src="demo/images/flags/fj.svg" alt="Country" />Fiji
-                  </button>
-                  <button value="67">
-                    <img src="demo/images/flags/fi.svg" alt="Country" />Finland
-                  </button>
-                  <button value="72">
-                    <img src="demo/images/flags/fr.svg" alt="Country" />France
-                  </button>
-                  <button value="77">
-                    <img src="demo/images/flags/ge.svg" alt="Country" />French
-                    Guiana
-                  </button>
-                  <button value="166">
-                    <img src="demo/images/flags/pf.svg" alt="Country" />French
-                    Polynesia
-                  </button>
-                  <button value="73">
-                    <img src="demo/images/flags/ga.svg" alt="Country" />Gabon
-                  </button>
-                  <button value="81">
-                    <img src="demo/images/flags/gm.svg" alt="Country" />Gambia
-                  </button>
-                  <button value="76">
-                    <img src="demo/images/flags/ge.svg" alt="Country" />Georgia
-                  </button>
-                  <button value="54">
-                    <img src="demo/images/flags/de.svg" alt="Country" />Germany
-                  </button>
-                  <button value="78">
-                    <img src="demo/images/flags/gh.svg" alt="Country" />Ghana
-                  </button>
-                  <button value="79">
-                    <img
-                      src="demo/images/flags/gi.svg"
-                      alt="Country"
-                    />Gibraltar
-                  </button>
-                  <button value="85">
-                    <img src="demo/images/flags/gr.svg" alt="Country" />Greece
-                  </button>
-                  <button value="80">
-                    <img
-                      src="demo/images/flags/gl.svg"
-                      alt="Country"
-                    />Greenland
-                  </button>
-                  <button value="75">
-                    <img src="demo/images/flags/gd.svg" alt="Country" />Grenada
-                  </button>
-                  <button value="88">
-                    <img src="demo/images/flags/gu.svg" alt="Country" />Guam
-                  </button>
-                  <button value="87">
-                    <img
-                      src="demo/images/flags/gt.svg"
-                      alt="Country"
-                    />Guatemala
-                  </button>
-                  <button value="245">
-                    <img src="demo/images/flags/gg.svg" alt="Country" />Guernsey
-                  </button>
-                  <button value="82">
-                    <img src="demo/images/flags/gn.svg" alt="Country" />Guinea
-                  </button>
-                  <button value="89">
-                    <img
-                      src="demo/images/flags/gw.svg"
-                      alt="Country"
-                    />Guinea-Bissau
-                  </button>
-                  <button value="90">
-                    <img src="demo/images/flags/gy.svg" alt="Country" />Guyana
-                  </button>
-                  <button value="94">
-                    <img src="demo/images/flags/ht.svg" alt="Country" />Haiti
-                  </button>
-                  <button value="92">
-                    <img src="demo/images/flags/hn.svg" alt="Country" />Honduras
-                  </button>
-                  <button value="91">
-                    <img src="demo/images/flags/hk.svg" alt="Country" />Hong
-                    Kong SAR of China
-                  </button>
-                  <button value="95">
-                    <img src="demo/images/flags/hu.svg" alt="Country" />Hungary
-                  </button>
-                  <button value="103">
-                    <img src="demo/images/flags/is.svg" alt="Country" />Iceland
-                  </button>
-                  <button value="99">
-                    <img src="demo/images/flags/in.svg" alt="Country" />India
-                  </button>
-                  <button value="96">
-                    <img
-                      src="demo/images/flags/id.svg"
-                      alt="Country"
-                    />Indonesia
-                  </button>
-                  <button value="102">
-                    <img src="demo/images/flags/ir.svg" alt="Country" />Iran
-                  </button>
-                  <button value="101">
-                    <img src="demo/images/flags/iq.svg" alt="Country" />Iraq
-                  </button>
-                  <button value="97">
-                    <img src="demo/images/flags/ie.svg" alt="Country" />Ireland
-                  </button>
-                  <button value="246">
-                    <img src="demo/images/flags/im.svg" alt="Country" />Isle of
-                    Man
-                  </button>
-                  <button value="98">
-                    <img src="demo/images/flags/il.svg" alt="Country" />Israel
-                  </button>
-                  <button value="104">
-                    <img src="demo/images/flags/it.svg" alt="Country" />Italy
-                  </button>
-                  <button value="105">
-                    <img src="demo/images/flags/jm.svg" alt="Country" />Jamaica
-                  </button>
-                  <button value="107">
-                    <img src="demo/images/flags/jp.svg" alt="Country" />Japan
-                  </button>
-                  <button value="244">
-                    <img src="demo/images/flags/je.svg" alt="Country" />Jersey
-                  </button>
-                  <button value="106">
-                    <img src="demo/images/flags/jo.svg" alt="Country" />Jordan
-                  </button>
-                  <button value="118">
-                    <img
-                      src="demo/images/flags/kz.svg"
-                      alt="Country"
-                    />Kazakhstan
-                  </button>
-                  <button value="108">
-                    <img src="demo/images/flags/ke.svg" alt="Country" />Kenya
-                  </button>
-                  <button value="111">
-                    <img src="demo/images/flags/ki.svg" alt="Country" />Kiribati
-                  </button>
-                  <button value="253">
-                    <img src="demo/images/flags/xk.svg" alt="Country" />Kosovo
-                  </button>
-                  <button value="116">
-                    <img src="demo/images/flags/kw.svg" alt="Country" />Kuwait
-                  </button>
-                  <button value="109">
-                    <img
-                      src="demo/images/flags/kg.svg"
-                      alt="Country"
-                    />Kyrgyzstan
-                  </button>
-                  <button value="119">
-                    <img src="demo/images/flags/la.svg" alt="Country" />Laos
-                  </button>
-                  <button value="128">
-                    <img src="demo/images/flags/lv.svg" alt="Country" />Latvia
-                  </button>
-                  <button value="120">
-                    <img src="demo/images/flags/lb.svg" alt="Country" />Lebanon
-                  </button>
-                  <button value="125">
-                    <img src="demo/images/flags/ls.svg" alt="Country" />Lesotho
-                  </button>
-                  <button value="124">
-                    <img src="demo/images/flags/lr.svg" alt="Country" />Liberia
-                  </button>
-                  <button value="129">
-                    <img src="demo/images/flags/ly.svg" alt="Country" />Libya
-                  </button>
-                  <button value="122">
-                    <img
-                      src="demo/images/flags/li.svg"
-                      alt="Country"
-                    />Liechtenstein
-                  </button>
-                  <button value="126">
-                    <img
-                      src="demo/images/flags/lt.svg"
-                      alt="Country"
-                    />Lithuania
-                  </button>
-                  <button value="127">
-                    <img
-                      src="demo/images/flags/lu.svg"
-                      alt="Country"
-                    />Luxembourg
-                  </button>
-                  <button value="139">
-                    <img src="demo/images/flags/mo.svg" alt="Country" />Macao
-                    SAR of China
-                  </button>
-                  <button value="135">
-                    <img
-                      src="demo/images/flags/mk.svg"
-                      alt="Country"
-                    />Macedonia
-                  </button>
-                  <button value="133">
-                    <img
-                      src="demo/images/flags/mg.svg"
-                      alt="Country"
-                    />Madagascar
-                  </button>
-                  <button value="147">
-                    <img src="demo/images/flags/mw.svg" alt="Country" />Malawi
-                  </button>
-                  <button value="149">
-                    <img src="demo/images/flags/my.svg" alt="Country" />Malaysia
-                  </button>
-                  <button value="146">
-                    <img src="demo/images/flags/mv.svg" alt="Country" />Maldives
-                  </button>
-                  <button value="136">
-                    <img src="demo/images/flags/ml.svg" alt="Country" />Mali
-                  </button>
-                  <button value="144">
-                    <img src="demo/images/flags/mt.svg" alt="Country" />Malta
-                  </button>
-                  <button value="134">
-                    <img src="demo/images/flags/mh.svg" alt="Country" />Marshall
-                    Islands
-                  </button>
-                  <button value="141">
-                    <img
-                      src="demo/images/flags/mq.svg"
-                      alt="Country"
-                    />Martinique
-                  </button>
-                  <button value="142">
-                    <img
-                      src="demo/images/flags/mr.svg"
-                      alt="Country"
-                    />Mauritania
-                  </button>
-                  <button value="145">
-                    <img
-                      src="demo/images/flags/mu.svg"
-                      alt="Country"
-                    />Mauritius
-                  </button>
-                  <button value="148">
-                    <img src="demo/images/flags/mx.svg" alt="Country" />Mexico
-                  </button>
-                  <button value="70">
-                    <img
-                      src="demo/images/flags/fm.svg"
-                      alt="Country"
-                    />Micronesia
-                  </button>
-                  <button value="132">
-                    <img src="demo/images/flags/md.svg" alt="Country" />Moldova
-                  </button>
-                  <button value="131">
-                    <img src="demo/images/flags/mc.svg" alt="Country" />Monaco
-                  </button>
-                  <button value="138">
-                    <img src="demo/images/flags/mn.svg" alt="Country" />Mongolia
-                  </button>
-                  <button value="242">
-                    <img
-                      src="demo/images/flags/me.svg"
-                      alt="Country"
-                    />Montenegro
-                  </button>
-                  <button value="143">
-                    <img
-                      src="demo/images/flags/ms.svg"
-                      alt="Country"
-                    />Montserrat
-                  </button>
-                  <button value="130">
-                    <img src="demo/images/flags/ma.svg" alt="Country" />Morocco
-                  </button>
-                  <button value="150">
-                    <img
-                      src="demo/images/flags/mz.svg"
-                      alt="Country"
-                    />Mozambique
-                  </button>
-                  <button value="137">
-                    <img src="demo/images/flags/mm.svg" alt="Country" />Myanmar
-                  </button>
-                  <button value="151">
-                    <img src="demo/images/flags/na.svg" alt="Country" />Namibia
-                  </button>
-                  <button value="160">
-                    <img src="demo/images/flags/nr.svg" alt="Country" />Nauru
-                  </button>
-                  <button value="159">
-                    <img src="demo/images/flags/np.svg" alt="Country" />Nepal
-                  </button>
-                  <button value="157">
-                    <img
-                      src="demo/images/flags/nl.svg"
-                      alt="Country"
-                    />Netherlands
-                  </button>
-                  <button value="162">
-                    <img src="demo/images/flags/nz.svg" alt="Country" />New
-                    Zealand
-                  </button>
-                  <button value="156">
-                    <img
-                      src="demo/images/flags/ni.svg"
-                      alt="Country"
-                    />Nicaragua
-                  </button>
-                  <button value="153">
-                    <img src="demo/images/flags/ne.svg" alt="Country" />Niger
-                  </button>
-                  <button value="155">
-                    <img src="demo/images/flags/ng.svg" alt="Country" />Nigeria
-                  </button>
-                  <button value="161">
-                    <img src="demo/images/flags/nu.svg" alt="Country" />Niue
-                  </button>
-                  <button value="154">
-                    <img src="demo/images/flags/nf.svg" alt="Country" />Norfolk
-                    Island
-                  </button>
-                  <button value="140">
-                    <img src="demo/images/flags/mp.svg" alt="Country" />Northern
-                    Marianas
-                  </button>
-                  <button value="114">
-                    <img src="demo/images/flags/kp.svg" alt="Country" />North
-                    Korea
-                  </button>
-                  <button value="158">
-                    <img src="demo/images/flags/no.svg" alt="Country" />Norway
-                  </button>
-                  <button value="163">
-                    <img src="demo/images/flags/om.svg" alt="Country" />Oman
-                  </button>
-                  <button value="169">
-                    <img src="demo/images/flags/pk.svg" alt="Country" />Pakistan
-                  </button>
-                  <button value="175">
-                    <img src="demo/images/flags/pw.svg" alt="Country" />Palau
-                  </button>
-                  <button value="238">
-                    <img
-                      src="demo/images/flags/ps.svg"
-                      alt="Country"
-                    />Palestine
-                  </button>
-                  <button value="164">
-                    <img src="demo/images/flags/pa.svg" alt="Country" />Panama
-                  </button>
-                  <button value="167">
-                    <img src="demo/images/flags/pg.svg" alt="Country" />Papua
-                    New Guinea
-                  </button>
-                  <button value="176">
-                    <img src="demo/images/flags/py.svg" alt="Country" />Paraguay
-                  </button>
-                  <button value="165">
-                    <img src="demo/images/flags/pe.svg" alt="Country" />Peru
-                  </button>
-                  <button value="168">
-                    <img
-                      src="demo/images/flags/ph.svg"
-                      alt="Country"
-                    />Philippines
-                  </button>
-                  <button value="172">
-                    <img src="demo/images/flags/pn.svg" alt="Country" />Pitcairn
-                    Islands
-                  </button>
-                  <button value="170">
-                    <img src="demo/images/flags/pl.svg" alt="Country" />Poland
-                  </button>
-                  <button value="174">
-                    <img src="demo/images/flags/pt.svg" alt="Country" />Portugal
-                  </button>
-                  <button value="173">
-                    <img src="demo/images/flags/pr.svg" alt="Country" />Puerto
-                    Rico
-                  </button>
-                  <button value="177">
-                    <img src="demo/images/flags/qa.svg" alt="Country" />Qatar
-                  </button>
-                  <button value="179">
-                    <img src="demo/images/flags/ro.svg" alt="Country" />Romania
-                  </button>
-                  <button value="180">
-                    <img src="demo/images/flags/ru.svg" alt="Country" />Russia
-                  </button>
-                  <button value="181">
-                    <img src="demo/images/flags/rw.svg" alt="Country" />Rwanda
-                  </button>
-                  <button value="248">
-                    <img src="demo/images/flags/bl.svg" alt="Country" />Saint
-                    Barthélemy
-                  </button>
-                  <button value="113">
-                    <img src="demo/images/flags/kn.svg" alt="Country" />Saint
-                    Kitts and Nevis
-                  </button>
-                  <button value="121">
-                    <img src="demo/images/flags/lc.svg" alt="Country" />Saint
-                    Lucia
-                  </button>
-                  <button value="224">
-                    <img src="demo/images/flags/vc.svg" alt="Country" />Saint
-                    Vincent and the Grenadines
-                  </button>
-                  <button value="231">
-                    <img src="demo/images/flags/ws.svg" alt="Country" />Samoa
-                  </button>
-                  <button value="193">
-                    <img src="demo/images/flags/sm.svg" alt="Country" />San
-                    Marino
-                  </button>
-                  <button value="197">
-                    <img src="demo/images/flags/st.svg" alt="Country" />São Tomé
-                    e Príncipe
-                  </button>
-                  <button value="182">
-                    <img src="demo/images/flags/sa.svg" alt="Country" />Saudi
-                    Arabia
-                  </button>
-                  <button value="194">
-                    <img src="demo/images/flags/sn.svg" alt="Country" />Senegal
-                  </button>
-                  <button value="243">
-                    <img src="demo/images/flags/rs.svg" alt="Country" />Serbia
-                  </button>
-                  <button value="184">
-                    <img
-                      src="demo/images/flags/sc.svg"
-                      alt="Country"
-                    />Seychelles
-                  </button>
-                  <button value="192">
-                    <img src="demo/images/flags/sl.svg" alt="Country" />Sierra
-                    Leone
-                  </button>
-                  <button value="187">
-                    <img
-                      src="demo/images/flags/sg.svg"
-                      alt="Country"
-                    />Singapore
-                  </button>
-                  <button value="251">
-                    <img src="demo/images/flags/sx.svg" alt="Country" />Sint
-                    Maarten
-                  </button>
-                  <button value="191">
-                    <img src="demo/images/flags/sk.svg" alt="Country" />Slovakia
-                  </button>
-                  <button value="189">
-                    <img src="demo/images/flags/si.svg" alt="Country" />Slovenia
-                  </button>
-                  <button value="183">
-                    <img src="demo/images/flags/sb.svg" alt="Country" />Solomon
-                    Islands
-                  </button>
-                  <button value="195">
-                    <img src="demo/images/flags/so.svg" alt="Country" />Somalia
-                  </button>
-                  <button value="235">
-                    <img src="demo/images/flags/za.svg" alt="Country" />South
-                    Africa
-                  </button>
-                  <button value="115">
-                    <img src="demo/images/flags/kr.svg" alt="Country" />South
-                    Korea
-                  </button>
-                  <button value="252">
-                    <img src="demo/images/flags/ss.svg" alt="Country" />South
-                    Sudan
-                  </button>
-                  <button value="65">
-                    <img src="demo/images/flags/es.svg" alt="Country" />Spain
-                  </button>
-                  <button value="123">
-                    <img src="demo/images/flags/lk.svg" alt="Country" />Sri
-                    Lanka
-                  </button>
-                  <button value="185">
-                    <img src="demo/images/flags/sd.svg" alt="Country" />Sudan
-                  </button>
-                  <button value="196">
-                    <img src="demo/images/flags/sr.svg" alt="Country" />Suriname
-                  </button>
-                  <button value="190">
-                    <img
-                      src="demo/images/flags/sindh.svg"
-                      alt="Country"
-                    />Svalbard
-                  </button>
-                  <button value="186" aria-selected="true">
-                    <img src="demo/images/flags/se.svg" alt="Country" />Sweden
-                  </button>
-                  <button value="41">
-                    <img
-                      src="demo/images/flags/ch.svg"
-                      alt="Country"
-                    />Switzerland
-                  </button>
-                  <button value="199">
-                    <img src="demo/images/flags/sy.svg" alt="Country" />Syria
-                  </button>
-                  <button value="215">
-                    <img src="demo/images/flags/tw.svg" alt="Country" />Taiwan
-                  </button>
-                  <button value="206">
-                    <img
-                      src="demo/images/flags/tj.svg"
-                      alt="Country"
-                    />Tajikistan
-                  </button>
-                  <button value="216">
-                    <img src="demo/images/flags/tz.svg" alt="Country" />Tanzania
-                  </button>
-                  <button value="205">
-                    <img src="demo/images/flags/th.svg" alt="Country" />Thailand
-                  </button>
-                  <button value="30">
-                    <img src="demo/images/flags/bs.svg" alt="Country" />The
-                    Bahamas
-                  </button>
-                  <button value="211">
-                    <img
-                      src="demo/images/flags/tl.svg"
-                      alt="Country"
-                    />Timor-Leste
-                  </button>
-                  <button value="204">
-                    <img src="demo/images/flags/tg.svg" alt="Country" />Togo
-                  </button>
-                  <button value="207">
-                    <img src="demo/images/flags/tk.svg" alt="Country" />Tokelau
-                  </button>
-                  <button value="210">
-                    <img src="demo/images/flags/to.svg" alt="Country" />Tonga
-                  </button>
-                  <button value="213">
-                    <img src="demo/images/flags/tt.svg" alt="Country" />Trinidad
-                    and Tobago
-                  </button>
-                  <button value="209">
-                    <img src="demo/images/flags/tn.svg" alt="Country" />Tunisia
-                  </button>
-                  <button value="212">
-                    <img src="demo/images/flags/tr.svg" alt="Country" />Turkey
-                  </button>
-                  <button value="208">
-                    <img
-                      src="demo/images/flags/tm.svg"
-                      alt="Country"
-                    />Turkmenistan
-                  </button>
-                  <button value="201">
-                    <img src="demo/images/flags/tc.svg" alt="Country" />Turks
-                    and Caicos Islands
-                  </button>
-                  <button value="214">
-                    <img src="demo/images/flags/tv.svg" alt="Country" />Tuvalu
-                  </button>
-                  <button value="218">
-                    <img src="demo/images/flags/ug.svg" alt="Country" />Uganda
-                  </button>
-                  <button value="217">
-                    <img src="demo/images/flags/ua.svg" alt="Country" />Ukraine
-                  </button>
-                  <button value="2">
-                    <img src="demo/images/flags/ae.svg" alt="Country" />United
-                    Arab Emirates
-                  </button>
-                  <button value="74">
-                    <img src="demo/images/flags/gb.svg" alt="Country" />United
-                    Kingdom
-                  </button>
-                  <button value="220">
-                    <img src="demo/images/flags/us.svg" alt="Country" />United
-                    States
-                  </button>
-                  <button value="221">
-                    <img src="demo/images/flags/uy.svg" alt="Country" />Uruguay
-                  </button>
-                  <button value="227">
-                    <img src="demo/images/flags/vi.svg" alt="Country" />US
-                    Virgin Islands
-                  </button>
-                  <button value="222">
-                    <img
-                      src="demo/images/flags/uz.svg"
-                      alt="Country"
-                    />Uzbekistan
-                  </button>
-                  <button value="229">
-                    <img src="demo/images/flags/vu.svg" alt="Country" />Vanuatu
-                  </button>
-                  <button value="223">
-                    <img src="demo/images/flags/va.svg" alt="Country" />Vatican
-                    City
-                  </button>
-                  <button value="225">
-                    <img
-                      src="demo/images/flags/ve.svg"
-                      alt="Country"
-                    />Venezuela
-                  </button>
-                  <button value="228">
-                    <img src="demo/images/flags/vn.svg" alt="Country" />Vietnam
-                  </button>
-                  <button value="63">
-                    <img src="demo/images/flags/eh.svg" alt="Country" />Western
-                    Sahara
-                  </button>
-                  <button value="232">
-                    <img src="demo/images/flags/ye.svg" alt="Country" />Yemen
-                  </button>
-                  <button value="236">
-                    <img src="demo/images/flags/zm.svg" alt="Country" />Zambia
-                  </button>
-                  <button value="237">
-                    <img src="demo/images/flags/zw.svg" alt="Country" />Zimbabwe
-                  </button>
-                </span>
-              </div>
-              <br /><br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+							<div class="n-select">
+								<select id="countries" name="countries">
+									<option>Sweden</option>
+								</select>
+								<span class="n-select__options">
+									<button value="AFG" type="button"><img src="demo/images/flags/af.svg" alt="AFG" />Afghanistan</button>
+									<button value="ALA" type="button"><img src="demo/images/flags/ax.svg" alt="ALA" />Åland</button>
+									<button value="ALB" type="button"><img src="demo/images/flags/al.svg" alt="ALB" />Albania</button>
+									<button value="DZA" type="button"><img src="demo/images/flags/dz.svg" alt="DZA" />Algeria</button>
+									<button value="ASM" type="button"><img src="demo/images/flags/as.svg" alt="ASM" />American Samoa</button>
+									<button value="AND" type="button"><img src="demo/images/flags/ad.svg" alt="AND" />Andorra</button>
+									<button value="AGO" type="button"><img src="demo/images/flags/ao.svg" alt="AGO" />Angola</button>
+									<button value="AIA" type="button"><img src="demo/images/flags/ai.svg" alt="AIA" />Anguilla</button>
+									<button value="ATG" type="button"><img src="demo/images/flags/ag.svg" alt="ATG" />Antigua and Barbuda</button>
+									<button value="ARG" type="button"><img src="demo/images/flags/ar.svg" alt="ARG" />Argentina</button>
+									<button value="ARM" type="button"><img src="demo/images/flags/am.svg" alt="ARM" />Armenia</button>
+									<button value="ABW" type="button"><img src="demo/images/flags/aw.svg" alt="ABW" />Aruba</button>
+									<button value="AUS" type="button"><img src="demo/images/flags/au.svg" alt="AUS" />Australia</button>
+									<button value="AUT" type="button"><img src="demo/images/flags/at.svg" alt="AUT" />Austria</button>
+									<button value="AZE" type="button"><img src="demo/images/flags/az.svg" alt="AZE" />Azerbaijan</button>
+									<button value="BHR" type="button"><img src="demo/images/flags/bh.svg" alt="BHR" />Bahrain</button>
+									<button value="BGD" type="button"><img src="demo/images/flags/bd.svg" alt="BGD" />Bangladesh</button>
+									<button value="BRB" type="button"><img src="demo/images/flags/bb.svg" alt="BRB" />Barbados</button>
+									<button value="BLR" type="button"><img src="demo/images/flags/by.svg" alt="BLR" />Belarus</button>
+									<button value="BEL" type="button"><img src="demo/images/flags/be.svg" alt="BEL" />Belgium</button>
+									<button value="BLZ" type="button"><img src="demo/images/flags/bz.svg" alt="BLZ" />Belize</button>
+									<button value="BEN" type="button"><img src="demo/images/flags/bj.svg" alt="BEN" />Benin</button>
+									<button value="BMU" type="button"><img src="demo/images/flags/bm.svg" alt="BMU" />Bermuda</button>
+									<button value="BTN" type="button"><img src="demo/images/flags/bt.svg" alt="BTN" />Bhutan</button>
+									<button value="BOL" type="button"><img src="demo/images/flags/bo.svg" alt="BOL" />Bolivia</button>
+									<button value="BES" type="button"><img src="demo/images/flags/bq-se.svg" alt="BES" />Bonaire, Sint Eustatius and Saba</button>
+									<button value="BIH" type="button"><img src="demo/images/flags/ba.svg" alt="BIH" />Bosnia and Herzegovina</button>
+									<button value="BWA" type="button"><img src="demo/images/flags/bw.svg" alt="BWA" />Botswana</button>
+									<button value="BRA" type="button"><img src="demo/images/flags/br.svg" alt="BRA" />Brazil</button>
+									<button value="IOT" type="button"><img src="demo/images/flags/ca-bc.svg" alt="IOT" />British Indian Ocean Territory</button>
+									<button value="VGB" type="button"><img src="demo/images/flags/vg.svg" alt="VGB" />British Virgin Islands</button>
+									<button value="BRN" type="button"><img src="demo/images/flags/bn.svg" alt="BRN" />Brunei</button>
+									<button value="BGR" type="button"><img src="demo/images/flags/bg.svg" alt="BGR" />Bulgaria</button>
+									<button value="BFA" type="button"><img src="demo/images/flags/bf.svg" alt="BFA" />Burkina Faso</button>
+									<button value="BDI" type="button"><img src="demo/images/flags/bi.svg" alt="BDI" />Burundi</button>
+									<button value="KHM" type="button"><img src="demo/images/flags/kh.svg" alt="KHM" />Cambodia</button>
+									<button value="CMR" type="button"><img src="demo/images/flags/cm.svg" alt="CMR" />Cameroon</button>
+									<button value="CAN" type="button"><img src="demo/images/flags/ca.svg" alt="CAN" />Canada</button>
+									<button value="CPV" type="button"><img src="demo/images/flags/cv.svg" alt="CPV" />Cape Verde</button>
+									<button value="CYM" type="button"><img src="demo/images/flags/ky.svg" alt="CYM" />Cayman Islands</button>
+									<button value="CAF" type="button"><img src="demo/images/flags/cf.svg" alt="CAF" />Central African Republic</button>
+									<button value="TCD" type="button"><img src="demo/images/flags/td.svg" alt="TCD" />Chad</button>
+									<button value="CHL" type="button"><img src="demo/images/flags/cl.svg" alt="CHL" />Chile</button>
+									<button value="CHN" type="button"><img src="demo/images/flags/cn.svg" alt="CHN" />China</button>
+									<button value="CXR" type="button"><img src="demo/images/flags/cx.svg" alt="CXR" />Christmas Island</button>
+									<button value="CCK" type="button"><img src="demo/images/flags/cc.svg" alt="CCK" />Cocos (Keeling) Islands</button>
+									<button value="COL" type="button"><img src="demo/images/flags/co.svg" alt="COL" />Colombia</button>
+									<button value="COM" type="button"><img src="demo/images/flags/km.svg" alt="COM" />Comoros</button>
+									<button value="COG" type="button"><img src="demo/images/flags/cg.svg" alt="COG" />Congo</button>
+									<button value="COD" type="button"><img src="demo/images/flags/cd.svg" alt="COD" />Congo-Brazzaville</button>
+									<button value="COK" type="button"><img src="demo/images/flags/ck.svg" alt="COK" />Cook Islands</button>
+									<button value="CRI" type="button"><img src="demo/images/flags/cr.svg" alt="CRI" />Costa Rica</button>
+									<button value="CIV" type="button"><img src="demo/images/flags/ci.svg" alt="CIV" />Côte d’Ivoire</button>
+									<button value="HRV" type="button"><img src="demo/images/flags/hr.svg" alt="HRV" />Croatia</button>
+									<button value="CUB" type="button"><img src="demo/images/flags/cu.svg" alt="CUB" />Cuba</button>
+									<button value="CUW" type="button"><img src="demo/images/flags/cw.svg" alt="CUW" />Curaçao</button>
+									<button value="CYP" type="button"><img src="demo/images/flags/cy.svg" alt="CYP" />Cyprus</button>
+									<button value="CZE" type="button"><img src="demo/images/flags/cz.svg" alt="CZE" />Czech Republic</button>
+									<button value="DNK" type="button"><img src="demo/images/flags/dk.svg" alt="DNK" />Denmark</button>
+									<button value="DJI" type="button"><img src="demo/images/flags/dj.svg" alt="DJI" />Djibouti</button>
+									<button value="DMA" type="button"><img src="demo/images/flags/dm.svg" alt="DMA" />Dominica</button>
+									<button value="DOM" type="button"><img src="demo/images/flags/do.svg" alt="DOM" />Dominican Republic</button>
+									<button value="ECU" type="button"><img src="demo/images/flags/ec.svg" alt="ECU" />Ecuador</button>
+									<button value="EGY" type="button"><img src="demo/images/flags/eg.svg" alt="EGY" />Egypt</button>
+									<button value="SLV" type="button"><img src="demo/images/flags/sv.svg" alt="SLV" />El Salvador</button>
+									<button value="GNQ" type="button"><img src="demo/images/flags/gq.svg" alt="GNQ" />Equatorial Guinea</button>
+									<button value="ERI" type="button"><img src="demo/images/flags/er.svg" alt="ERI" />Eritrea</button>
+									<button value="EST" type="button"><img src="demo/images/flags/ee.svg" alt="EST" />Estonia</button>
+									<button value="SWZ" type="button"><img src="demo/images/flags/sz.svg" alt="SWZ" />Eswatini</button>
+									<button value="ETH" type="button"><img src="demo/images/flags/et.svg" alt="ETH" />Ethiopia</button>
+									<button value="FLK" type="button"><img src="demo/images/flags/fk.svg" alt="FLK" />Falkland Islands</button>
+									<button value="FRO" type="button"><img src="demo/images/flags/fo.svg" alt="FRO" />Faroes</button>
+									<button value="FJI" type="button"><img src="demo/images/flags/fj.svg" alt="FJI" />Fiji</button>
+									<button value="FIN" type="button"><img src="demo/images/flags/fi.svg" alt="FIN" />Finland</button>
+									<button value="FRA" type="button"><img src="demo/images/flags/fr.svg" alt="FRA" />France</button>
+									<button value="GUF" type="button"><img src="demo/images/flags/ge.svg" alt="GUF" />French Guiana</button>
+									<button value="PYF" type="button"><img src="demo/images/flags/pf.svg" alt="PYF" />French Polynesia</button>
+									<button value="GAB" type="button"><img src="demo/images/flags/ga.svg" alt="GAB" />Gabon</button>
+									<button value="GMB" type="button"><img src="demo/images/flags/gm.svg" alt="GMB" />Gambia</button>
+									<button value="GEO" type="button"><img src="demo/images/flags/ge.svg" alt="GEO" />Georgia</button>
+									<button value="DEU" type="button"><img src="demo/images/flags/de.svg" alt="DEU" />Germany</button>
+									<button value="GHA" type="button"><img src="demo/images/flags/gh.svg" alt="GHA" />Ghana</button>
+									<button value="GIB" type="button"><img src="demo/images/flags/gi.svg" alt="GIB" />Gibraltar</button>
+									<button value="GRC" type="button"><img src="demo/images/flags/gr.svg" alt="GRC" />Greece</button>
+									<button value="GRL" type="button"><img src="demo/images/flags/gl.svg" alt="GRL" />Greenland</button>
+									<button value="GRD" type="button"><img src="demo/images/flags/gd.svg" alt="GRD" />Grenada</button>
+									<button value="GUM" type="button"><img src="demo/images/flags/gu.svg" alt="GUM" />Guam</button>
+									<button value="GTM" type="button"><img src="demo/images/flags/gt.svg" alt="GTM" />Guatemala</button>
+									<button value="GGY" type="button"><img src="demo/images/flags/gg.svg" alt="GGY" />Guernsey</button>
+									<button value="GIN" type="button"><img src="demo/images/flags/gn.svg" alt="GIN" />Guinea</button>
+									<button value="GNB" type="button"><img src="demo/images/flags/gw.svg" alt="GNB" />Guinea-Bissau</button>
+									<button value="GUY" type="button"><img src="demo/images/flags/gy.svg" alt="GUY" />Guyana</button>
+									<button value="HTI" type="button"><img src="demo/images/flags/ht.svg" alt="HTI" />Haiti</button>
+									<button value="HND" type="button"><img src="demo/images/flags/hn.svg" alt="HND" />Honduras</button>
+									<button value="HKG" type="button"><img src="demo/images/flags/hk.svg" alt="HKG" />Hong Kong SAR of China</button>
+									<button value="HUN" type="button"><img src="demo/images/flags/hu.svg" alt="HUN" />Hungary</button>
+									<button value="ISL" type="button"><img src="demo/images/flags/is.svg" alt="ISL" />Iceland</button>
+									<button value="IND" type="button"><img src="demo/images/flags/in.svg" alt="IND" />India</button>
+									<button value="IDN" type="button"><img src="demo/images/flags/id.svg" alt="IDN" />Indonesia</button>
+									<button value="IRN" type="button"><img src="demo/images/flags/ir.svg" alt="IRN" />Iran</button>
+									<button value="IRQ" type="button"><img src="demo/images/flags/iq.svg" alt="IRQ" />Iraq</button>
+									<button value="IRL" type="button"><img src="demo/images/flags/ie.svg" alt="IRL" />Ireland</button>
+									<button value="IMN" type="button"><img src="demo/images/flags/im.svg" alt="IMN" />Isle of Man</button>
+									<button value="ISR" type="button"><img src="demo/images/flags/il.svg" alt="ISR" />Israel</button>
+									<button value="ITA" type="button"><img src="demo/images/flags/it.svg" alt="ITA" />Italy</button>
+									<button value="JAM" type="button"><img src="demo/images/flags/jm.svg" alt="JAM" />Jamaica</button>
+									<button value="JPN" type="button"><img src="demo/images/flags/jp.svg" alt="JPN" />Japan</button>
+									<button value="JEY" type="button"><img src="demo/images/flags/je.svg" alt="JEY" />Jersey</button>
+									<button value="JOR" type="button"><img src="demo/images/flags/jo.svg" alt="JOR" />Jordan</button>
+									<button value="KAZ" type="button"><img src="demo/images/flags/kz.svg" alt="KAZ" />Kazakhstan</button>
+									<button value="KEN" type="button"><img src="demo/images/flags/ke.svg" alt="KEN" />Kenya</button>
+									<button value="KIR" type="button"><img src="demo/images/flags/ki.svg" alt="KIR" />Kiribati</button>
+									<button value="KSV" type="button"><img src="demo/images/flags/xk.svg" alt="KSV" />Kosovo</button>
+									<button value="KWT" type="button"><img src="demo/images/flags/kw.svg" alt="KWT" />Kuwait</button>
+									<button value="KGZ" type="button"><img src="demo/images/flags/kg.svg" alt="KGZ" />Kyrgyzstan</button>
+									<button value="LAO" type="button"><img src="demo/images/flags/la.svg" alt="LAO" />Laos</button>
+									<button value="LVA" type="button"><img src="demo/images/flags/lv.svg" alt="LVA" />Latvia</button>
+									<button value="LBN" type="button"><img src="demo/images/flags/lb.svg" alt="LBN" />Lebanon</button>
+									<button value="LSO" type="button"><img src="demo/images/flags/ls.svg" alt="LSO" />Lesotho</button>
+									<button value="LBR" type="button"><img src="demo/images/flags/lr.svg" alt="LBR" />Liberia</button>
+									<button value="LBY" type="button"><img src="demo/images/flags/ly.svg" alt="LBY" />Libya</button>
+									<button value="LIE" type="button"><img src="demo/images/flags/li.svg" alt="LIE" />Liechtenstein</button>
+									<button value="LTU" type="button"><img src="demo/images/flags/lt.svg" alt="LTU" />Lithuania</button>
+									<button value="LUX" type="button"><img src="demo/images/flags/lu.svg" alt="LUX" />Luxembourg</button>
+									<button value="MAC" type="button"><img src="demo/images/flags/mo.svg" alt="MAC" />Macao SAR of China</button>
+									<button value="MKD" type="button"><img src="demo/images/flags/mk.svg" alt="MKD" />Macedonia</button>
+									<button value="MDG" type="button"><img src="demo/images/flags/mg.svg" alt="MDG" />Madagascar</button>
+									<button value="MWI" type="button"><img src="demo/images/flags/mw.svg" alt="MWI" />Malawi</button>
+									<button value="MYS" type="button"><img src="demo/images/flags/my.svg" alt="MYS" />Malaysia</button>
+									<button value="MDV" type="button"><img src="demo/images/flags/mv.svg" alt="MDV" />Maldives</button>
+									<button value="MLI" type="button"><img src="demo/images/flags/ml.svg" alt="MLI" />Mali</button>
+									<button value="MLT" type="button"><img src="demo/images/flags/mt.svg" alt="MLT" />Malta</button>
+									<button value="MHL" type="button"><img src="demo/images/flags/mh.svg" alt="MHL" />Marshall Islands</button>
+									<button value="MTQ" type="button"><img src="demo/images/flags/mq.svg" alt="MTQ" />Martinique</button>
+									<button value="MRT" type="button"><img src="demo/images/flags/mr.svg" alt="MRT" />Mauritania</button>
+									<button value="MUS" type="button"><img src="demo/images/flags/mu.svg" alt="MUS" />Mauritius</button>
+									<button value="MEX" type="button"><img src="demo/images/flags/mx.svg" alt="MEX" />Mexico</button>
+									<button value="FSM" type="button"><img src="demo/images/flags/fm.svg" alt="FSM" />Micronesia</button>
+									<button value="MDA" type="button"><img src="demo/images/flags/md.svg" alt="MDA" />Moldova</button>
+									<button value="MCO" type="button"><img src="demo/images/flags/mc.svg" alt="MCO" />Monaco</button>
+									<button value="MNG" type="button"><img src="demo/images/flags/mn.svg" alt="MNG" />Mongolia</button>
+									<button value="MNE" type="button"><img src="demo/images/flags/me.svg" alt="MNE" />Montenegro</button>
+									<button value="MSR" type="button"><img src="demo/images/flags/ms.svg" alt="MSR" />Montserrat</button>
+									<button value="MAR" type="button"><img src="demo/images/flags/ma.svg" alt="MAR" />Morocco</button>
+									<button value="MOZ" type="button"><img src="demo/images/flags/mz.svg" alt="MOZ" />Mozambique</button>
+									<button value="MMR" type="button"><img src="demo/images/flags/mm.svg" alt="MMR" />Myanmar</button>
+									<button value="NAM" type="button"><img src="demo/images/flags/na.svg" alt="NAM" />Namibia</button>
+									<button value="NRU" type="button"><img src="demo/images/flags/nr.svg" alt="NRU" />Nauru</button>
+									<button value="NPL" type="button"><img src="demo/images/flags/np.svg" alt="NPL" />Nepal</button>
+									<button value="NLD" type="button"><img src="demo/images/flags/nl.svg" alt="NLD" />Netherlands</button>
+									<button value="NZL" type="button"><img src="demo/images/flags/nz.svg" alt="NZL" />New Zealand</button>
+									<button value="NIC" type="button"><img src="demo/images/flags/ni.svg" alt="NIC" />Nicaragua</button>
+									<button value="NER" type="button"><img src="demo/images/flags/ne.svg" alt="NER" />Niger</button>
+									<button value="NGA" type="button"><img src="demo/images/flags/ng.svg" alt="NGA" />Nigeria</button>
+									<button value="NIU" type="button"><img src="demo/images/flags/nu.svg" alt="NIU" />Niue</button>
+									<button value="NFK" type="button"><img src="demo/images/flags/nf.svg" alt="NFK" />Norfolk Island</button>
+									<button value="MNP" type="button"><img src="demo/images/flags/mp.svg" alt="MNP" />Northern Marianas</button>
+									<button value="PRK" type="button"><img src="demo/images/flags/kp.svg" alt="PRK" />North Korea</button>
+									<button value="NOR" type="button"><img src="demo/images/flags/no.svg" alt="NOR" />Norway</button>
+									<button value="OMN" type="button"><img src="demo/images/flags/om.svg" alt="OMN" />Oman</button>
+									<button value="PAK" type="button"><img src="demo/images/flags/pk.svg" alt="PAK" />Pakistan</button>
+									<button value="PLW" type="button"><img src="demo/images/flags/pw.svg" alt="PLW" />Palau</button>
+									<button value="PSE" type="button"><img src="demo/images/flags/ps.svg" alt="PSE" />Palestine</button>
+									<button value="PAN" type="button"><img src="demo/images/flags/pa.svg" alt="PAN" />Panama</button>
+									<button value="PNG" type="button"><img src="demo/images/flags/pg.svg" alt="PNG" />Papua New Guinea</button>
+									<button value="PRY" type="button"><img src="demo/images/flags/py.svg" alt="PRY" />Paraguay</button>
+									<button value="PER" type="button"><img src="demo/images/flags/pe.svg" alt="PER" />Peru</button>
+									<button value="PHL" type="button"><img src="demo/images/flags/ph.svg" alt="PHL" />Philippines</button>
+									<button value="PCN" type="button"><img src="demo/images/flags/pn.svg" alt="PCN" />Pitcairn Islands</button>
+									<button value="POL" type="button"><img src="demo/images/flags/pl.svg" alt="POL" />Poland</button>
+									<button value="PRT" type="button"><img src="demo/images/flags/pt.svg" alt="PRT" />Portugal</button>
+									<button value="PRI" type="button"><img src="demo/images/flags/pr.svg" alt="PRI" />Puerto Rico</button>
+									<button value="QAT" type="button"><img src="demo/images/flags/qa.svg" alt="QAT" />Qatar</button>
+									<button value="ROU" type="button"><img src="demo/images/flags/ro.svg" alt="ROU" />Romania</button>
+									<button value="RUS" type="button"><img src="demo/images/flags/ru.svg" alt="RUS" />Russia</button>
+									<button value="RWA" type="button"><img src="demo/images/flags/rw.svg" alt="RWA" />Rwanda</button>
+									<button value="BLM" type="button"><img src="demo/images/flags/bl.svg" alt="BLM" />Saint Barthélemy</button>
+									<button value="KNA" type="button"><img src="demo/images/flags/kn.svg" alt="KNA" />Saint Kitts and Nevis</button>
+									<button value="LCA" type="button"><img src="demo/images/flags/lc.svg" alt="LCA" />Saint Lucia</button>
+									<button value="VCT" type="button"><img src="demo/images/flags/vc.svg" alt="VCT" />Saint Vincent and the Grenadines</button>
+									<button value="WSM" type="button"><img src="demo/images/flags/ws.svg" alt="WSM" />Samoa</button>
+									<button value="SMR" type="button"><img src="demo/images/flags/sm.svg" alt="SMR" />San Marino</button>
+									<button value="STP" type="button"><img src="demo/images/flags/st.svg" alt="STP" />São Tomé e Príncipe</button>
+									<button value="SAU" type="button"><img src="demo/images/flags/sa.svg" alt="SAU" />Saudi Arabia</button>
+									<button value="SEN" type="button"><img src="demo/images/flags/sn.svg" alt="SEN" />Senegal</button>
+									<button value="SRB" type="button"><img src="demo/images/flags/rs.svg" alt="SRB" />Serbia</button>
+									<button value="SYC" type="button"><img src="demo/images/flags/sc.svg" alt="SYC" />Seychelles</button>
+									<button value="SLE" type="button"><img src="demo/images/flags/sl.svg" alt="SLE" />Sierra Leone</button>
+									<button value="SGP" type="button"><img src="demo/images/flags/sg.svg" alt="SGP" />Singapore</button>
+									<button value="SXM" type="button"><img src="demo/images/flags/sx.svg" alt="SXM" />Sint Maarten</button>
+									<button value="SVK" type="button"><img src="demo/images/flags/sk.svg" alt="SVK" />Slovakia</button>
+									<button value="SVN" type="button"><img src="demo/images/flags/si.svg" alt="SVN" />Slovenia</button>
+									<button value="SLB" type="button"><img src="demo/images/flags/sb.svg" alt="SLB" />Solomon Islands</button>
+									<button value="SOM" type="button"><img src="demo/images/flags/so.svg" alt="SOM" />Somalia</button>
+									<button value="ZAF" type="button"><img src="demo/images/flags/za.svg" alt="ZAF" />South Africa</button>
+									<button value="KOR" type="button"><img src="demo/images/flags/kr.svg" alt="KOR" />South Korea</button>
+									<button value="SSD" type="button"><img src="demo/images/flags/ss.svg" alt="SSD" />South Sudan</button>
+									<button value="ESP" type="button"><img src="demo/images/flags/es.svg" alt="ESP" />Spain</button>
+									<button value="LKA" type="button"><img src="demo/images/flags/lk.svg" alt="LKA" />Sri Lanka</button>
+									<button value="SDN" type="button"><img src="demo/images/flags/sd.svg" alt="SDN" />Sudan</button>
+									<button value="SUR" type="button"><img src="demo/images/flags/sr.svg" alt="SUR" />Suriname</button>
+									<button value="SJM" type="button"><img src="demo/images/flags/sindh.svg" alt="SJM" />Svalbard</button>
+									<button value="SWE" type="button" aria-selected="true" aria-checked="false"><img src="demo/images/flags/se.svg" alt="SWE" />Sweden</button>
+									<button value="CHE" type="button"><img src="demo/images/flags/ch.svg" alt="CHE" />Switzerland</button>
+									<button value="SYR" type="button"><img src="demo/images/flags/sy.svg" alt="SYR" />Syria</button>
+									<button value="TWN" type="button"><img src="demo/images/flags/tw.svg" alt="TWN" />Taiwan</button>
+									<button value="TJK" type="button"><img src="demo/images/flags/tj.svg" alt="TJK" />Tajikistan</button>
+									<button value="TZA" type="button"><img src="demo/images/flags/tz.svg" alt="TZA" />Tanzania</button>
+									<button value="THA" type="button"><img src="demo/images/flags/th.svg" alt="THA" />Thailand</button>
+									<button value="BHS" type="button"><img src="demo/images/flags/bs.svg" alt="BHS" />The Bahamas</button>
+									<button value="TLS" type="button"><img src="demo/images/flags/tl.svg" alt="TLS" />Timor-Leste</button>
+									<button value="TGO" type="button"><img src="demo/images/flags/tg.svg" alt="TGO" />Togo</button>
+									<button value="TKL" type="button"><img src="demo/images/flags/tk.svg" alt="TKL" />Tokelau</button>
+									<button value="TON" type="button"><img src="demo/images/flags/to.svg" alt="TON" />Tonga</button>
+									<button value="TTO" type="button"><img src="demo/images/flags/tt.svg" alt="TTO" />Trinidad and Tobago</button>
+									<button value="TUN" type="button"><img src="demo/images/flags/tn.svg" alt="TUN" />Tunisia</button>
+									<button value="TUR" type="button"><img src="demo/images/flags/tr.svg" alt="TUR" />Turkey</button>
+									<button value="TKM" type="button"><img src="demo/images/flags/tm.svg" alt="TKM" />Turkmenistan</button>
+									<button value="TCA" type="button"><img src="demo/images/flags/tc.svg" alt="TCA" />Turks and Caicos Islands</button>
+									<button value="TUV" type="button"><img src="demo/images/flags/tv.svg" alt="TUV" />Tuvalu</button>
+									<button value="UGA" type="button"><img src="demo/images/flags/ug.svg" alt="UGA" />Uganda</button>
+									<button value="UKR" type="button"><img src="demo/images/flags/ua.svg" alt="UKR" />Ukraine</button>
+									<button value="ARE" type="button"><img src="demo/images/flags/ae.svg" alt="ARE" />United Arab Emirates</button>
+									<button value="GBR" type="button"><img src="demo/images/flags/gb.svg" alt="GBR" />United Kingdom</button>
+									<button value="USA" type="button"><img src="demo/images/flags/us.svg" alt="USA" />United States</button>
+									<button value="URY" type="button"><img src="demo/images/flags/uy.svg" alt="URY" />Uruguay</button>
+									<button value="VIR" type="button"><img src="demo/images/flags/vi.svg" alt="VIR" />US Virgin Islands</button>
+									<button value="UZB" type="button"><img src="demo/images/flags/uz.svg" alt="UZB" />Uzbekistan</button>
+									<button value="VUT" type="button"><img src="demo/images/flags/vu.svg" alt="VUT" />Vanuatu</button>
+									<button value="VAT" type="button"><img src="demo/images/flags/va.svg" alt="VAT" />Vatican City</button>
+									<button value="VEN" type="button"><img src="demo/images/flags/ve.svg" alt="VEN" />Venezuela</button>
+									<button value="VNM" type="button"><img src="demo/images/flags/vn.svg" alt="VNM" />Vietnam</button>
+									<button value="ESH" type="button"><img src="demo/images/flags/eh.svg" alt="ESH" />Western Sahara</button>
+									<button value="YEM" type="button"><img src="demo/images/flags/ye.svg" alt="YEM" />Yemen</button>
+									<button value="ZMB" type="button"><img src="demo/images/flags/zm.svg" alt="ZMB" />Zambia</button>
+									<button value="ZWE" type="button"><img src="demo/images/flags/zw.svg" alt="ZWE" />Zimbabwe</button>
+								</span>
+							</div>
+							<br /><br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
       &lt;option value=&quot;value&quot;&gt;Description&lt;/option&gt;
       ...
@@ -1027,290 +372,265 @@
   	...
   &lt;/span&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div style="min-height: 16em">
-              <label
-                >Themed<br /><br />
-                <span
-                  class="n-select"
-                  style="
-                    --control-bg: darkorchid;
-                    --control-active-bg: darkorchid;
-                    --control-highlight: darkblue;
-                    --control-color: #a5f9a5;
-                    --control-active-color: #a5f9a5;
-                  "
-                >
-                  <select name="demo-themed">
-                    <option>Option 1</option>
-                    <option value="3" selected>Small select option 3</option>
-                    <option>Last chance</option>
-                  </select>
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-css">.n-select {
+						</div>
+					</div>
+					<div>
+						<div style="min-height: 16em">
+							<label
+								>Themed<br /><br />
+								<span
+									class="n-select"
+									style="--control-bg: darkorchid; --control-active-bg: darkorchid; --control-highlight: darkblue; --control-color: #a5f9a5; --control-active-color: #a5f9a5"
+								>
+									<select name="demo-themed">
+										<option>Option 1</option>
+										<option value="3" selected>Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-css">.n-select {
   --control-bg: darkorchid;
   --control-active-bg: darkorchid;
   --control-highlight: darkblue;
   --control-color: #a5f9a5;
   --control-active-color: #a5f9a5;
 }</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label
-                >Transparent<br /><br />
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>Transparent<br /><br />
 
-                <span
-                  style="
-                    background: linear-gradient(
-                      to bottom right,
-                      rgb(35 76 25 / 20%),
-                      rgb(67 117 157 / 67%)
-                    );
-                    padding: 1em;
-                    display: block;
-                  "
-                >
-                  <br /><br /><br />
-                  <span
-                    class="n-select"
-                    style="
-                      --control-bg: transparent;
-                      --control-active-bg: transparent;
-                      --control-highlight: transparent;
-                      --control-color: mintcream;
-                      --control-active-color: mintcream;
-                    "
-                  >
-                    <select name="demo-transparent">
-                      <option>Option 1</option>
-                      <option value="3" selected>Small select option 3</option>
-                      <option>Last chance</option>
-                    </select>
-                  </span>
-                  <br /><br /><br /><br />
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-css">.n-select {                
+								<span style="background: linear-gradient(to bottom right, rgb(35 76 25 / 20%), rgb(67 117 157 / 67%)); padding: 1em; display: block">
+									<br /><br /><br />
+									<span
+										class="n-select"
+										style="
+											--control-bg: transparent;
+											--control-active-bg: transparent;
+											--control-highlight: transparent;
+											--control-color: mintcream;
+											--control-active-color: mintcream;
+										"
+									>
+										<select name="demo-transparent">
+											<option>Option 1</option>
+											<option value="3" selected>Small select option 3</option>
+											<option>Last chance</option>
+										</select>
+									</span>
+									<br /><br /><br /><br />
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-css">.n-select {                
   --control-bg: transparent;
   --control-active-bg: transparent;
   --control-highlight: transparent;
   --control-color: mintcream;
   --control-active-color: mintcream;
 }</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label
-                >Full width<br />
-                <br />
-                <span class="n-select n-select--wide">
-                  <select name="demo-full">
-                    <option>Option 1</option>
-                    <option value="3" selected>Small select option 3</option>
-                    <option>Last chance</option>
-                  </select>
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--wide&quot;&gt;
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>Full width<br />
+								<br />
+								<span class="n-select n-select--wide">
+									<select name="demo-full">
+										<option>Option 1</option>
+										<option value="3" selected>Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--wide&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	...
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label for="demo-shadow">With shadow</label>
-              <br />
-              <span class="n-select">
-                <select id="demo-shadow" name="demo-shadow">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Oslo 4</option>
-                  <option>Option 5</option>
-                  <option>Option 6</option>
-                  <option>Option 7</option>
-                  <option>Option 8</option>
-                  <option>Option 9</option>
-                  <option>Option 10</option>
-                  <option>Option 11</option>
-                  <option>Option 12</option>
-                  <option>Option 13</option>
-                  <option>Option 14</option>
-                  <option>Option 15</option>
-                  <option>Option 16</option>
-                  <option>Option 17</option>
-                  <option>Option 18</option>
-                  <option>Option 19</option>
-                  <option>Option 20</option>
-                  <option>Option 21</option>
-                  <option>Option 22</option>
-                  <option>Option 23</option>
-                  <option>Option 24</option>
-                  <option>Austria</option>
-                  <option>Australia</option>
-                  <option>Starting with other than O</option>
-                </select>
+						</div>
+					</div>
+					<div>
+						<div>
+							<label for="demo-shadow">With shadow</label>
+							<br />
+							<span class="n-select">
+								<select id="demo-shadow" name="demo-shadow">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Oslo 4</option>
+									<option>Option 5</option>
+									<option>Option 6</option>
+									<option>Option 7</option>
+									<option>Option 8</option>
+									<option>Option 9</option>
+									<option>Option 10</option>
+									<option>Option 11</option>
+									<option>Option 12</option>
+									<option>Option 13</option>
+									<option>Option 14</option>
+									<option>Option 15</option>
+									<option>Option 16</option>
+									<option>Option 17</option>
+									<option>Option 18</option>
+									<option>Option 19</option>
+									<option>Option 20</option>
+									<option>Option 21</option>
+									<option>Option 22</option>
+									<option>Option 23</option>
+									<option>Option 24</option>
+									<option>Austria</option>
+									<option>Australia</option>
+									<option>Starting with other than O</option>
+								</select>
 
-                <span class="n-select__options n-select--shadow">
-                  <button>Option 1</button>
-                  <button value="Option 2 Long">
-                    Option 2 Long Long Long Long Long Long Long Long Long Long
-                    Long Long Long Long Long Long Long Long Long Long Long Long
-                    Long Long Long Long Option 2 Long Long Long Long Long Long
-                    Long Long Long Long Long Long Long Long Long Long Long Long
-                    Long Long Long Long Long Long Long Long
-                  </button>
-                  <!-- <button>
+								<span class="n-select__options n-select--shadow">
+									<button>Option 1</button>
+									<button value="Option 2 Long">
+										Option 2 Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Option 2 Long Long
+										Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long
+									</button>
+									<!-- <button>
             Option 2 Long Long Long Long Long Long Long Long Long Long Long Long
             Long Long Long Long Long Long Long Long Long Long Long Long Long
             Long
           </button> -->
-                  <button aria-selected->Option 3</button>
-                  <span>Label</span>
-                  <button>Oslo 4</button>
-                  <button>Option 5</button>
-                  <button>Option 6</button>
-                  <button>Option 7</button>
-                  <button>Option 8</button>
-                  <button>Option 9</button>
-                  <button>Option 10</button>
-                  <button>Option 11</button>
-                  <button>Option 12</button>
-                  <button>Option 13</button>
-                  <button>Option 14</button>
-                  <button>Option 15</button>
-                  <button>Option 16</button>
-                  <button>Option 17</button>
-                  <button>Option 18</button>
-                  <button>Option 19</button>
-                  <button>Option 20</button>
-                  <button>Option 21</button>
-                  <button>Option 22</button>
-                  <button>Option 23</button>
-                  <button>Option 24</button>
-                  <button>Austria</button>
-                  <button>Australia</button>
-                  <button>Starting with other than O</button>
-                </span>
-              </span>
-              <br /><br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select n-select--shadow&quot;&gt;
+									<button aria-selected->Option 3</button>
+									<span>Label</span>
+									<button>Oslo 4</button>
+									<button>Option 5</button>
+									<button>Option 6</button>
+									<button>Option 7</button>
+									<button>Option 8</button>
+									<button>Option 9</button>
+									<button>Option 10</button>
+									<button>Option 11</button>
+									<button>Option 12</button>
+									<button>Option 13</button>
+									<button>Option 14</button>
+									<button>Option 15</button>
+									<button>Option 16</button>
+									<button>Option 17</button>
+									<button>Option 18</button>
+									<button>Option 19</button>
+									<button>Option 20</button>
+									<button>Option 21</button>
+									<button>Option 22</button>
+									<button>Option 23</button>
+									<button>Option 24</button>
+									<button>Austria</button>
+									<button>Australia</button>
+									<button>Starting with other than O</button>
+								</span>
+							</span>
+							<br /><br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--shadow&quot;&gt;
   &lt;select name=&quot;demo&quot;&gt;
   	&lt;option&gt;Option 1&lt;/option&gt;
   	...
   &lt;/select&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label
-                >Navigation<br /><br />
+						</div>
+					</div>
+					<div>
+						<div>
+							<label
+								>Navigation<br /><br />
 
-                <span class="n-select">
-                  <span class="n-select__options">
-                    <button>Go to page...</button>
-                    <a href="#">Page 1</a>
-                    <a href="#">Page 2</a>
-                  </span>
-                </span>
-              </label>
-              <br />
-            </div>
-            <div class="code">
-              <pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
+								<span class="n-select">
+									<span class="n-select__options">
+										<button>Go to page...</button>
+										<a href="#">Page 1</a>
+										<a href="#">Page 2</a>
+									</span>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select&quot;&gt;
   &lt;span class=&quot;n-select__options&quot;&gt;
     &lt;button&gt;Go to page...&lt;/button&gt;
     &lt;a href=&quot;#page1&quot;&gt;Home&lt;/a&gt;
     &lt;a href=&quot;#page2&quot;&gt;Forms&lt;/a&gt;
   &lt;/span&gt;
 &lt;/span&gt;</code></pre>
-            </div>
-          </div>
-          <div></div>
-        </div>
-        <br />
-        <input type="submit" value="Check data" />
-        <br />
-      </form>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<br />
+				<button>Check data</button>
+				<button type="button" id="rtl">Toggle RTL</button>
+				<br />
+			</form>
 
-      <div id="form-data"></div>
+			<div id="form-data"></div>
 
-      <h2>Source code</h2>
+			<h2>Source code</h2>
 
-      <div class="source">
-        <span>
-          <a href="n-select.min.css"><b>CSS</b></a
-          ><br /><br />
-          <a href="n-select.min.js"><b>JS</b></a>
-        </span>
-        <p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
-        <!-- <p><a href="https://radogado.github.io/n-select/">Demo</a></p> -->
-        <p>
-          <a href="https://www.npmjs.com/package/n-select">npm i n-select</a>
-        </p>
-      </div>
-    </main>
+			<div class="source">
+				<span>
+					<a href="n-select.min.css"><b>CSS</b></a
+					><br /><br />
+					<a href="n-select.min.js"><b>JS</b></a>
+				</span>
+				<p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
+				<!-- <p><a href="https://radogado.github.io/n-select/">Demo</a></p> -->
+				<p>
+					<a href="https://www.npmjs.com/package/n-select">npm i n-select</a>
+				</p>
+			</div>
+		</main>
 
-    <script>
-      function copyButton(el, target, echo) {
-        el.addEventListener("click", (event) => {
-          window.getSelection().removeAllRanges(); // Clear previous clipboard
-          var range = document.createRange();
-          range.selectNode(target);
-          window.getSelection().addRange(range);
+		<script>
+			function copyButton(el, target, echo) {
+				el.addEventListener("click", (event) => {
+					window.getSelection().removeAllRanges(); // Clear previous clipboard
+					var range = document.createRange();
+					range.selectNode(target);
+					window.getSelection().addRange(range);
 
-          try {
-            document.execCommand("copy");
-          } catch (err) {}
-        });
-      }
+					try {
+						document.execCommand("copy");
+					} catch (err) {}
+				});
+			}
 
-      document.querySelectorAll(".code").forEach(function (el) {
-        el.insertAdjacentHTML(
-          "beforeend",
-          "<button class='n-btn' type='button'>Copy</button>"
-        );
-        copyButton(el.querySelector("button"), el.querySelector("pre"));
-      });
+			document.querySelectorAll(".code").forEach(function (el) {
+				el.insertAdjacentHTML("beforeend", "<button class='n-btn' type='button'>Copy</button>");
+				copyButton(el.querySelector("button"), el.querySelector("pre"));
+			});
 
-      ["css", "js"].forEach((el) => {
-        fetch(`n-select.min.${el}.size`)
-          .then((response) => response.text())
-          .then(
-            (text) =>
-              (document.querySelector(
-                `[href="n-select.min.${el}"]`
-              ).dataset.size = `${parseFloat(text / 1024).toFixed(1)} KB`)
-          );
-      });
+			["css", "js"].forEach((el) => {
+				fetch(`n-select.min.${el}.size`)
+					.then((response) => response.text())
+					.then((text) => (document.querySelector(`[href="n-select.min.${el}"]`).dataset.size = `${parseFloat(text / 1024).toFixed(1)} KB`));
+			});
 
-      fetch(`package.json`)
-        .then((response) => response.json())
-        .then((text) => {
-          document.querySelector("h1").dataset.version =
-            text.version.split(".")[0] + "." + text.version.split(".")[1];
-        });
-    </script>
-  </body>
+			fetch(`package.json`)
+				.then((response) => response.json())
+				.then((text) => {
+					document.querySelector("h1").dataset.version = text.version.split(".")[0] + "." + text.version.split(".")[1];
+				});
+
+			document.getElementById("rtl").onclick = () => (document.dir = document.dir === "rtl" ? "ltr" : "rtl");
+		</script>
+	</body>
 </html>
