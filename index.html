@@ -555,18 +555,25 @@
 						</div>
 					</div>
 					<div>
-						<div style="min-height: 7em">
+						<div style="min-height: 7em" class="large">
+							<style>
+								.n-select.n-select--large,
+								.n-select__options.n-select--large {
+									font-size: 1.333rem;
+								}
+							</style>
 							<label
-								>Colour theme<br /><br />
+								>Colour theme / Large<br /><br />
 								<span
-									class="n-select"
+									class="n-select n-select--large"
 									style="--control-bg: darkorchid; --control-active-bg: darkorchid; --control-highlight: darkblue; --control-color: #a5f9a5; --control-active-color: #a5f9a5"
 								>
-									<select name="theme">
-										<option>First option</option>
-										<option>Another select option</option>
-										<option>Last chance</option>
-									</select>
+									<select name="theme"></select>
+									<span class="n-select__options n-select--large">
+										<button>First option</button>
+										<button>Another select option</button>
+										<button>Last chance</button>
+									</span>
 								</span>
 							</label>
 							<br />
@@ -578,6 +585,11 @@
   --control-highlight: darkblue;
   --control-color: #a5f9a5;
   --control-active-color: #a5f9a5;
+}</code></pre>
+						</div>
+						<div class="code">
+							<pre><code class="language-css">.n-select.n-select--large, .n-select__options.n-select--large {
+  font-size: 1.333rem;
 }</code></pre>
 						</div>
 					</div>
