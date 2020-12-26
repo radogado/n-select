@@ -32,7 +32,7 @@
       </ul> -->
 
 			<form
-				onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));document.getElementById('form-data').insertAdjacentHTML('beforeend', `<pre>${JSON.stringify(object)}</pre>`);return false;"
+				onsubmit="let object = {};new FormData(this).forEach((value, key) => (object[key] = value));document.getElementById('form-data').insertAdjacentHTML('afterbegin', `<pre>${JSON.stringify(object)}</pre>`);return false;"
 			>
 				<div class="demo">
 					<div>
@@ -110,7 +110,7 @@
 						</div>
 					</div>
 					<div>
-						<div style="min-height: 16em">
+						<div>
 							<label for="countries">With rich options</label>
 							<br />
 
@@ -375,7 +375,31 @@
 						</div>
 					</div>
 					<div>
-						<div style="min-height: 16em">
+						<div style="min-height: 7em">
+							<label
+								>Full width<br />
+								<br />
+								<span class="n-select n-select--wide">
+									<select name="demo-full">
+										<option>Option 1</option>
+										<option value="3" selected>Small select option 3</option>
+										<option>Last chance</option>
+									</select>
+								</span>
+							</label>
+							<br />
+						</div>
+						<div class="code">
+							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--wide&quot;&gt;
+&lt;select name=&quot;demo&quot;&gt;
+&lt;option&gt;Option 1&lt;/option&gt;
+...
+&lt;/select&gt;
+&lt;/span&gt;</code></pre>
+						</div>
+					</div>
+					<div>
+						<div style="min-height: 7em">
 							<label
 								>Themed<br /><br />
 								<span
@@ -437,30 +461,6 @@
   --control-color: mintcream;
   --control-active-color: mintcream;
 }</code></pre>
-						</div>
-					</div>
-					<div>
-						<div>
-							<label
-								>Full width<br />
-								<br />
-								<span class="n-select n-select--wide">
-									<select name="demo-full">
-										<option>Option 1</option>
-										<option value="3" selected>Small select option 3</option>
-										<option>Last chance</option>
-									</select>
-								</span>
-							</label>
-							<br />
-						</div>
-						<div class="code">
-							<pre><code class="language-markup">&lt;span class=&quot;n-select n-select--wide&quot;&gt;
-  &lt;select name=&quot;demo&quot;&gt;
-  	&lt;option&gt;Option 1&lt;/option&gt;
-  	...
-  &lt;/select&gt;
-&lt;/span&gt;</code></pre>
 						</div>
 					</div>
 					<div>
