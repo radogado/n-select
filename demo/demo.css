@@ -143,5 +143,9 @@ label {
 #form-data {
   margin: 1em 0;
 }
+#form-data pre {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
 
 /*# sourceMappingURL=demo.css.map */
