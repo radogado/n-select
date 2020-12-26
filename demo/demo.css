@@ -91,7 +91,7 @@ h1:after {
   position: relative;
   margin: 1.5em 0;
   display: inline-block;
-  max-width: 100%;
+  width: 100%;
   direction: ltr;
 }
 .code pre {
@@ -116,7 +116,7 @@ h1:after {
 }
 
 label {
-  margin-top: 3em;
+  margin-top: 2em;
   display: block;
 }
 
@@ -138,6 +138,10 @@ label {
 .source pre {
   all: initial;
   font: inherit;
+}
+
+#form-data {
+  margin: 1em 0;
 }
 
 /*# sourceMappingURL=demo.css.map */
