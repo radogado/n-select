@@ -92,6 +92,7 @@ h1:after {
   margin: 1.5em 0;
   display: inline-block;
   max-width: 100%;
+  direction: ltr;
 }
 .code pre {
   padding: 1em;
