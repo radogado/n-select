@@ -19,10 +19,10 @@
 			<h1>Native Rich Select</h1>
 			<h2>Flexible, accessible, lightweight select</h2>
 			<h3>
-				<span>customisable style</span> <span>rich content</span> <span>native fallback</span> <span>seamless loading</span> <span>2D overflow protection</span>
+				<span>customisable style</span> <span>rich content</span> <span>native fallback</span> <span>seamless loading</span> <span>overflow protection</span>
 				<span>native form value update</span> <span>native onchange event</span> <span>optional rounded edges</span> <span>inline or full width</span> <span>colour themes</span>
 				<span>shadow option</span> <span>drop-down navigation support</span> <span>click-drag-release to select</span> <span>attached to body to escape clipping</span>
-				<span>animated opening</span> <span>click outside to close</span> <span>touch screen, mouse, trackpad, keyboard control</span> <span>type to select</span>
+				<span>animated expanding</span> <span>click outside to close</span> <span>touch screen, mouse, trackpad, keyboard control</span> <span>type to select</span>
 				<span>thin scrollbar if needed</span> <span>RTL support</span> <span>lightweight</span> <span>no dependencies</span>
 			</h3>
 			<p><a href="https://github.com/radogado/n-select/">GitHub</a></p>
@@ -563,20 +563,14 @@
 					</div>
 					<div>
 						<div style="min-height: 7em" class="large">
-							<style>
-								.n-select.n-select--large,
-								.n-select__options.n-select--large {
-									font-size: 1.333rem;
-								}
-							</style>
 							<label
 								>Colour theme / Large<br /><br />
 								<span
-									class="n-select n-select--large"
-									style="--control-bg: darkorchid; --control-active-bg: darkorchid; --control-highlight: darkblue; --control-color: #a5f9a5; --control-active-color: #a5f9a5"
+									class="n-select"
+									style="--control-bg: darkorchid; --control-active-bg: darkorchid; --control-highlight: darkblue; --control-color: #a5f9a5; --control-active-color: #a5f9a5; font-size: 1.333em;"
 								>
 									<select name="theme"></select>
-									<span class="n-select__options n-select--large">
+									<span class="n-select__options">
 										<button>First option</button>
 										<button>Another select option</button>
 										<button>Last chance</button>
@@ -595,8 +589,8 @@
 }</code></pre>
 						</div>
 						<div class="code">
-							<pre><code class="language-css">.n-select.n-select--large, .n-select__options.n-select--large {
-  font-size: 1.333rem;
+							<pre><code class="language-css">.n-select {
+  font-size: 1.333em;
 }</code></pre>
 						</div>
 					</div>
@@ -716,7 +710,7 @@
 
 			<p>Developed by <a href="//rado.bg">Radoslav Sharapanov</a> since 2020, originally a part of the <a href="//niui.dev/">niui</a> library.</p>
 
-			<p><a href="https://www.paypal.me/radogado">Buy me a beer</a></p>
+			<p><a href="https://www.paypal.com/paypalme/radogado/5">Buy me a beer</a></p>
 		</main>
 
 		<script>

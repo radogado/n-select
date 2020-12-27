@@ -53,6 +53,7 @@
 		delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
 		document.body.classList.remove("n-select--open");
+		select.style.font = "";
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResize);
 		window.removeEventListener("scroll", closeSelectOnResize);
@@ -107,6 +108,8 @@
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
 		document.body.classList.add("n-select--open");
 		select.setAttribute("aria-expanded", true);
+
+		select.style.font = getComputedStyle(wrapper).font;
 
 		document.body.appendChild(select);
 		select.style.setProperty("--select-scroll-height", `${select.getBoundingClientRect().height}px`);
