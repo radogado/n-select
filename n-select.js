@@ -119,7 +119,7 @@
 		if (select.getBoundingClientRect().y < 0) {
 			let current_max_height = select.getBoundingClientRect().height + select.getBoundingClientRect().y;
 			select.style.setProperty("--max-height", `${current_max_height}px`);
-			select.scrollTop = Math.abs(select.getBoundingClientRect().y);
+			select.scrollTop = Math.abs(Math.round(select.getBoundingClientRect().y));
 			top_offset = Math.abs(select.getBoundingClientRect().y);
 			select.style.setProperty("--top-offset", top_offset);
 			select.classList.add("n-select--crop-top");

@@ -29,6 +29,7 @@ body {
 }
 h3 {
   line-height: 1.5;
+  font-size: 1.02em;
 }
 
 h3 span {
@@ -36,8 +37,6 @@ h3 span {
   background: antiquewhite;
   color: #007575;
   padding: 0 0.25em;
-  font-weight: normal;
-  margin-inline-end: 0.5em;
   display: inline-block;
 }
 
