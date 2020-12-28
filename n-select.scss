@@ -33,23 +33,9 @@ Theme:
 	vertical-align: middle;
 	max-width: 100%;
 	width: var(--width, auto);
-	line-height: 1.3;
 	z-index: 0;
 	background-color: var(--control-bg, #fff);
-
-	&[data-ready] {
-		font-size: 1em;
-		transition: height 0.2s ease-in-out;
-
-		> .n-select__options > :not([aria-selected]) {
-			height: 0;
-			padding-top: 0;
-			padding-bottom: 0;
-			visibility: hidden;
-			overflow: hidden;
-			display: block;
-		}
-	}
+	line-height: var(--line-height, 1.333);
 
 	&:before {
 		content: "";
@@ -77,6 +63,20 @@ Theme:
 		z-index: 5;
 	}
 
+	&[data-ready] {
+		font-size: 1em;
+		transition: height 0.2s ease-in-out;
+
+		> .n-select__options > :not([aria-selected]) {
+			height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			visibility: hidden;
+			overflow: hidden;
+			display: block;
+		}
+	}
+
 	&:not([data-ready]) {
 		// If no init in 2", display native fallback
 
@@ -95,7 +95,6 @@ Theme:
 			width: 100%;
 			padding-inline-start: 0.5em;
 			padding-inline-end: 1.961em;
-			line-height: 2.25;
 			height: auto;
 			margin: 0;
 			background: none;
@@ -168,6 +167,7 @@ Theme:
 	padding: var(--padding, 0.5em);
 	padding-inline-end: 1.961em;
 	cursor: pointer;
+	line-height: calc(1 + var(--line-height, 1.333));
 
 	~ .n-select__options {
 		animation-name: n-select;
@@ -182,6 +182,7 @@ Theme:
 		-khtml-user-select: none;
 		-moz-user-select: none;
 		user-select: none;
+		line-height: inherit;
 	}
 
 	button {
@@ -277,7 +278,6 @@ Theme:
 
 		button,
 		a[href] {
-			line-height: 1.3;
 			width: 100%;
 			box-sizing: border-box;
 
@@ -327,7 +327,6 @@ Theme:
 			border: none;
 			padding: 0.5em;
 			padding-inline-end: 2em;
-			line-height: 1.3;
 			font-weight: normal;
 			min-height: 0;
 			color: var(--control-color, #333);
@@ -433,9 +432,6 @@ _:future,
 	overflow: hidden;
 	-webkit-user-select: none;
 	user-select: none;
-}
-
-@media (orientation: portrait), (orientation: landscape) {
 }
 
 [dir="rtl"] {
