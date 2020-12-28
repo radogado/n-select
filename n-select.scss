@@ -350,14 +350,6 @@ select[data-n_select],
 	display: none;
 }
 
-.n-form__wide {
-	.n-select,
-	.n-select__options,
-	.n-select select {
-		width: 100%;
-	}
-}
-
 // Animation
 
 .n-select__options[aria-expanded] {

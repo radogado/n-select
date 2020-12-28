@@ -49,7 +49,7 @@
 		delete select.dataset.nSelectAnimation;
 		delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
-		document.body.classList.remove("n-select--open");
+		// document.body.classList.remove("n-select--open");
 		select.style.font = "";
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResize);
@@ -148,7 +148,6 @@
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
 				select.querySelector("[aria-selected]").focus();
-				document.body.classList.add("n-select--open");
 			}, 1); // Timeout needed for the above CSS variables to work
 		});
 
