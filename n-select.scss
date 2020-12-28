@@ -435,6 +435,9 @@ _:future,
 	user-select: none;
 }
 
+@media (orientation: portrait), (orientation: landscape) {
+}
+
 [dir="rtl"] {
 	.n-select__options[aria-expanded] {
 		margin-inline-end: calc(-1 * var(--padding, 0.5em));

@@ -1,4 +1,6 @@
 (function () {
+	const isChrome = !!navigator.userAgent.match("Chrome");
+	const isSafari = navigator.userAgent.match(/Safari/) && !isChrome;
 	let clickOutsideSelect = (e) => {
 		if (!e.target.closest(".n-select__options > *") && !e.target.closest(".n-select")) {
 			document.querySelectorAll(".n-select__options[aria-expanded]:not([data-n-select-animation])").forEach((select) => {
@@ -17,12 +19,7 @@
 		}
 
 		let select = el.closest(".n-select__options");
-		let selected = select.querySelector("[aria-selected]");
-
-		if (selected) {
-			selected.removeAttribute("aria-selected");
-		}
-
+		select.querySelectorAll("[aria-selected]").forEach((el) => el.removeAttribute("aria-selected"));
 		el.setAttribute("aria-selected", true);
 		select.nuiSelectWrapper.dataset.value = el.value;
 		if (select.hasAttribute("aria-expanded")) {
@@ -58,7 +55,6 @@
 		window.removeEventListener("resize", closeSelectOnResize);
 		window.removeEventListener("scroll", closeSelectOnResize);
 		select.querySelector("[aria-selected]").tabIndex = -1;
-		window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
 		window.removeEventListener("pointerup", clickOutsideSelect);
 		select.removeEventListener("pointerup", pointerUpSelect);
 		let wrapper = select.parentNode;
@@ -66,20 +62,7 @@
 		wrapper.style.removeProperty("--width");
 		select.style.removeProperty("--scroll-help-top");
 		select.classList.remove("n-select--scroll-help-top");
-		if (typeof nuiDisableBodyScroll === "function") {
-			nuiDisableBodyScroll(false, select);
-		}
-
-		let parent = wrapper;
-		while (parent !== document.body) {
-			parent.removeEventListener("scroll", closeSelectOnScroll);
-			parent = parent.parentNode;
-		}
-	};
-
-	let closeSelectOnScroll = (e) => {
-		let select = document.querySelector("body > .n-select__options");
-		closeSelect(select);
+		window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
 	};
 
 	let openSelect = (select) => {
@@ -102,8 +85,14 @@
 		let option_height = select.getBoundingClientRect().height;
 
 		select.style.setProperty("--max-width", `${select.parentNode.getBoundingClientRect().width}px`);
-		select.style.setProperty("--body-offset-x", select.getBoundingClientRect().x - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().x : 0));
-		select.style.setProperty("--body-offset-y", select.getBoundingClientRect().y - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().y : 0));
+		select.style.setProperty(
+			"--body-offset-x",
+			(isSafari ? visualViewport.offsetLeft : 0) + select.getBoundingClientRect().x - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().x : 0)
+		);
+		select.style.setProperty(
+			"--body-offset-y",
+			(isSafari ? visualViewport.offsetTop : 0) + select.getBoundingClientRect().y - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().y : 0)
+		);
 
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
 		document.body.classList.add("n-select--open");
@@ -166,15 +155,6 @@
 		window.addEventListener("resize", closeSelectOnResize);
 		window.addEventListener("scroll", closeSelectOnResize);
 		window.addEventListener("pointerup", clickOutsideSelect);
-		if (typeof nuiDisableBodyScroll === "function") {
-			nuiDisableBodyScroll(true, select);
-		}
-
-		let parent = wrapper.parentNode;
-		while (parent !== document.body) {
-			parent.addEventListener("scroll", closeSelectOnScroll);
-			parent = parent.parentNode;
-		}
 	};
 
 	let nextMatchingSibling = (el, selector) => {
@@ -213,7 +193,7 @@
 	let pointerDownSelect = (e) => {
 		let select = e.target.closest(".n-select__options") || e.target.querySelector(".n-select__options");
 
-		if (!select.hasAttribute("aria-expanded")) {
+		if (!!select && !select.hasAttribute("aria-expanded")) {
 			// Closed
 
 			openSelect(select);
