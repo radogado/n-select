@@ -95,7 +95,6 @@
 		);
 
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
-		document.body.classList.add("n-select--open");
 		select.setAttribute("aria-expanded", true);
 
 		select.style.font = getComputedStyle(wrapper).font;
@@ -149,6 +148,7 @@
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
 				select.querySelector("[aria-selected]").focus();
+				document.body.classList.add("n-select--open");
 			}, 1); // Timeout needed for the above CSS variables to work
 		});
 
