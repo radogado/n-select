@@ -363,11 +363,11 @@ select[data-n_select],
 		-webkit-mask-position-y: 0;
 	}
 
-	&[data-transitionend] {
-		// Remove mask to make shadow visible
-		-webkit-mask: none;
-		mask: none;
-	}
+	// &[data-transitionend] {
+	// 	// Remove mask to make shadow visible
+	// 	-webkit-mask: none;
+	// 	mask: none;
+	// }
 	overscroll-behavior: contain;
 }
 
@@ -430,5 +430,9 @@ _:future,
 [dir="rtl"] {
 	.n-select__options[aria-expanded] {
 		margin-inline-end: calc(-1 * var(--padding, 0.5em));
+		left: auto;
+		right: calc(100% - 1px * var(--body-offset-x) - var(--max-width));
+		-webkit-mask-position-x: 100%;
+		mask-position-x: 100%;
 	}
 }

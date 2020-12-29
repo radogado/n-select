@@ -47,7 +47,7 @@
 
 	let closeSelect = (select) => {
 		delete select.dataset.nSelectAnimation;
-		delete select.dataset.transitionend;
+		// delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
 		// document.body.classList.remove("n-select--open");
 		select.style.font = "";
@@ -399,7 +399,7 @@
 				el.style.removeProperty("--mask-size-y");
 				delete el.dataset.nSelectAnimation;
 				el.addEventListener("pointerup", pointerUpSelect);
-				el.dataset.transitionend = true;
+				// el.dataset.transitionend = true;
 			};
 
 			el.addEventListener("keydown", selectKeyboard);
