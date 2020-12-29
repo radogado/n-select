@@ -29,15 +29,17 @@ body {
 }
 h3 {
   line-height: 1.5;
-  font-size: 1em;
+  font-size: 0;
 }
 
 h3 span {
+  font-size: 1rem;
   line-height: 1.25;
   background: antiquewhite;
   color: #007575;
-  padding: 0.25em;
+  padding: 0.1333em 0.333em;
   display: inline-block;
+  margin-inline-end: 0.25em;
 }
 
 a[href] {
