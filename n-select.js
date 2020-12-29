@@ -62,7 +62,8 @@
 		wrapper.style.removeProperty("--width");
 		select.style.removeProperty("--scroll-help-top");
 		select.classList.remove("n-select--scroll-help-top");
-		window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus());
+		// window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus()); // iPad blocking another element's scrolling 🤷‍♂️
+		select.nuiSelectWrapper.focus();
 	};
 
 	let openSelect = (select) => {
