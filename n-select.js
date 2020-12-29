@@ -45,12 +45,21 @@
 		}
 	};
 
+const font_properties = ['font-family', 'font-size', 'font-style', 'font-weight'];
+
 	let closeSelect = (select) => {
 		delete select.dataset.nSelectAnimation;
 		// delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
 		// document.body.classList.remove("n-select--open");
-		select.style.font = "";
+		// select.style.font = "";
+
+font_properties.forEach(el => {
+
+	select.style[el] = "";
+
+});
+
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResize);
 		// window.removeEventListener("scroll", closeSelectOnResize);
@@ -101,7 +110,15 @@
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
 		select.setAttribute("aria-expanded", true);
 
-		select.style.font = getComputedStyle(wrapper).font;
+		// select.style.font = getComputedStyle(wrapper).font; // Firefox not working
+
+		//fontFamily fontSize, fontStyle, fontWeight
+		
+		font_properties.forEach(el => {
+			
+				select.style[el] = getComputedStyle(wrapper)[el];
+			
+		});
 
 		document.body.appendChild(select);
 		select.style.setProperty("--select-scroll-height", `${select.getBoundingClientRect().height}px`);
