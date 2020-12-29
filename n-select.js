@@ -49,11 +49,11 @@
 		delete select.dataset.nSelectAnimation;
 		delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
-		document.body.classList.remove("n-select--open");
+		// document.body.classList.remove("n-select--open");
 		select.style.font = "";
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResize);
-		window.removeEventListener("scroll", closeSelectOnResize);
+		// window.removeEventListener("scroll", closeSelectOnResize);
 		select.querySelector("[aria-selected]").tabIndex = -1;
 		window.removeEventListener("pointerup", clickOutsideSelect);
 		select.removeEventListener("pointerup", pointerUpSelect);
@@ -86,13 +86,16 @@
 		let option_height = select.getBoundingClientRect().height;
 
 		select.style.setProperty("--max-width", `${select.parentNode.getBoundingClientRect().width}px`);
+		
+		// If body is position relative, subtract from the vars its border width
+		let document_offset = document.querySelector('html').getBoundingClientRect().x;
 		select.style.setProperty(
 			"--body-offset-x",
-			(isSafari ? visualViewport.offsetLeft : 0) + select.getBoundingClientRect().x - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().x : 0)
+		  wrapper.getBoundingClientRect().x - document_offset - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderInlineStartWidth) - document_offset + document.body.getBoundingClientRect().x: 0)
 		);
 		select.style.setProperty(
 			"--body-offset-y",
-			(isSafari ? visualViewport.offsetTop : 0) + select.getBoundingClientRect().y - (document.body.style.position === "relative" ? document.body.getBoundingClientRect().y : 0)
+			 - document.body.getBoundingClientRect().y + wrapper.getBoundingClientRect().y - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderBlockStartWidth) : 0)
 		);
 
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
@@ -149,12 +152,12 @@
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
 				select.querySelector("[aria-selected]").focus();
-				document.body.classList.add("n-select--open");
+				// document.body.classList.add("n-select--open");
 			}, 1); // Timeout needed for the above CSS variables to work
 		});
 
 		window.addEventListener("resize", closeSelectOnResize);
-		window.addEventListener("scroll", closeSelectOnResize);
+		// window.addEventListener("scroll", closeSelectOnResize);
 		window.addEventListener("pointerup", clickOutsideSelect);
 	};
 
