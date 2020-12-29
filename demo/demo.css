@@ -30,6 +30,7 @@ body {
 h3 {
   line-height: 1.5;
   font-size: 0;
+  column-gap: 1rem;
 }
 
 h3 span {
@@ -40,6 +41,7 @@ h3 span {
   padding: 0.1333em 0.333em;
   display: inline-block;
   margin-inline-end: 0.25em;
+  font-weight: normal;
 }
 
 a[href] {
