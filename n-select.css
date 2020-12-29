@@ -168,8 +168,6 @@ Theme:
   position: relative;
   color: var(--control-color, #333);
   background-color: var(--control-bg, #fff);
-  display: flex;
-  align-items: center;
 }
 .n-select__options button * {
   pointer-events: none;
@@ -287,12 +285,6 @@ select[data-n_select],
 .n-select[data-ready] select,
 .n-select[data-ready] + select {
   display: none;
-}
-
-.n-form__wide .n-select,
-.n-form__wide .n-select__options,
-.n-form__wide .n-select select {
-  width: 100%;
 }
 
 .n-select__options[aria-expanded] {
