@@ -333,7 +333,7 @@ _:future,
 }
 
 [dir=rtl] .n-select__options[aria-expanded] {
-  margin-inline-end: calc(-1 * var(--padding, 0.5em));
+  margin-inline-end: 0;
   left: auto;
   right: calc(100% - 1px * var(--body-offset-x) - var(--max-width));
   -webkit-mask-position-x: 100%;
