@@ -198,8 +198,8 @@ Theme:
 		position: relative;
 		color: var(--control-color, #333);
 		background-color: var(--control-bg, #fff);
-		// display: flex; // Chrome glitching on overflowing select
-		// align-items: center;
+		display: flex; // Chrome glitching on overflowing select
+		align-items: center;
 
 		* {
 			pointer-events: none; // Disable dragging of images inside the option

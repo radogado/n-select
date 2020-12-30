@@ -45,7 +45,7 @@
 		}
 	};
 
-const font_properties = ['font-family', 'font-size', 'font-style', 'font-weight'];
+const font_properties = ['font-family', 'font-size', 'font-style', 'font-weight', 'line-height'];
 
 	let closeSelect = (select) => {
 		delete select.dataset.nSelectAnimation;
