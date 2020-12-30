@@ -73,6 +73,8 @@ font_properties.forEach(el => {
 		select.classList.remove("n-select--scroll-help-top");
 		// window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus()); // iPad blocking another element's scrolling 🤷‍♂️
 		select.nuiSelectWrapper.focus();
+select.classList.remove("n-scrollbar");
+
 	};
 
 	let openSelect = (select) => {
@@ -155,8 +157,6 @@ font_properties.forEach(el => {
 				}
 			}
 		}
-
-		select.classList.remove("n-scrollbar");
 
 		if (select.getBoundingClientRect().width > select.querySelector("button").getBoundingClientRect().width + parseInt(getComputedStyle(select).paddingInlineEnd) * 2) {
 			select.classList.add("n-scrollbar");
