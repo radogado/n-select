@@ -45,7 +45,7 @@
 		}
 	};
 
-const font_properties = ['font-family', 'font-size', 'font-style', 'font-weight', 'line-height'];
+	const font_properties = ["font-family", "font-size", "font-style", "font-weight", "line-height", "font-variant"];
 
 	let closeSelect = (select) => {
 		delete select.dataset.nSelectAnimation;
@@ -54,11 +54,9 @@ const font_properties = ['font-family', 'font-size', 'font-style', 'font-weight'
 		// document.body.classList.remove("n-select--open");
 		// select.style.font = "";
 
-font_properties.forEach(el => {
-
-	select.style[el] = "";
-
-});
+		font_properties.forEach((el) => {
+			select.style[el] = "";
+		});
 
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResize);
@@ -73,8 +71,7 @@ font_properties.forEach(el => {
 		select.classList.remove("n-select--scroll-help-top");
 		// window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus()); // iPad blocking another element's scrolling 🤷‍♂️
 		select.nuiSelectWrapper.focus();
-select.classList.remove("n-scrollbar");
-
+		select.classList.remove("n-scrollbar");
 	};
 
 	let openSelect = (select) => {
@@ -97,16 +94,22 @@ select.classList.remove("n-scrollbar");
 		let option_height = select.getBoundingClientRect().height;
 
 		select.style.setProperty("--max-width", `${select.parentNode.getBoundingClientRect().width}px`);
-		
+
 		// If body is position relative, subtract from the vars its border width
-		let document_offset = document.querySelector('html').getBoundingClientRect().x;
+		let document_offset = document.querySelector("html").getBoundingClientRect().x;
 		select.style.setProperty(
 			"--body-offset-x",
-		  wrapper.getBoundingClientRect().x - document_offset - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderInlineStartWidth) - document_offset + document.body.getBoundingClientRect().x: 0)
+			wrapper.getBoundingClientRect().x -
+				document_offset -
+				(document.body.style.position === "relative"
+					? parseFloat(getComputedStyle(document.body).borderInlineStartWidth) - document_offset + document.body.getBoundingClientRect().x
+					: 0)
 		);
 		select.style.setProperty(
 			"--body-offset-y",
-			 - document.body.getBoundingClientRect().y + wrapper.getBoundingClientRect().y - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderBlockStartWidth) : 0)
+			-document.body.getBoundingClientRect().y +
+				wrapper.getBoundingClientRect().y -
+				(document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderBlockStartWidth) : 0)
 		);
 
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
@@ -115,11 +118,9 @@ select.classList.remove("n-scrollbar");
 		// select.style.font = getComputedStyle(wrapper).font; // Firefox not working
 
 		//fontFamily fontSize, fontStyle, fontWeight
-		
-		font_properties.forEach(el => {
-			
-				select.style[el] = getComputedStyle(wrapper)[el];
-			
+
+		font_properties.forEach((el) => {
+			select.style[el] = getComputedStyle(wrapper)[el];
 		});
 
 		document.body.appendChild(select);

@@ -13,11 +13,11 @@ body {
 }
 
 .demo {
-  display: grid;
   gap: 1em;
 }
 @media (min-width: 600px) {
   .demo {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

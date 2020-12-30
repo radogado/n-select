@@ -12,10 +12,10 @@ body {
 	border: 1em solid transparent;
 }
 .demo {
-	display: grid;
 	gap: 1em;
 
 	@media (min-width: 600px) {
+		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
