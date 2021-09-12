@@ -335,7 +335,7 @@ Theme:
 		}
 	}
 
-	> * {
+	> *, > button {
 		padding: 0.5em;
 		padding-inline-end: 2em;
 		position: relative; // To show it above the background

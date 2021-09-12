@@ -273,7 +273,7 @@ Theme:
   color: var(--control-color, #333);
   background: none;
 }
-.n-select__options > * {
+.n-select__options > *, .n-select__options > button {
   padding: 0.5em;
   padding-inline-end: 2em;
   position: relative;
