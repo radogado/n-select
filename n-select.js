@@ -307,7 +307,7 @@
 			if (!el.nuiNativeInput) {
 				// Missing native select, so generate it
 				let input = document.createElement("select");
-				input.name = el.dataset.name;
+				input.name = input.id = el.dataset.name;
 				wrapper.append(input);
 				el.nuiNativeInput = input;
 			}
