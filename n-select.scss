@@ -28,7 +28,6 @@ Theme:
 
 .n-select {
 	position: relative;
-	height: var(--active-option-height, auto);
 	display: inline-grid;
 	vertical-align: middle;
 	max-width: 100%;
@@ -52,7 +51,8 @@ Theme:
 		width: 0.75em;
 		height: 0.75em;
 		// right: 0.5em;
-		margin-inline-start: calc(100% - 1.25em);
+		// margin-inline-start: calc(100% - 1.25em);
+		inset-inline-end: 0.625em;
 		top: calc(50% - 0.375em);
 		z-index: -1;
 	}
@@ -91,9 +91,10 @@ Theme:
 			-webkit-appearance: none;
 			appearance: none;
 			border: none;
-			padding: 0;
+			// padding: 0;
 			width: 100%;
-			padding-inline-start: 0.5em;
+			// padding-inline-start: 0.5em;
+			padding: var(--padding, 0.5em);
 			padding-inline-end: 1.961em;
 			height: auto;
 			margin: 0;
@@ -135,12 +136,14 @@ Theme:
 
 	&.n-select--open {
 		opacity: 0;
+		height: var(--active-option-height, auto);
 	}
 }
 
 .n-select__options,
 .n-select {
-	--padding: 0.5em;
+	--padding: .5em;
+	--line-height: 1.5em; // Unitless line height is wrong on the native select
 }
 
 .n-select__options,
@@ -167,7 +170,7 @@ Theme:
 	padding: var(--padding, 0.5em);
 	padding-inline-end: 1.961em;
 	cursor: pointer;
-	line-height: calc(1 + var(--line-height, 1.333));
+	line-height: calc(1 + var(--line-height, 1.5em));
 
 	~ .n-select__options {
 		animation-name: n-select;
@@ -209,6 +212,8 @@ Theme:
 		img {
 			// Must have default dimensions to avoid layout jump while loading
 
+			display: inline-block;
+			object-fit: contain;
 			width: 2em;
 			height: 2em;
 			margin-inline-end: 0.5em;
@@ -242,8 +247,8 @@ Theme:
 		max-height: var(--max-height);
 		overflow: auto;
 		background: transparent;
-		padding: 0 var(--padding, 1em);
-		margin-inline-start: calc(-1 * var(--padding, 1em));
+		padding: 0 1em;
+		margin-inline-start: -1em;
 		left: calc(1px * var(--body-offset-x));
 		top: calc(1px * var(--body-offset-y));
 		box-sizing: content-box;
@@ -251,11 +256,11 @@ Theme:
 		min-width: var(--max-width); // For when the closed select is wider than the options
 
 		> :first-child {
-			margin-top: var(--padding, 1em);
+			margin-top: calc(2 * var(--padding, .5em));
 		}
 
 		> :last-child {
-			margin-bottom: var(--padding, 1em);
+			margin-bottom: calc(2 * var(--padding, .5em));
 		}
 
 		&.n-select--crop-top {
@@ -299,10 +304,10 @@ Theme:
 			content: "";
 			position: absolute;
 			background-color: var(--control-bg, #fff);
-			top: var(--padding, 1em);
-			left: var(--padding, 1em);
-			right: var(--padding, 1em);
-			height: calc(var(--select-scroll-height) - 2 * var(--padding, 1em));
+			top: calc(2 * var(--padding, .5em));
+			left: calc(2 * var(--padding, .5em));
+			right: calc(2 * var(--padding, .5em));
+			height: calc(var(--select-scroll-height) - 4 * var(--padding, .5em));
 		}
 
 		&.n-select--scroll-help-top:before {
@@ -328,6 +333,7 @@ Theme:
 			font-size: 1em;
 			border: none;
 			// padding: 0.5em;
+			padding: var(--padding, .5em);
 			padding-inline-end: 2em;
 			font-weight: normal;
 			min-height: 0;
@@ -336,11 +342,13 @@ Theme:
 		}
 	}
 
-	> *, > button {
-		padding: 0.5em;
+	> *,
+	> button {
+		padding: var(--padding, 0.5em);
 		padding-inline-end: 2em;
 		position: relative; // To show it above the background
 		font-family: inherit; // iOS bug
+		background-color: var(--control-bg, #fff);
 	}
 }
 
@@ -355,8 +363,7 @@ select[data-n_select],
 // Animation
 
 .n-select__options[aria-expanded] {
-	-webkit-mask: linear-gradient(0, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) / calc(var(--max-width) + var(--padding, 1em))
-		var(--mask-size-y);
+	-webkit-mask: linear-gradient(0, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) / calc(var(--max-width) + 2 * var(--padding, .5em)) var(--mask-size-y);
 
 	&[data-n-select-animation] {
 		transition: -webkit-mask-size 0.15s ease-in-out, -webkit-mask-position-y 0.15s ease-in-out;
@@ -380,15 +387,17 @@ select[data-n_select],
 
 @media (min-width: 600px) {
 	.n-select .n-select__options[aria-expanded] {
-		width: calc(var(--max-width) + var(--padding));
+		width: calc(var(--max-width) + var(--padding, .5em));
 	}
 }
 
 .n-select--rounded {
+
 	&.n-select,
 	&.n-select__options:before {
 		border-radius: var(--radius, 0.333em);
 	}
+
 	&.n-select__options {
 		button:first-of-type {
 			border-top-left-radius: var(--radius, 0.333em);
