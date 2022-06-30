@@ -202,8 +202,8 @@ Theme:
   max-height: var(--max-height);
   overflow: auto;
   background: transparent;
-  padding: 0 1em;
-  margin-inline-start: -1em;
+  padding: 0 calc(var(--padding, 1em) / 2);
+  margin-inline-start: calc(-1 * var(--padding, 1em) / 2);
   left: calc(1px * var(--body-offset-x));
   top: calc(1px * var(--body-offset-y));
   box-sizing: content-box;
@@ -248,8 +248,8 @@ Theme:
   position: absolute;
   background-color: var(--control-bg, #fff);
   top: calc(2 * var(--padding, 0.5em));
-  left: calc(2 * var(--padding, 0.5em));
-  right: calc(2 * var(--padding, 0.5em));
+  left: calc(var(--padding, 0.5em) / 2);
+  right: calc(var(--padding, 0.5em) / 2);
   height: calc(var(--select-scroll-height) - 4 * var(--padding, 0.5em));
 }
 .n-select__options[aria-expanded].n-select--scroll-help-top:before {
