@@ -14,7 +14,7 @@
 
 	const updateOptionHeight = (wrapper, select) => {
 		wrapper.style.setProperty("--active-option-height", `${select.querySelector("[aria-selected]").getBoundingClientRect().height}px`);
-	};	
+	};
 
 	let selectOption = (el, close = true) => {
 		if (!el || el.tagName !== "BUTTON") {
@@ -68,7 +68,7 @@
 		select.nuiSelectWrapper.focus();
 		select.classList.remove("n-scrollbar");
 	};
-	
+
 	let openSelect = (select) => {
 		let previous_open_select = document.body.querySelector(".n-select__options[aria-expanded]");
 		if (previous_open_select) {
@@ -272,7 +272,11 @@
 					// select the option that starts with select.nuiSearchTerm
 					for (let el of select.querySelectorAll("button")) {
 						if (el.textContent.trim().toLowerCase().startsWith(select.nuiSearchTerm)) {
-							selectOption(el, false);
+							if (select.getAttribute('aria-expanded')) {
+								el.focus();
+							} else {
+								selectOption(el, false);
+							}
 						}
 					}
 					select.nuiSearchTerm = "";
