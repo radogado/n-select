@@ -66,9 +66,9 @@ form button {
 
 .transparent-select .n-select,
 .transparent-select .n-select--options {
-  --control-bg: transparent;
-  --control-active-bg: transparent;
-  --control-highlight: transparent;
+  --nui-control-bg: transparent;
+  --nui-control-active-bg: transparent;
+  --nui-control-highlight: transparent;
 }
 
 h1:before,

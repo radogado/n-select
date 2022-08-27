@@ -377,7 +377,7 @@
 			window.requestAnimationFrame(() => {
 				// wrapper.style.setProperty("--active-option-height", `${el.querySelector("[aria-selected]").getBoundingClientRect().height}px`);
 				updateOptionHeight(wrapper, el);
-				["--control-color", "--control-bg", "--control-active-color", "--control-active-bg", "--control-highlight"].forEach((i) => {
+				["--nui-control-color", "--nui-control-bg", "--nui-control-active-color", "--nui-control-active-bg", "--nui-control-highlight"].forEach((i) => {
 					el.style.setProperty(i, wrapper.style.getPropertyValue(i));
 				});
 			});
