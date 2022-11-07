@@ -53,6 +53,11 @@ Theme:
 		// right: 0.5em;
 		// margin-inline-start: calc(100% - 1.25em);
 		inset-inline-end: 0.625em;
+
+		@supports not (inset-inline-end: 0) {
+			right: .625rem;
+		}
+
 		top: calc(50% - 0.375em);
 		z-index: -1;
 	}
@@ -445,4 +450,12 @@ _:future,
 		-webkit-mask-position-x: 100%;
 		mask-position-x: 100%;
 	}
+
+	@supports not (inset-inline-end: 0) {
+		.n-select:before {
+			left: .625rem;
+			right: auto;
+		}
+	}
+
 }

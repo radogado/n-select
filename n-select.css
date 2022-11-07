@@ -49,6 +49,11 @@ Theme:
   top: calc(50% - 0.375em);
   z-index: -1;
 }
+@supports not (inset-inline-end: 0) {
+  .n-select:before {
+    right: 0.625rem;
+  }
+}
 .n-select:after {
   position: absolute;
   top: 0;
@@ -343,6 +348,12 @@ _:future,
   right: calc(100% - 1px * var(--body-offset-x) - var(--max-width));
   -webkit-mask-position-x: 100%;
   mask-position-x: 100%;
+}
+@supports not (inset-inline-end: 0) {
+  [dir=rtl] .n-select:before {
+    left: 0.625rem;
+    right: auto;
+  }
 }
 
 /*# sourceMappingURL=n-select.css.map */
