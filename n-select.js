@@ -8,14 +8,15 @@
 			});
 		}
 	};
-	let closeSelectOnResize = (e) => {
-		closeSelect(document.querySelector(".n-select__options[aria-expanded]"));
+	let closeSelectOnResizeScroll = (e) => {
+		let open_select = document.querySelector(".n-select__options[aria-expanded]");
+		if (e.type === 'resize' || (e.type === 'scroll' && e.target !== open_select)) {
+			closeSelect(open_select);
+		}
 	};
-
 	const updateOptionHeight = (wrapper, select) => {
 		wrapper.style.setProperty("--active-option-height", `${select.querySelector("[aria-selected]").getBoundingClientRect().height}px`);
 	};
-
 	let selectOption = (el, close = true) => {
 		if (!el || el.tagName !== "BUTTON") {
 			return;
@@ -45,6 +46,9 @@
 	};
 	const font_properties = ["font-family", "font-size", "font-style", "font-weight", "line-height", "font-variant"];
 	let closeSelect = (select) => {
+		if (!select) {
+			return;
+		}
 		delete select.dataset.nSelectAnimation;
 		// delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
@@ -54,8 +58,8 @@
 			select.style[el] = "";
 		});
 		select.nuiSelectWrapper.prepend(select);
-		window.removeEventListener("resize", closeSelectOnResize);
-		// window.removeEventListener("scroll", closeSelectOnResize);
+		window.removeEventListener("resize", closeSelectOnResizeScroll);
+		window.removeEventListener("scroll", closeSelectOnResizeScroll);
 		select.querySelector("[aria-selected]").tabIndex = -1;
 		window.removeEventListener("pointerup", clickOutsideSelect);
 		select.removeEventListener("pointerup", pointerUpSelect);
@@ -68,7 +72,6 @@
 		select.nuiSelectWrapper.focus();
 		select.classList.remove("n-scrollbar");
 	};
-
 	let openSelect = (select) => {
 		let previous_open_select = document.body.querySelector(".n-select__options[aria-expanded]");
 		if (previous_open_select) {
@@ -138,8 +141,8 @@
 				// document.body.classList.add("n-select--open");
 			}, 1); // Timeout needed for the above CSS variables to work
 		});
-		window.addEventListener("resize", closeSelectOnResize);
-		// window.addEventListener("scroll", closeSelectOnResize);
+		window.addEventListener("resize", closeSelectOnResizeScroll);
+		window.addEventListener("scroll", closeSelectOnResizeScroll, true);
 		window.addEventListener("pointerup", clickOutsideSelect);
 	};
 	let nextMatchingSibling = (el, selector) => {
