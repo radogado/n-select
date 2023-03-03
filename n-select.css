@@ -120,6 +120,7 @@ Theme:
 .n-select {
   --padding: .5em;
   --line-height: 1.5em;
+  border-radius: var(--nui-border-radius);
 }
 
 .n-select__options,
@@ -134,7 +135,6 @@ Theme:
   -webkit-appearance: none;
   appearance: none;
   font: inherit;
-  border-radius: 0;
   border: none;
   grid-column: 1/1;
   grid-row: 1/1;
@@ -216,9 +216,13 @@ Theme:
 }
 .n-select__options[aria-expanded] > :first-child {
   margin-top: calc(2 * var(--padding, 0.5em));
+  border-top-left-radius: var(--nui-border-radius);
+  border-top-right-radius: var(--nui-border-radius);
 }
 .n-select__options[aria-expanded] > :last-child {
   margin-bottom: calc(2 * var(--padding, 0.5em));
+  border-bottom-left-radius: var(--nui-border-radius);
+  border-bottom-right-radius: var(--nui-border-radius);
 }
 .n-select__options[aria-expanded].n-select--crop-top {
   top: calc(1px * var(--body-offset-y));
@@ -256,6 +260,7 @@ Theme:
   left: calc(var(--padding, 0.5em) / 2);
   right: calc(var(--padding, 0.5em) / 2);
   height: calc(var(--select-scroll-height) - 4 * var(--padding, 0.5em));
+  border-radius: var(--nui-border-radius);
 }
 .n-select__options[aria-expanded].n-select--scroll-help-top:before {
   height: calc(100% + 1px * var(--top-offset, 0));
@@ -317,16 +322,8 @@ select[data-n_select],
     width: calc(var(--max-width) + var(--padding, 0.5em));
   }
 }
-.n-select--rounded.n-select, .n-select--rounded.n-select__options:before {
-  border-radius: var(--radius, 0.333em);
-}
-.n-select--rounded.n-select__options button:first-of-type {
-  border-top-left-radius: var(--radius, 0.333em);
-  border-top-right-radius: var(--radius, 0.333em);
-}
-.n-select--rounded.n-select__options button:last-of-type {
-  border-bottom-left-radius: var(--radius, 0.333em);
-  border-bottom-right-radius: var(--radius, 0.333em);
+.n-select--rounded {
+  --nui-border-radius: .333em;
 }
 
 .n-select:focus:not(:focus-visible),
