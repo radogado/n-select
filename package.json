@@ -1,6 +1,6 @@
 {
   "name": "n-select",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Rich, accessible, lightweight, dependencies-free select component",
   "main": "n-select.min.js",
   "scripts": {
