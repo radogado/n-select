@@ -333,6 +333,7 @@ Theme:
 
 	&:not([aria-expanded]) {
 		cursor: pointer;
+		box-shadow: 0 0 0 var(--nui-border-size) var(--nui-border-color), 0 0 var(--nui-shadow-blur) calc(var(--nui-border-size) + var(--nui-shadow-size)) var(--nui-shadow-color);
 
 		button {
 			white-space: nowrap;
@@ -360,6 +361,7 @@ Theme:
 		position: relative; // To show it above the background
 		font-family: inherit; // iOS bug
 		background-color: var(--nui-control-bg, #fff);
+		box-shadow: none;
 	}
 }
 
