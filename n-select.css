@@ -174,6 +174,8 @@ Theme:
   position: relative;
   color: var(--nui-control-color, #333);
   background-color: var(--nui-control-bg, #fff);
+  display: flex;
+  align-items: center;
 }
 .n-select__options button * {
   pointer-events: none;
