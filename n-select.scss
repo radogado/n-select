@@ -169,7 +169,7 @@ Theme:
 	grid-column: 1/1;
 	grid-row: 1/1;
 	overflow: hidden;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .n-select select {
@@ -186,10 +186,6 @@ Theme:
 .n-select__options {
 	> * {
 		display: block;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
 		user-select: none;
 		line-height: inherit;
 	}
@@ -378,19 +374,17 @@ select[data-n_select],
 // Animation
 
 .n-select__options[aria-expanded] {
-	-webkit-mask: linear-gradient(0, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) / calc(var(--max-width) + 2 * var(--padding, .5em)) var(--mask-size-y);
+	-webkit-mask: linear-gradient(0deg, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) / calc(var(--max-width) + 2 * var(--padding, .5em)) var(--mask-size-y);
+	mask: linear-gradient(0deg, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px) / calc(var(--max-width) + 2 * var(--padding, .5em)) var(--mask-size-y);
 
 	&[data-n-select-animation] {
 		transition: -webkit-mask-size 0.15s ease-in-out, -webkit-mask-position-y 0.15s ease-in-out;
 		-webkit-mask-size: 100% 100%;
 		-webkit-mask-position-y: 0;
+		mask-size: 100% 100%;
+		mask-position-y: 0;
 	}
 
-	// &[data-transitionend] {
-	// 	// Remove mask to make shadow visible
-	// 	-webkit-mask: none;
-	// 	mask: none;
-	// }
 	overscroll-behavior: contain;
 }
 
@@ -418,17 +412,10 @@ select[data-n_select],
 	}
 }
 
-// _::-webkit-full-page-media,
-// _:future,
-// :root .n-select__options[aria-expanded].n-select--crop-top {
-//   top: calc(1px * var(--body-offset-y));
-// }
-
 _::-webkit-full-page-media,
 _:future,
 :root body.n-select--open {
 	overflow: hidden;
-	-webkit-user-select: none;
 	user-select: none;
 }
 
