@@ -89,10 +89,26 @@
 		select.classList.remove("n-select--crop-top");
 		let option_height = select.getBoundingClientRect().height;
 		select.style.setProperty("--max-width", `${select.parentNode.getBoundingClientRect().width}px`);
-		// If body is position relative, subtract from the vars its border width
-		let document_offset = document.querySelector("html").getBoundingClientRect().x;
-		select.style.setProperty("--body-offset-x", wrapper.getBoundingClientRect().x - document_offset - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderInlineStartWidth) - document_offset + document.body.getBoundingClientRect().x : 0));
-		select.style.setProperty("--body-offset-y", -document.body.getBoundingClientRect().y + wrapper.getBoundingClientRect().y - (document.body.style.position === "relative" ? parseFloat(getComputedStyle(document.body).borderBlockStartWidth) : 0));
+		// Calculate position relative to body (where the dropdown will be appended)
+		let wrapperRect = wrapper.getBoundingClientRect();
+		let htmlRect = document.documentElement.getBoundingClientRect();
+		let bodyRect = document.body.getBoundingClientRect();
+		let bodyStyle = getComputedStyle(document.body);
+		
+		// When body has position: relative, absolute children are positioned relative to body's content box
+		// Account for body's offset from html and border width
+		let offsetX = wrapperRect.x - htmlRect.x;
+		let offsetY = wrapperRect.y - bodyRect.y;
+		
+		if (bodyStyle.position === "relative") {
+			let bodyBorderLeft = parseFloat(bodyStyle.borderInlineStartWidth || 0);
+			let bodyBorderTop = parseFloat(bodyStyle.borderBlockStartWidth || 0);
+			offsetX -= bodyBorderLeft + bodyRect.x - htmlRect.x;
+			offsetY -= bodyBorderTop;
+		}
+		
+		select.style.setProperty("--body-offset-x", offsetX);
+		select.style.setProperty("--body-offset-y", offsetY);
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
 		select.setAttribute("aria-expanded", true);
 		// select.style.font = getComputedStyle(wrapper).font; // Firefox not working
