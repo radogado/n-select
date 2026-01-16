@@ -37,7 +37,11 @@
 		options.style.removeProperty("--top-offset");
 		options.style.removeProperty("--max-height");
 		let select_native = select.nuiNativeInput; // The attached native select
-		select_native.innerHTML = `<option value="${el.value}"></option>`;
+		select_native.textContent = "";
+		const selectedOption = document.createElement("option");
+		selectedOption.value = el.value;
+		selectedOption.textContent = el.textContent;
+		select_native.append(selectedOption);
 		const event = new Event("change");
 		select_native.dispatchEvent(event);
 		if (!!select.nuiOnChange) {
@@ -316,12 +320,13 @@
 			}
 			el = el.querySelector(".n-select__options"); // Work with the inner wrapper
 			if (!el) {
-				let options = "";
-				wrapper.querySelectorAll("option").forEach((el) => {
-					options += `<button value="${el.value}">${el.textContent}</button>`;
-				});
 				el = document.createElement("span");
-				el.insertAdjacentHTML("beforeend", options);
+				wrapper.querySelectorAll("option").forEach((optionEl) => {
+					const button = document.createElement("button");
+					button.value = optionEl.value;
+					button.textContent = optionEl.textContent;
+					el.append(button);
+				});
 				wrapper.prepend(el);
 			}
 			el.nuiSelectWrapper = wrapper;
