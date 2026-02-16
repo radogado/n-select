@@ -73,7 +73,7 @@
 		select.style.removeProperty("--scroll-help-top");
 		select.classList.remove("n-select--scroll-help-top");
 		// window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus()); // iPad blocking another element's scrolling 🤷‍♂️
-		select.nuiSelectWrapper.focus();
+		select.nuiSelectWrapper.focus({ preventScroll: true });
 		select.classList.remove("n-scrollbar");
 	};
 	let openSelect = (select) => {
@@ -349,7 +349,7 @@
 				// If relatedTarget isn't a sibling, close and focus on select wrapper
 				if (select.hasAttribute("aria-expanded") && !!e.relatedTarget && e.relatedTarget.parentNode !== select) {
 					closeSelect(select);
-					select.nuiSelectWrapper.focus();
+					select.nuiSelectWrapper.focus({ preventScroll: true });
 				}
 			});
 			el.ontransitionend = (e) => {
@@ -368,7 +368,7 @@
 				// Close select on tab outside. To do: get last button only
 				if (e.key === "Tab" && !e.shiftKey && e.target.parentNode.hasAttribute("aria-expanded")) {
 					closeSelect(e.target.parentNode);
-					e.target.parentNode.nuiSelectWrapper.focus();
+					e.target.parentNode.nuiSelectWrapper.focus({ preventScroll: true });
 				}
 			};
 			el.querySelectorAll("button").forEach((el) => {
