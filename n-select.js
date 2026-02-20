@@ -295,7 +295,7 @@
 					for (let el of select.querySelectorAll("button")) {
 						if (el.textContent.trim().toLowerCase().startsWith(select.nuiSearchTerm)) {
 							if (select.getAttribute('aria-expanded')) {
-								el.scrollIntoView({ block: 'nearest' });
+								el.scrollIntoView({ block: 'center' });
 								el.focus({ preventScroll: true });
 							} else {
 								selectOption(el, false);
