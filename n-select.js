@@ -1,6 +1,7 @@
 (function() {
 	const isChrome = !!navigator.userAgent.match("Chrome");
 	const isSafari = navigator.userAgent.match(/Safari/) && !isChrome;
+	let syncing = false;
 	let clickOutsideSelect = (e) => {
 		if (!e.target.closest(".n-select__options > *") && !e.target.closest(".n-select")) {
 			document.querySelectorAll(".n-select__options[aria-expanded]:not([data-n-select-animation])").forEach((select) => {
@@ -36,14 +37,13 @@
 		updateOptionHeight(select.nuiSelectWrapper, select);
 		options.style.removeProperty("--top-offset");
 		options.style.removeProperty("--max-height");
-		let select_native = select.nuiNativeInput; // The attached native select
-		select_native.textContent = "";
-		const selectedOption = document.createElement("option");
-		selectedOption.value = el.value;
-		selectedOption.textContent = el.textContent;
-		select_native.append(selectedOption);
-		const event = new Event("change");
-		select_native.dispatchEvent(event);
+		let select_native = select.nuiNativeInput;
+		syncing = true;
+		select_native.value = el.value;
+		syncing = false;
+		if (!select.nuiSuppressChange) {
+			select_native.dispatchEvent(new Event("change"));
+		}
 		if (!!select.nuiOnChange) {
 			select.nuiOnChange(index, select_native.value);
 		}
@@ -342,7 +342,32 @@
 			}
 			let initial_value = el.nuiNativeInput.value;
 			let initial_option = el.querySelector(`button[value="${initial_value}"`);
-			el.nuiNativeInput.innerHTML = "";
+			if (el.nuiNativeInput.tagName === "SELECT") {
+				if (el.nuiNativeInput.options.length <= 1) {
+					el.nuiNativeInput.innerHTML = "";
+					el.querySelectorAll("button").forEach((btn) => {
+						const opt = document.createElement("option");
+						opt.value = btn.value;
+						opt.textContent = btn.textContent.trim();
+						el.nuiNativeInput.append(opt);
+					});
+				}
+				let richSelect = el;
+				let descriptor = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value');
+				Object.defineProperty(el.nuiNativeInput, 'value', {
+					get() { return descriptor.get.call(this); },
+					set(val) {
+						descriptor.set.call(this, val);
+						if (syncing) return;
+						let button = richSelect.querySelector(`button[value="${CSS.escape(val)}"]`);
+						if (button && !button.hasAttribute("aria-selected")) {
+							richSelect.nuiSuppressChange = true;
+							selectOption(button, false);
+							richSelect.nuiSuppressChange = false;
+						}
+					}
+				});
+			}
 			wrapper.addEventListener("pointerdown", pointerDownSelect);
 			el.addEventListener("click", clickSelect); // Selects a clicked (pointer upped) option
 			el.addEventListener("focusout", (e) => {
