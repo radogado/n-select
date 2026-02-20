@@ -142,7 +142,7 @@
 			let available_top_space = select.getBoundingClientRect().y;
 			if (select.scrollHeight > select.getBoundingClientRect().height) {
 				let cropped_space = select.getBoundingClientRect().height - select.scrollHeight;
-				let scroll_help_top = Math.abs(Math.min(cropped_space, available_top_space)) - parseInt(getComputedStyle(select).paddingInlineEnd) * 2;
+				let scroll_help_top = Math.min(Math.abs(cropped_space), available_top_space) - parseInt(getComputedStyle(select).paddingInlineEnd) * 2;
 				if (scroll_help_top > 0) {
 					select.style.setProperty("--scroll-help-top", scroll_help_top);
 					select.classList.add("n-select--scroll-help-top");
@@ -295,7 +295,7 @@
 					for (let el of select.querySelectorAll("button")) {
 						if (el.textContent.trim().toLowerCase().startsWith(select.nuiSearchTerm)) {
 							if (select.getAttribute('aria-expanded')) {
-								select.scrollTop += el.getBoundingClientRect().top - select.getBoundingClientRect().top - select.clientHeight / 2 + el.offsetHeight / 2;
+								select.scrollTop = el.offsetTop - select.clientHeight / 2 + el.offsetHeight / 2;
 								el.focus({ preventScroll: true });
 							} else {
 								selectOption(el, false);
