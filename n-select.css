@@ -118,7 +118,7 @@ Theme:
 
 .n-select__options,
 .n-select {
-  --padding: .5em;
+  --padding: 0.5em;
   --line-height: 1.5em;
   border-radius: var(--nui-border-radius);
 }
@@ -304,9 +304,9 @@ select[data-n_select],
 }
 
 .n-select__options[aria-expanded] {
+  overscroll-behavior: contain;
   -webkit-mask: linear-gradient(0deg, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px)/calc(var(--max-width) + 2 * var(--padding, 0.5em)) var(--mask-size-y);
   mask: linear-gradient(0deg, #000, #000) no-repeat 0 calc((var(--mask-position-y) + var(--scroll-help-top, 0)) * 1px)/calc(var(--max-width) + 2 * var(--padding, 0.5em)) var(--mask-size-y);
-  overscroll-behavior: contain;
 }
 .n-select__options[aria-expanded][data-n-select-animation] {
   transition: -webkit-mask-size 0.15s ease-in-out, -webkit-mask-position-y 0.15s ease-in-out;
@@ -327,7 +327,7 @@ select[data-n_select],
   }
 }
 .n-select--rounded {
-  --nui-border-radius: .333em;
+  --nui-border-radius: 0.333em;
 }
 
 .n-select:focus:not(:focus-visible),
@@ -355,5 +355,3 @@ _:future,
     right: auto;
   }
 }
-
-/*# sourceMappingURL=n-select.css.map */
