@@ -292,14 +292,15 @@
 				select.nuiSearchTerm += e.key.toLowerCase();
 				clearTimeout(timeout);
 				timeout = setTimeout(() => {
-					// select the option that starts with select.nuiSearchTerm
 					for (let el of select.querySelectorAll("button")) {
 						if (el.textContent.trim().toLowerCase().startsWith(select.nuiSearchTerm)) {
 							if (select.getAttribute('aria-expanded')) {
-								el.focus();
+								el.scrollIntoView({ block: 'nearest' });
+								el.focus({ preventScroll: true });
 							} else {
 								selectOption(el, false);
 							}
+							break;
 						}
 					}
 					select.nuiSearchTerm = "";
