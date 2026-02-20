@@ -1,3 +1,5 @@
+./node_modules/sass/sass.js n-select.scss n-select.css
+./node_modules/sass/sass.js demo/demo.scss demo/demo.css
 ./node_modules/clean-css-cli/bin/cleancss -o n-select.min.css n-select.css
 ./node_modules/terser/bin/terser -o n-select.min.js --compress --mangle -- n-select.js
 ./node_modules/gzip-size-cli/cli.js --raw n-select.min.css > n-select.min.css.size

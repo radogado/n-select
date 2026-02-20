@@ -23,6 +23,7 @@
   "homepage": "https://github.com/radogado/n-select#readme",
   "dependencies": {
     "clean-css-cli": "^4.3.0",
+    "sass": "^1.49.7",
     "terser": "^5.5.1"
   },
   "devDependencies": {
