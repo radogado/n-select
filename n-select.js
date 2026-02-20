@@ -295,7 +295,7 @@
 					for (let el of select.querySelectorAll("button")) {
 						if (el.textContent.trim().toLowerCase().startsWith(select.nuiSearchTerm)) {
 							if (select.getAttribute('aria-expanded')) {
-								select.scrollTop = el.offsetTop - select.clientHeight / 2 + el.offsetHeight / 2;
+								select.scrollTop += el.getBoundingClientRect().top - select.getBoundingClientRect().top - select.clientHeight / 2 + el.offsetHeight / 2;
 								el.focus({ preventScroll: true });
 							} else {
 								selectOption(el, false);
