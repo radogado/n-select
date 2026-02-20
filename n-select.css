@@ -146,7 +146,7 @@ Theme:
   padding: var(--padding, 0.5em);
   padding-inline-end: 1.961em;
   cursor: pointer;
-  line-height: calc(1 + var(--line-height, 1.5em));
+  line-height: var(--line-height, 1.5em);
 }
 .n-select select ~ .n-select__options {
   animation-name: n-select;
@@ -186,7 +186,7 @@ Theme:
   max-width: none;
 }
 .n-select__options.n-scrollbar {
-  scrollbar-width: none;
+  scrollbar-width: thin;
   scrollbar-color: #999 transparent;
 }
 .n-select__options.n-scrollbar::-webkit-scrollbar {
@@ -363,13 +363,6 @@ select[data-n_select],
 .n-select:focus:not(:focus-visible),
 .n-select__options button:focus:not(:focus-visible) {
   outline: 0;
-}
-
-_::-webkit-full-page-media,
-_:future,
-:root body.n-select--open {
-  overflow: hidden;
-  user-select: none;
 }
 
 [dir=rtl] .n-select__options[aria-expanded] {

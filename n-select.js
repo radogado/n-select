@@ -1,18 +1,14 @@
 (function() {
-	const isChrome = !!navigator.userAgent.match("Chrome");
-	const isSafari = navigator.userAgent.match(/Safari/) && !isChrome;
 	let syncing = false;
+	let currentOpenSelect = null;
 	let clickOutsideSelect = (e) => {
-		if (!e.target.closest(".n-select__options > *") && !e.target.closest(".n-select")) {
-			document.querySelectorAll(".n-select__options[aria-expanded]:not([data-n-select-animation])").forEach((select) => {
-				closeSelect(select);
-			});
+		if (currentOpenSelect && !currentOpenSelect.dataset.nSelectAnimation && !e.target.closest(".n-select__options > *") && !e.target.closest(".n-select")) {
+			closeSelect(currentOpenSelect);
 		}
 	};
 	let closeSelectOnResizeScroll = (e) => {
-		let open_select = document.querySelector(".n-select__options[aria-expanded]");
-		if (e.type === 'resize' || (e.type === 'scroll' && e.target !== open_select)) {
-			closeSelect(open_select);
+		if (currentOpenSelect && (e.type === 'resize' || (e.type === 'scroll' && e.target !== currentOpenSelect))) {
+			closeSelect(currentOpenSelect);
 		}
 	};
 	const updateOptionHeight = (wrapper, select) => {
@@ -33,7 +29,6 @@
 			}
 		}
 		let options = select.children[0];
-		// select.nuiSelectWrapper.style.setProperty("--active-option-height", `${el.getBoundingClientRect().height}px`);
 		updateOptionHeight(select.nuiSelectWrapper, select);
 		options.style.removeProperty("--top-offset");
 		options.style.removeProperty("--max-height");
@@ -44,8 +39,8 @@
 		if (!select.nuiSuppressChange) {
 			select_native.dispatchEvent(new Event("change"));
 		}
-		if (!!select.nuiOnChange) {
-			select.nuiOnChange(index, select_native.value);
+		if (select.nuiOnChange) {
+			select.nuiOnChange([...select.querySelectorAll("button")].indexOf(el), select_native.value);
 		}
 	};
 	const font_properties = ["font-family", "font-size", "font-style", "font-weight", "line-height", "font-variant"];
@@ -53,11 +48,9 @@
 		if (!select) {
 			return;
 		}
+		currentOpenSelect = null;
 		delete select.dataset.nSelectAnimation;
-		// delete select.dataset.transitionend;
 		select.removeAttribute("aria-expanded");
-		// document.body.classList.remove("n-select--open");
-		// select.style.font = "";
 		font_properties.forEach((el) => {
 			select.style[el] = "";
 		});
@@ -72,14 +65,12 @@
 		wrapper.style.removeProperty("--width");
 		select.style.removeProperty("--scroll-help-top");
 		select.classList.remove("n-select--scroll-help-top");
-		// window.requestAnimationFrame((t) => select.nuiSelectWrapper.focus()); // iPad blocking another element's scrolling 🤷‍♂️
 		select.nuiSelectWrapper.focus({ preventScroll: true });
 		select.classList.remove("n-scrollbar");
 	};
 	let openSelect = (select) => {
-		let previous_open_select = document.body.querySelector(".n-select__options[aria-expanded]");
-		if (previous_open_select) {
-			closeSelect(previous_open_select);
+		if (currentOpenSelect) {
+			closeSelect(currentOpenSelect);
 		}
 		let wrapper = select.parentNode;
 		updateOptionHeight(wrapper, select);
@@ -115,8 +106,6 @@
 		select.style.setProperty("--body-offset-y", offsetY);
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
 		select.setAttribute("aria-expanded", true);
-		// select.style.font = getComputedStyle(wrapper).font; // Firefox not working
-		//fontFamily fontSize, fontStyle, fontWeight
 		font_properties.forEach((el) => {
 			select.style[el] = getComputedStyle(wrapper)[el];
 		});
@@ -142,14 +131,14 @@
 			let available_top_space = select.getBoundingClientRect().y;
 			if (select.scrollHeight > select.getBoundingClientRect().height) {
 				let cropped_space = select.getBoundingClientRect().height - select.scrollHeight;
-				let scroll_help_top = Math.min(Math.abs(cropped_space), available_top_space) - parseInt(getComputedStyle(select).paddingInlineEnd) * 2;
+				let scroll_help_top = Math.min(Math.abs(cropped_space), available_top_space) - parseFloat(getComputedStyle(select).paddingInlineEnd) * 2;
 				if (scroll_help_top > 0) {
 					select.style.setProperty("--scroll-help-top", scroll_help_top);
 					select.classList.add("n-select--scroll-help-top");
 				}
 			}
 		}
-		if (select.getBoundingClientRect().width > select.querySelector("button").getBoundingClientRect().width + parseInt(getComputedStyle(select).paddingInlineEnd) * 2) {
+		if (select.getBoundingClientRect().width > select.querySelector("button").getBoundingClientRect().width + parseFloat(getComputedStyle(select).paddingInlineEnd) * 2) {
 			select.classList.add("n-scrollbar");
 		}
 		select.style.setProperty("--mask-position-y", `${active_option_offset - top_offset}`); // To do: adjust target position to equalise reveal speed on both sides: shorter side position += difference between short and long sides
@@ -158,9 +147,9 @@
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
 				select.querySelector("[aria-selected]").focus();
-				// document.body.classList.add("n-select--open");
-			}, 1); // Timeout needed for the above CSS variables to work
+			}, 1);
 		});
+		currentOpenSelect = select;
 		window.addEventListener("resize", closeSelectOnResizeScroll);
 		window.addEventListener("scroll", closeSelectOnResizeScroll, true);
 		window.addEventListener("pointerup", clickOutsideSelect);
@@ -223,8 +212,7 @@
 	};
 	let timeout = null;
 	let trapKeyboard = (e) => {
-		if ([32, 35, 36, 37, 38, 39, 40].includes(e.keyCode)) {
-			// Capture Home, End, Arrows etc
+		if ([" ", "End", "Home", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].includes(e.key)) {
 			e.stopPropagation();
 			e.preventDefault();
 		}
@@ -341,7 +329,7 @@
 				el.nuiNativeInput = input;
 			}
 			let initial_value = el.nuiNativeInput.value;
-			let initial_option = el.querySelector(`button[value="${initial_value}"`);
+			let initial_option = el.querySelector(`button[value="${CSS.escape(initial_value)}"]`);
 			if (el.nuiNativeInput.tagName === "SELECT") {
 				if (el.nuiNativeInput.options.length <= 1) {
 					el.nuiNativeInput.innerHTML = "";
@@ -383,9 +371,8 @@
 				el.style.removeProperty("--mask-position-y");
 				el.style.removeProperty("--mask-size-y");
 				delete el.dataset.nSelectAnimation;
-				el.addEventListener("pointerup", pointerUpSelect);
-				// el.dataset.transitionend = true;
-			};
+			el.addEventListener("pointerup", pointerUpSelect);
+		};
 			el.addEventListener("keydown", selectKeyboard);
 			wrapper.addEventListener("keydown", selectKeyboard);
 			el.addEventListener("keyup", trapKeyboard);
@@ -425,7 +412,6 @@
 			}
 			wrapper.dataset.ready = true;
 			window.requestAnimationFrame(() => {
-				// wrapper.style.setProperty("--active-option-height", `${el.querySelector("[aria-selected]").getBoundingClientRect().height}px`);
 				updateOptionHeight(wrapper, el);
 				["--nui-control-color", "--nui-control-bg", "--nui-control-active-color", "--nui-control-active-bg", "--nui-control-highlight"].forEach((i) => {
 					el.style.setProperty(i, wrapper.style.getPropertyValue(i));
