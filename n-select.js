@@ -406,7 +406,7 @@
 			wrapper.style.setProperty("--inline-width", `${el.getBoundingClientRect().width}px`);
 			selectOption(el.querySelector("[aria-selected]") || initial_option || el.querySelector("button")); // Select the first option by default
 			el.nuiSearchTerm = "";
-			["n-select--rounded", "n-select--shadow"].forEach((cls) => {
+			["n-select--rounded", "n-select--shadow", "n-select--checkmark"].forEach((cls) => {
 				if (wrapper.classList.contains(cls)) {
 					el.classList.add(cls);
 				}

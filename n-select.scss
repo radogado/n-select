@@ -413,6 +413,38 @@ select[data-n_select],
   --nui-border-radius: 0.333em;
 }
 
+.n-select--checkmark {
+  --checkmark-size: 1em;
+  --checkmark-gap: 0.375em;
+  --checkmark-indent: calc(var(--padding, 0.5em) + var(--checkmark-size) + var(--checkmark-gap));
+
+  &:not([data-ready]) select {
+    padding-inline-start: var(--checkmark-indent);
+  }
+}
+
+.n-select--checkmark.n-select__options,
+.n-select--checkmark > .n-select__options {
+  button,
+  a[href] {
+    padding-inline-start: var(--checkmark-indent);
+  }
+
+  [aria-selected]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: var(--padding, 0.5em);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--checkmark-size);
+    height: var(--checkmark-size);
+    background-color: currentColor;
+    --checkmark: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    -webkit-mask: var(--checkmark) no-repeat center / contain;
+    mask: var(--checkmark) no-repeat center / contain;
+  }
+}
+
 // Hide focus ring when unnecessary, show it only on keyboard interaction
 .n-select,
 .n-select__options button {
