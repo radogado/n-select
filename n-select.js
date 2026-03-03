@@ -12,7 +12,8 @@
 		}
 	};
 	const updateOptionHeight = (wrapper, select) => {
-		wrapper.style.setProperty("--active-option-height", `${select.querySelector("[aria-selected]").getBoundingClientRect().height}px`);
+		let activeOpt = select.querySelector("[aria-selected]");
+		if (activeOpt) wrapper.style.setProperty("--active-option-height", `${activeOpt.getBoundingClientRect().height}px`);
 	};
 	let selectOption = (el, close = true) => {
 		if (!el || el.tagName !== "BUTTON") {
@@ -57,7 +58,8 @@
 		select.nuiSelectWrapper.prepend(select);
 		window.removeEventListener("resize", closeSelectOnResizeScroll);
 		window.removeEventListener("scroll", closeSelectOnResizeScroll);
-		select.querySelector("[aria-selected]").tabIndex = -1;
+		let selected = select.querySelector("[aria-selected]");
+		if (selected) selected.tabIndex = -1;
 		window.removeEventListener("pointerup", clickOutsideSelect);
 		select.removeEventListener("pointerup", pointerUpSelect);
 		let wrapper = select.parentNode;
