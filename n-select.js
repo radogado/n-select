@@ -45,13 +45,24 @@
 		}
 	};
 	const font_properties = ["font-family", "font-size", "font-style", "font-weight", "line-height", "font-variant"];
+	const setSelectExpanded = (select, expanded) => {
+		const wrapper = select.nuiSelectWrapper;
+		if (!wrapper) return;
+		if (expanded) {
+			wrapper.setAttribute("aria-expanded", "true");
+			select.setAttribute("aria-expanded", "true");
+		} else {
+			wrapper.removeAttribute("aria-expanded");
+			select.removeAttribute("aria-expanded");
+		}
+	};
 	let closeSelect = (select) => {
 		if (!select) {
 			return;
 		}
 		currentOpenSelect = null;
 		delete select.dataset.nSelectAnimation;
-		select.removeAttribute("aria-expanded");
+		setSelectExpanded(select, false);
 		font_properties.forEach((el) => {
 			select.style[el] = "";
 		});
@@ -107,7 +118,7 @@
 		select.style.setProperty("--body-offset-x", offsetX);
 		select.style.setProperty("--body-offset-y", offsetY);
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
-		select.setAttribute("aria-expanded", true);
+		setSelectExpanded(select, true);
 		font_properties.forEach((el) => {
 			select.style[el] = getComputedStyle(wrapper)[el];
 		});
@@ -413,6 +424,17 @@
 				};
 			}
 			wrapper.dataset.ready = true;
+			wrapper.setAttribute("role", "combobox");
+			wrapper.setAttribute("aria-haspopup", "listbox");
+			wrapper.setAttribute("tabindex", "0");
+			if (!el.id) {
+				el.id = `n-select-${Math.random().toString(36).slice(2, 9)}`;
+			}
+			wrapper.setAttribute("aria-controls", el.id);
+			el.setAttribute("role", "listbox");
+			el.querySelectorAll("button").forEach((btn) => {
+				btn.setAttribute("role", "option");
+			});
 			window.requestAnimationFrame(() => {
 				updateOptionHeight(wrapper, el);
 				["--nui-control-color", "--nui-control-bg", "--nui-control-active-color", "--nui-control-active-bg", "--nui-control-highlight"].forEach((i) => {
