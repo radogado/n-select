@@ -303,8 +303,10 @@ Theme:
         }
       }
 
-      &:focus {
+      &:focus-visible {
         z-index: 1;
+        outline: 2px solid var(--nui-control-highlight, currentColor);
+        outline-offset: 2px;
       }
     }
 
