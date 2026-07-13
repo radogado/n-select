@@ -70,9 +70,9 @@ Theme:
 
   &[data-ready] {
     font-size: 1em;
-    transition: height 0.2s ease-in-out;
+    overflow-anchor: none;
 
-    > .n-select__options > :not([aria-selected]) {
+    > .n-select__options:not([aria-expanded]) > :not([aria-selected]) {
       height: 0;
       padding-top: 0;
       padding-bottom: 0;
@@ -139,8 +139,25 @@ Theme:
 
   &.n-select--open {
     opacity: 0;
-    height: var(--active-option-height, auto);
   }
+
+  &__slot {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+.n-select__options:not([aria-expanded]).n-select--closing > :not([aria-selected]) {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
 }
 
 .n-select__options,

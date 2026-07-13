@@ -15,6 +15,14 @@
 		let activeOpt = select.querySelector("[aria-selected]");
 		if (activeOpt) wrapper.style.setProperty("--active-option-height", `${activeOpt.getBoundingClientRect().height}px`);
 	};
+	const placeSlot = (wrapper, select) => {
+		updateOptionHeight(wrapper, select);
+		let slot = document.createElement("span");
+		slot.className = "n-select__slot";
+		slot.setAttribute("aria-hidden", "true");
+		slot.style.height = `${wrapper.getBoundingClientRect().height}px`;
+		wrapper.insertBefore(slot, select);
+	};
 	let selectOption = (el, close = true) => {
 		if (!el || el.tagName !== "BUTTON") {
 			return;
@@ -24,15 +32,13 @@
 		el.setAttribute("aria-selected", true);
 		select.nuiSelectWrapper.dataset.value = el.value;
 		if (select.hasAttribute("aria-expanded")) {
-			el.focus();
 			if (close) {
-				closeSelect(select);
+				closeSelect(select, true);
 			}
 		}
-		let options = select.children[0];
 		updateOptionHeight(select.nuiSelectWrapper, select);
-		options.style.removeProperty("--top-offset");
-		options.style.removeProperty("--max-height");
+		el.style.removeProperty("--top-offset");
+		el.style.removeProperty("--max-height");
 		let select_native = select.nuiNativeInput;
 		syncing = true;
 		select_native.value = el.value;
@@ -56,37 +62,58 @@
 			select.removeAttribute("aria-expanded");
 		}
 	};
-	let closeSelect = (select) => {
-		if (!select) {
+	let closeSelect = (select, refocus = false) => {
+		if (!select || !select.hasAttribute("aria-expanded")) {
 			return;
 		}
+		const scrollY = window.scrollY;
 		currentOpenSelect = null;
 		delete select.dataset.nSelectAnimation;
+		const wrapper = select.nuiSelectWrapper;
+		if (select.contains(document.activeElement)) {
+			document.activeElement.blur();
+		}
+		select.classList.add("n-select--closing");
+		select.style.visibility = "hidden";
+		updateOptionHeight(wrapper, select);
+		const slot = wrapper.querySelector(".n-select__slot");
+		if (slot) {
+			slot.style.height = `${slot.getBoundingClientRect().height}px`;
+			slot.replaceWith(select);
+		} else {
+			wrapper.prepend(select);
+		}
 		setSelectExpanded(select, false);
-		font_properties.forEach((el) => {
-			select.style[el] = "";
+		font_properties.forEach((prop) => {
+			select.style[prop] = "";
 		});
-		select.nuiSelectWrapper.prepend(select);
-		window.removeEventListener("resize", closeSelectOnResizeScroll);
-		window.removeEventListener("scroll", closeSelectOnResizeScroll);
-		let selected = select.querySelector("[aria-selected]");
-		if (selected) selected.tabIndex = -1;
-		window.removeEventListener("pointerup", clickOutsideSelect);
-		select.removeEventListener("pointerup", pointerUpSelect);
-		let wrapper = select.parentNode;
+		select.classList.remove("n-select--closing");
+		select.style.visibility = "";
 		wrapper.classList.remove("n-select--open");
 		wrapper.style.removeProperty("--width");
 		select.style.removeProperty("--scroll-help-top");
-		select.classList.remove("n-select--scroll-help-top");
-		select.nuiSelectWrapper.focus({ preventScroll: true });
-		select.classList.remove("n-scrollbar");
+		select.style.removeProperty("--body-offset-x");
+		select.style.removeProperty("--body-offset-y");
+		select.classList.remove("n-select--scroll-help-top", "n-scrollbar", "n-select--crop-top");
+		let selected = select.querySelector("[aria-selected]");
+		if (selected) selected.tabIndex = -1;
+		window.removeEventListener("resize", closeSelectOnResizeScroll);
+		window.removeEventListener("scroll", closeSelectOnResizeScroll, true);
+		window.removeEventListener("pointerup", clickOutsideSelect);
+		select.removeEventListener("pointerup", pointerUpSelect);
+		if (window.scrollY !== scrollY) {
+			window.scrollTo(window.scrollX, scrollY);
+		}
+		if (refocus) {
+			wrapper.focus({ preventScroll: true });
+		}
 	};
 	let openSelect = (select) => {
 		if (currentOpenSelect) {
 			closeSelect(currentOpenSelect);
 		}
-		let wrapper = select.parentNode;
-		updateOptionHeight(wrapper, select);
+		let wrapper = select.nuiSelectWrapper;
+		placeSlot(wrapper, select);
 		wrapper.style.setProperty("--width", `${wrapper.getBoundingClientRect().width}px`);
 		wrapper.classList.add("n-select--open");
 		// Fix viewport overflow
@@ -95,26 +122,22 @@
 		select.style.removeProperty("--select-scroll-height");
 		select.style.removeProperty("--active-option-offset");
 		select.classList.remove("n-select--crop-top");
+		// Collapsed single-row height — must be measured before expand/portal (mask animation).
 		let option_height = select.getBoundingClientRect().height;
-		select.style.setProperty("--max-width", `${select.parentNode.getBoundingClientRect().width}px`);
+		select.style.setProperty("--max-width", `${wrapper.getBoundingClientRect().width}px`);
 		// Calculate position relative to body (where the dropdown will be appended)
 		let wrapperRect = wrapper.getBoundingClientRect();
 		let htmlRect = document.documentElement.getBoundingClientRect();
 		let bodyRect = document.body.getBoundingClientRect();
 		let bodyStyle = getComputedStyle(document.body);
-		
-		// When body has position: relative, absolute children are positioned relative to body's content box
-		// Account for body's offset from html and border width
 		let offsetX = wrapperRect.x - htmlRect.x;
 		let offsetY = wrapperRect.y - bodyRect.y;
-		
 		if (bodyStyle.position === "relative") {
 			let bodyBorderLeft = parseFloat(bodyStyle.borderInlineStartWidth || 0);
 			let bodyBorderTop = parseFloat(bodyStyle.borderBlockStartWidth || 0);
 			offsetX -= bodyBorderLeft + bodyRect.x - htmlRect.x;
 			offsetY -= bodyBorderTop;
 		}
-		
 		select.style.setProperty("--body-offset-x", offsetX);
 		select.style.setProperty("--body-offset-y", offsetY);
 		select.querySelector("[aria-selected]").removeAttribute("tabindex");
@@ -154,12 +177,12 @@
 		if (select.getBoundingClientRect().width > select.querySelector("button").getBoundingClientRect().width + parseFloat(getComputedStyle(select).paddingInlineEnd) * 2) {
 			select.classList.add("n-scrollbar");
 		}
-		select.style.setProperty("--mask-position-y", `${active_option_offset - top_offset}`); // To do: adjust target position to equalise reveal speed on both sides: shorter side position += difference between short and long sides
+		select.style.setProperty("--mask-position-y", `${active_option_offset - top_offset}`);
 		select.style.setProperty("--mask-size-y", `${option_height}px`);
-		window.requestAnimationFrame((t) => {
+		window.requestAnimationFrame(() => {
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
-				select.querySelector("[aria-selected]").focus();
+				select.querySelector("[aria-selected]").focus({ preventScroll: true });
 			}, 1);
 		});
 		currentOpenSelect = select;
@@ -198,7 +221,6 @@
 	let pointerDownSelect = (e) => {
 		let select = e.target.closest(".n-select__options") || e.target.querySelector(".n-select__options");
 		if (!!select && !select.hasAttribute("aria-expanded")) {
-			// Closed
 			openSelect(select);
 			// Prevent the click event from closing it right away
 			select.removeEventListener("click", clickSelect);
@@ -217,6 +239,7 @@
 				return;
 			}
 			selectOption(el);
+			e.preventDefault();
 		}
 		document.body.style.pointerEvents = "none"; // Prevent iPad from clicking the element behind
 		setTimeout(() => {
@@ -250,7 +273,7 @@
 				break;
 			}
 			case "Escape": {
-				closeSelect(select);
+				closeSelect(select, true);
 				break;
 			}
 			case "ArrowDown": {
@@ -376,7 +399,6 @@
 				// If relatedTarget isn't a sibling, close and focus on select wrapper
 				if (select.hasAttribute("aria-expanded") && !!e.relatedTarget && e.relatedTarget.parentNode !== select) {
 					closeSelect(select);
-					select.nuiSelectWrapper.focus({ preventScroll: true });
 				}
 			});
 			el.ontransitionend = (e) => {
@@ -384,8 +406,8 @@
 				el.style.removeProperty("--mask-position-y");
 				el.style.removeProperty("--mask-size-y");
 				delete el.dataset.nSelectAnimation;
+			};
 			el.addEventListener("pointerup", pointerUpSelect);
-		};
 			el.addEventListener("keydown", selectKeyboard);
 			wrapper.addEventListener("keydown", selectKeyboard);
 			el.addEventListener("keyup", trapKeyboard);
@@ -394,14 +416,13 @@
 				// Close select on tab outside. To do: get last button only
 				if (e.key === "Tab" && !e.shiftKey && e.target.parentNode.hasAttribute("aria-expanded")) {
 					closeSelect(e.target.parentNode);
-					e.target.parentNode.nuiSelectWrapper.focus({ preventScroll: true });
 				}
 			};
 			el.querySelectorAll("button").forEach((el) => {
 				el.type = "button"; // Unlike the default 'submit'
 				el.value = el.value || el.textContent.trim();
 			});
-			wrapper.setAttribute("tabindex", 0);
+			wrapper.setAttribute("tabindex", "0");
 			(el.querySelector("[aria-selected]") || el.firstElementChild).tabIndex = -1;
 			wrapper.style.setProperty("--inline-width", `${el.getBoundingClientRect().width}px`);
 			selectOption(el.querySelector("[aria-selected]") || initial_option || el.querySelector("button")); // Select the first option by default

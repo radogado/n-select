@@ -31,6 +31,10 @@ Theme:
   background-color: var(--nui-control-bg, #fff);
   line-height: var(--line-height, 1.333);
 }
+.n-select:focus-visible {
+  outline: 2px solid var(--nui-control-highlight, currentColor);
+  outline-offset: 2px;
+}
 .n-select:before {
   content: "";
   position: absolute;
@@ -61,9 +65,9 @@ Theme:
 }
 .n-select[data-ready] {
   font-size: 1em;
-  transition: height 0.2s ease-in-out;
+  overflow-anchor: none;
 }
-.n-select[data-ready] > .n-select__options > :not([aria-selected]) {
+.n-select[data-ready] > .n-select__options:not([aria-expanded]) > :not([aria-selected]) {
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -113,7 +117,23 @@ Theme:
 }
 .n-select.n-select--open {
   opacity: 0;
-  height: var(--active-option-height, auto);
+}
+.n-select__slot {
+  grid-column: 1/1;
+  grid-row: 1/1;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.n-select__options:not([aria-expanded]).n-select--closing > :not([aria-selected]) {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
 }
 
 .n-select__options,
@@ -247,9 +267,11 @@ Theme:
   background-color: var(--nui-control-highlight, #ececec);
   color: var(--nui-control-active-color, inherit);
 }
-.n-select__options[aria-expanded] button:focus,
-.n-select__options[aria-expanded] a[href]:focus {
+.n-select__options[aria-expanded] button:focus-visible,
+.n-select__options[aria-expanded] a[href]:focus-visible {
   z-index: 1;
+  outline: 2px solid var(--nui-control-highlight, currentColor);
+  outline-offset: 2px;
 }
 .n-select__options[aria-expanded]:before {
   content: "";
