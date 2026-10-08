@@ -44,7 +44,7 @@
 		select_native.value = el.value;
 		syncing = false;
 		if (!select.nuiSuppressChange) {
-			select_native.dispatchEvent(new Event("change"));
+			select_native.dispatchEvent(new Event("change", { bubbles: true }));
 		}
 		if (select.nuiOnChange) {
 			select.nuiOnChange([...select.querySelectorAll("button")].indexOf(el), select_native.value);
@@ -109,6 +109,9 @@
 		}
 	};
 	let openSelect = (select) => {
+		const active =
+			select.querySelector("[aria-selected]") || select.querySelector("button");
+		if (!active) return;
 		if (currentOpenSelect) {
 			closeSelect(currentOpenSelect);
 		}
@@ -140,14 +143,15 @@
 		}
 		select.style.setProperty("--body-offset-x", offsetX);
 		select.style.setProperty("--body-offset-y", offsetY);
-		select.querySelector("[aria-selected]").removeAttribute("tabindex");
+		active.removeAttribute("tabindex");
 		setSelectExpanded(select, true);
 		font_properties.forEach((el) => {
 			select.style[el] = getComputedStyle(wrapper)[el];
 		});
+		select.dataset.ready = true;
 		document.body.appendChild(select);
 		select.style.setProperty("--select-scroll-height", `${select.getBoundingClientRect().height}px`);
-		let active_option_offset = select.querySelector("[aria-selected]").getBoundingClientRect().y - select.getBoundingClientRect().y;
+		let active_option_offset = active.getBoundingClientRect().y - select.getBoundingClientRect().y;
 		let top_offset = 0;
 		select.style.setProperty("--active-option-offset", active_option_offset);
 		if (select.getBoundingClientRect().y < 0) {
@@ -174,7 +178,7 @@
 				}
 			}
 		}
-		if (select.getBoundingClientRect().width > select.querySelector("button").getBoundingClientRect().width + parseFloat(getComputedStyle(select).paddingInlineEnd) * 2) {
+		if (select.getBoundingClientRect().width > active.getBoundingClientRect().width + parseFloat(getComputedStyle(select).paddingInlineEnd) * 2) {
 			select.classList.add("n-scrollbar");
 		}
 		select.style.setProperty("--mask-position-y", `${active_option_offset - top_offset}`);
@@ -182,7 +186,10 @@
 		window.requestAnimationFrame(() => {
 			setTimeout(() => {
 				select.dataset.nSelectAnimation = true;
-				select.querySelector("[aria-selected]").focus({ preventScroll: true });
+				active.focus({ preventScroll: true });
+				if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+					delete select.dataset.nSelectAnimation;
+				}
 			}, 1);
 		});
 		currentOpenSelect = select;
@@ -445,6 +452,7 @@
 				};
 			}
 			wrapper.dataset.ready = true;
+			el.dataset.ready = true;
 			wrapper.setAttribute("role", "combobox");
 			wrapper.setAttribute("aria-haspopup", "listbox");
 			wrapper.setAttribute("tabindex", "0");
